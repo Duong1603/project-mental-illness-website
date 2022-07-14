@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('history_payments', function (Blueprint $table) {
-            $table->id();
+        Schema::create('packages', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->integer('price');
+            $table->text('description');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('history_payments');
+        Schema::dropIfExists('packages');
     }
 };

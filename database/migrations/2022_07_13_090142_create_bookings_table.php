@@ -13,13 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('contacts', function (Blueprint $table) {
-       
+        Schema::create('bookings', function (Blueprint $table) {
+
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')
+            $table->dateTime('start_meeting');
+            $table->dateTime('end_meeting');
+            $table->text('problem');
+            $table->enum('status',array('will do','doing','done'));
+            $table->string('link_gg_meet',500);
+            $table->integer('order_id')->unsigned();
+            $table->foreign('order_id')
             ->references('id')
-            ->on('web_users')
+            ->on('orders')
             ->onDelete('cascade')
             ->onUpdate('cascade');
             $table->timestamps();
@@ -33,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contacts');
+        Schema::dropIfExists('bookings');
     }
 };

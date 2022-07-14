@@ -13,15 +13,32 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('contacts', function (Blueprint $table) {
-       
+        Schema::create('orders', function (Blueprint $table) {
+            
             $table->increments('id');
+            $table->integer('package_id')->unsigned();
             $table->integer('user_id')->unsigned();
+            $table->integer('doctor_id')->unsigned();
+    
+
+            $table->foreign('package_id')
+            ->references('id')
+            ->on('packages')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+
             $table->foreign('user_id')
             ->references('id')
             ->on('web_users')
             ->onDelete('cascade')
             ->onUpdate('cascade');
+
+            $table->foreign('doctor_id')
+            ->references('id')
+            ->on('doctors')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+            
             $table->timestamps();
         });
     }
@@ -33,6 +50,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contacts');
+        Schema::dropIfExists('orders');
     }
 };

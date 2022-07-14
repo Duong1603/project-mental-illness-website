@@ -11,10 +11,16 @@ return new class extends Migration
      *
      * @return void
      */
+    
     public function up()
     {
         Schema::create('web_users', function (Blueprint $table) {
-            $table->increment('id');
+            $table->increments('id');
+            $table->string('name');
+            $table->enum('gender',array('male','female','other'));
+            $table->string('phone');
+            $table->string('mail');
+            $table->date('dob');
             $table->timestamps();
         });
     }

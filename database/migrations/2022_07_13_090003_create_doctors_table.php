@@ -13,19 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
-
+        Schema::create('doctors', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_post');
-            $table->string('author');
-            $table->text('content');
-            $table->foreign('author')
-            ->reference('id')
-            ->on('post_englishes')
+            $table->string('name');
+            $table->date('dob');
+            $table->text('description');
+            $table->integer('package_id')->unsigned();
+            $table->foreign('package_id')
+            ->references('id')
+            ->on('packages')
             ->onDelete('cascade')
             ->onUpdate('cascade');
             $table->timestamps();
-            
         });
     }
 
@@ -36,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('doctors');
     }
 };

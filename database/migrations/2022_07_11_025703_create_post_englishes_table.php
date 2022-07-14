@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('post_englishes', function (Blueprint $table) {
             $table->increments("id");
-            $table->string('title',500);
+            $table->string('title');
             $table->text('content');
-            $table->string('image',500);
+            $table->string('image');
             $table->enum('status',array('show','hidden'));
             $table->integer('emotion');
-            $table->integer('id_category');
-            $table->foreign('id_category')
-            ->reference('id')
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')
+            ->references('id')
             ->on('categories')
             ->onDelete('cascade')
             ->onUpdate('cascade');

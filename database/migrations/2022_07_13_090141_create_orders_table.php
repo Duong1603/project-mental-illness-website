@@ -19,8 +19,7 @@ return new class extends Migration
             $table->integer('package_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->integer('doctor_id')->unsigned();
-            $table->integer('price')->unsigned();
-            $table->date('order_on');
+    
 
             $table->foreign('package_id')
             ->references('id')

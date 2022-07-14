@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Category>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Contact>
  */
-class CategoryFactory extends Factory
+class ContactFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,7 +18,7 @@ class CategoryFactory extends Factory
     {
         return [
             //
-            'name'=> fake()->name(),
+            'user_id'=>rand(1,10)
         ];
     }
 }

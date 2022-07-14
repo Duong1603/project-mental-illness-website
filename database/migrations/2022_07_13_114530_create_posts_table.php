@@ -14,10 +14,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
-                $table->increments('id');
-                $table->string('name');           
-                $table->string('discription');
+                // $table->increments('id');
+                // $table->increments('name');
+                // $table->increments('discription');
+                // $table->increments('image');
+                $table->increments('id');           
+                $table->string('title');           
                 $table->string('image');
+                // $table->date('post_on');
+                // $table->string('action');
+                $table->text('content');
+                // $table->string('status');
                 $table->timestamps();
             });
     }

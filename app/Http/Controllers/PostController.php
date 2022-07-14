@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\File;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -15,6 +15,10 @@ class PostController extends Controller
     public function index()
     {
         //
+        $posts =Post::get();
+
+        // dd($posts);
+        return view('showPost',['posts'=>$posts]);
     }
 
     /**
@@ -25,6 +29,8 @@ class PostController extends Controller
     public function create()
     {
         //
+          $posts=Post::all();
+        return view('formADD',['action'=>'create'],compact('posts'));
     }
 
     /**
@@ -36,6 +42,40 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+        $name ='';  
+       
+        if ($request->hasfile('image')){
+            
+            $this ->validate($request,[
+                'image' =>'mimes:jpeg,jpg,png,gif|max:4000|required'
+            ],[
+                'image.mimes'=>'chi chap nhan file hinh anh',
+                'image.max'=>'chi chap nhan file hinh anh duoi 2MB'
+            ]);
+            // dd($request->all());    
+            $file = $request->file('image');
+            $name = time().'_'.$file->getClientOriginalName();
+            $destinationPath = public_path('img');
+
+            $file->move($destinationPath,$name);
+        }
+        $this->validate($request,[
+            'title'=>'required',     
+            'content'=>'required',           
+        ],[
+            'title.required'=>'ban chua nhap title',
+            'content.required'=>'ban chua nhap content'
+        ]);
+        
+        $post= new Post();
+        $post -> title = $request->title;
+        $post -> image =$name;
+        // $post -> post_on = $request->post_on;
+        // $post -> action =10;
+        $post -> content = $request->content;
+        // $post -> status = $request->status;
+        $post->save();       
+        return redirect()->route('posts.index')->with('thành công', 'bạn đã cập nhật thành công');
     }
 
     /**
@@ -47,6 +87,10 @@ class PostController extends Controller
     public function show(Post $post)
     {
         //
+         //
+         $post = Post::find($id);
+         //dd($car);
+         return view('showPost', compact('post'));
     }
 
     /**
@@ -55,9 +99,11 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(Post $post, $id)
     {
         //
+        $posts = Post::all();
+        return view("formADD", ["post" => Post::find($id), "action" => "update"],compact('posts'));
     }
 
     /**
@@ -67,9 +113,47 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Post $post,$id)
     {
-        //
+        $name ='';  
+     
+        if ($request->hasfile('image')){
+            
+            $this ->validate($request,[
+                'image' =>'mimes:jpg,png,gif,jpeg|max:4000|required'
+            ],[
+                'image.mimes'=>'chi chap nhan file hinh anh',
+                'image.max'=>'chi chap nhan file hinh anh duoi 2MB'
+            ]);
+            $file = $request->file('image');
+            $name = time().'_'.$file->getClientOriginalName();
+            $destinationPath = public_path('img');
+
+            $file->move($destinationPath,$name);
+        }
+        $this->validate($request,[
+            'title'=>'required',
+            'image'=>'required',
+           
+            'content'=>'required',
+            
+        ],[
+            'title.required'=>'ban chua nhap title',
+        
+            'content.required'=>'ban chua nhap content'
+        ]);
+
+        $post= Post::find($id);
+        $post -> title = $request->title;
+        $post -> image =$name;
+        // $post -> post_on = $request->post_on;
+        // $post -> action = $request->action;
+        $post -> content = $request->content;
+        // $post -> status = $request->status;
+        $post->save();
+
+        return redirect()->route('posts.index')->with('thành công', 'bạn đã cập nhật thành công');
+
     }
 
     /**
@@ -78,8 +162,16 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Post $post, $id)
     {
         //
-    }
+        $post= Post::find($id);
+        $imgLink = public_path('img\\').$post->image;             
+        if(File::exists($imgLink)) {
+            File::delete($imgLink);
+        }
+         $post->delete();
+       
+        return redirect()->route('posts.index')->with('thành công', 'bạn đã xoa thành công');
+    } 
 }

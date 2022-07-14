@@ -18,9 +18,17 @@ class PostFactory extends Factory
     {
         return [
             //
+
+            // 'name' => $this->faker->name(),
+            // 'discription' => $this->faker->paragraph(),
+            // 'image' =>''.rand(1,5).'.jpg',
+
+            'title' => $this->faker->name(),
             'image' => ''.rand(1,5).'.jpg',
-            'name' => $this->faker->name(),
-            'discription' => $this->faker->paragraph(),
+            // 'post_on' =>now(),
+            // 'action' => $this->faker->name(),
+            'content' => $this->faker->name(),
+            // 'status' => $this->faker->name(),
         ];
     }
 }

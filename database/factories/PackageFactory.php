@@ -18,9 +18,9 @@ class PackageFactory extends Factory
     {
         return [
             //
-            'name'=>fake()->name(),
-            'price'=>rand(1,10)."00000",
-            'description'=>fake()->text(900)
+            'name' => fake()->name(),
+            'price' => rand(1, 10) . "00000",
+            'description' => fake()->text(900)
         ];
     }
 }

@@ -18,9 +18,9 @@ class OrderFactory extends Factory
     {
         return [
             //
-            'package_id'=>rand(1,2),
-            'user_id'=>rand(1,10),
-            'doctor_id'=>rand(1,2),
+            'package_id' => rand(1, 2),
+            'user_id' => rand(1, 10),
+            'doctor_id' => rand(1, 2),
         ];
     }
 }

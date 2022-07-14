@@ -18,8 +18,8 @@ class UsersRoleFactory extends Factory
     {
         return [
             //
-            'user_id'=>rand(1,10),
-            'role_id'=>rand(1,2)
+            'user_id' => rand(1, 10),
+            'role_id' => rand(1, 2)
         ];
     }
 }

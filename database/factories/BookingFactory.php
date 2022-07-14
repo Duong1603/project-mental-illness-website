@@ -14,18 +14,18 @@ class BookingFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    private $status =array('will do','doing','done');
+    private $status = array('will do', 'doing', 'done');
 
     public function definition()
     {
         return [
             //
-            'start_meeting'=>fake()->dateTime(),
-            'end_meeting'=>fake()->dateTime('+2 hours'),
-            'problem'=>fake()->text(200),
-            'status'=>$this->status[rand(0,2)],
-            'link_gg_meet'=>fake()->text(300),
-            'order_id'=>rand(1,10)
+            'start_meeting' => fake()->dateTime(),
+            'end_meeting' => fake()->dateTime('+2 hours'),
+            'problem' => fake()->text(200),
+            'status' => $this->status[rand(0, 2)],
+            'link_gg_meet' => fake()->text(300),
+            'order_id' => rand(1, 10)
         ];
     }
 }

@@ -18,10 +18,10 @@ class DoctorFactory extends Factory
     {
         return [
             //
-            'name'=>fake()->name(),
-            'dob'=>fake()->date(),
-            'description'=>fake()->text(500),
-            'package_id'=>rand(1,2)
+            'name' => fake()->name(),
+            'dob' => fake()->date(),
+            'description' => fake()->text(500),
+            'package_id' => rand(1, 2)
         ];
     }
 }

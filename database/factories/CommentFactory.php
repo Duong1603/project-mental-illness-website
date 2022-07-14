@@ -18,9 +18,9 @@ class CommentFactory extends Factory
     {
         return [
             //
-            'content'=>fake()->paragraph(),
-            'post_id'=>rand(1,10),
-            'user_id'=>rand(1,10)
+            'content' => fake()->paragraph(),
+            'post_id' => rand(1, 10),
+            'user_id' => rand(1, 10)
         ];
     }
 }

@@ -25,7 +25,7 @@
             </div>
         @endif
         <div>
-            <a href="/posts">Quay lại</a>
+            <a href="/">Quay lại</a>
         </div>
         <form action={{ $action == 'create' ? '/store' : '/update/' . $post->id }} method="POST" enctype="multipart/form-data">
             @csrf

@@ -8,13 +8,9 @@ Route::post('/store', [PostController::class, 'store']);
 Route::get('{id}/edit', [PostController::class, "edit"]);
 Route::post('/update/{id}', [PostController::class, "update"]);
 Route::get('/delete/{id}', [PostController::class, "destroy"]);
+Route::get('/', [PostController::class, "index"])->name('posts.index');
 
-Route::resource('posts',Postcontroller::class);
-
-// Route::get('post', [PostController::class, 'index'])-> name ("post.index");
-Route::get('/', function () {
-    return view('showPost');
-});
+// Route::resource('posts',Postcontroller::class);
 
 
 

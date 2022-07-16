@@ -1,9 +1,6 @@
 <?php
 
-<<<<<<< HEAD
-=======
 use App\Http\Controllers\adminController;
->>>>>>> 5a14a42 (update code left content)
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,9 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-<<<<<<< HEAD
-=======
 
 // -----------------------ADMIN--------------------------------
 Route::get('/admin', [adminController::class, 'indexAdmin']);
->>>>>>> 5a14a42 (update code left content)

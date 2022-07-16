@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +32,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group-prepend">
-                                          <strong><label for="title">Image</label></strong>
+                                            <strong><label for="title">Image</label></strong>
                                         </div>
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="inputGroupFile01"
@@ -40,19 +41,23 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                     <strong>   <label>Content</label></strong>
-                                        <textarea  class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+                                        <strong> <label>Content</label></strong>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <strong> <label>Status</label></strong>
                                         <div class="custom-control custom-radio">
-                                          <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked" required>
-                                          <label class="custom-control-label" for="customControlValidation2">Toggle this custom radio</label>
+                                            <input type="radio" class="custom-control-input"
+                                                id="customControlValidation2" name="radio-stacked" required>
+                                            <label class="custom-control-label" for="customControlValidation2">Toggle
+                                                this custom radio</label>
                                         </div>
                                         <div class="custom-control custom-radio mb-3">
-                                          <input type="radio" class="custom-control-input" id="customControlValidation3" name="radio-stacked" required>
-                                          <label class="custom-control-label" for="customControlValidation3">Or toggle this other custom radio</label>
-                                        
+                                            <input type="radio" class="custom-control-input"
+                                                id="customControlValidation3" name="radio-stacked" required>
+                                            <label class="custom-control-label" for="customControlValidation3">Or toggle
+                                                this other custom radio</label>
+
                                         </div>
                                     </div>
                                     <button class="btn btn-success float-right" type="button">ADD</button>
@@ -76,4 +81,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
 </script>
+
 </html>

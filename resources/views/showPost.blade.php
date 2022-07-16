@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,13 +18,14 @@
     </script>
     <title>Document</title>
 </head>
+
 <body>
     @if (Session::has('thành công'))
         {{ Session::get('thành công') }}
     @endif
     <div>
-        <div class="Create">
-            <a role="button" href="/Create" class="btn btn-primary"
+        <div class="create">
+            <a role="button" href="/create" class="btn btn-primary"
                 onclick="return confirm('Bạn có muốn thêm mới!')">Create</a>
         </div>
         <table class="table">
@@ -31,10 +33,7 @@
                 <tr>
                     <th scope="col">Title</th>
                     <th scope="col">Image</th>
-                    {{-- <th scope="col">Post on</th> --}}
-                    {{-- <th scope="col">Action</th> --}}
                     <th scope="col">Content</th>
-                    {{-- <th scope="col">Status</th> --}}
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
 
@@ -42,23 +41,19 @@
             </thead>
             @foreach ($posts as $post)
                 <tbody>
-
                     <tr>
                         <th>{{ $post->title }}</th>
                         <td>
-                        <img src="http://localhost:8000/img/{{ $post->image }}" width="100px"
-                        height="100px" class="avatar" alt="Avatar"/>
+                            <img src="http://localhost:8000/img/{{ $post->image }}" width="100px" height="100px"
+                                class="avatar" alt="Avatar" />
                         </td>
-                        <td>{{ $post->post_on }}</td>
-                        <td>{{ $post->action }}</td>
                         <td>{{ $post->content }}</td>
-                        <td>{{ $post->status }}</td>
                         <td>
-                            <a href="/{{ $post->id}}/Edit" role="button" class="btn btn-primary"
+                            <a href="/{{ $post->id }}/edit" role="button" class="btn btn-primary"
                                 onclick="return confirm('Bạn có muốn sửa!')">Edit</a>
                         </td>
                         <td>
-                            <a href="/Delete/{{ $post->id }}" role="button" class="btn btn-danger mt-2"
+                            <a href="/delete/{{ $post->id }}" role="button" class="btn btn-danger mt-2"
                                 onclick="return confirm('Bạn có muốn xóa!')">Delete</a>
                         </td>
                     </tr>

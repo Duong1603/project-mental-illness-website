@@ -3,11 +3,11 @@ use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/Create', [PostController::class, 'create']);
-Route::post('/Store', [PostController::class, 'store']);
-Route::get('{id}/Edit', [PostController::class, "edit"]);
-Route::post('/Update/{id}', [PostController::class, "update"]);
-Route::get('/Delete/{id}', [PostController::class, "destroy"]);
+Route::get('/create', [PostController::class, 'create']);
+Route::post('/store', [PostController::class, 'store']);
+Route::get('{id}/edit', [PostController::class, "edit"]);
+Route::post('/update/{id}', [PostController::class, "update"]);
+Route::get('/delete/{id}', [PostController::class, "destroy"]);
 
 Route::resource('posts',Postcontroller::class);
 

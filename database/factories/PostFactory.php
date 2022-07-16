@@ -17,18 +17,9 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            //
-
-            // 'name' => $this->faker->name(),
-            // 'discription' => $this->faker->paragraph(),
-            // 'image' =>''.rand(1,5).'.jpg',
-
             'title' => $this->faker->name(),
-            'image' => ''.rand(1,5).'.jpg',
-            // 'post_on' =>now(),
-            // 'action' => $this->faker->name(),
+            'image' => '' . rand(1, 5) . '.jpg',
             'content' => $this->faker->name(),
-            // 'status' => $this->faker->name(),
         ];
     }
 }

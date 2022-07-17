@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\UsersRole;
+use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
-class UsersRoleController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class UsersRoleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\UsersRole  $usersRole
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function show(UsersRole $usersRole)
+    public function show(Comment $comment)
     {
         //
     }
@@ -52,10 +53,10 @@ class UsersRoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\UsersRole  $usersRole
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit(UsersRole $usersRole)
+    public function edit(Comment $comment)
     {
         //
     }
@@ -64,10 +65,10 @@ class UsersRoleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\UsersRole  $usersRole
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UsersRole $usersRole)
+    public function update(Request $request, Comment $comment)
     {
         //
     }
@@ -75,10 +76,10 @@ class UsersRoleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\UsersRole  $usersRole
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UsersRole $usersRole)
+    public function destroy(Comment $comment)
     {
         //
     }

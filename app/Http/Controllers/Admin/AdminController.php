@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Doctor;
+use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 
-class DoctorController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class DoctorController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Doctor  $doctor
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function show(Doctor $doctor)
+    public function show(Admin $admin)
     {
         //
     }
@@ -52,10 +53,10 @@ class DoctorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Doctor  $doctor
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function edit(Doctor $doctor)
+    public function edit(Admin $admin)
     {
         //
     }
@@ -64,10 +65,10 @@ class DoctorController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Doctor  $doctor
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Doctor $doctor)
+    public function update(Request $request, Admin $admin)
     {
         //
     }
@@ -75,10 +76,10 @@ class DoctorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Doctor  $doctor
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Doctor $doctor)
+    public function destroy(Admin $admin)
     {
         //
     }

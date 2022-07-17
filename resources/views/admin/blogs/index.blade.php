@@ -25,7 +25,7 @@
     @endif
     <div>
         <div class="create">
-            <a role="button" href="/create" class="btn btn-primary"
+            <a role="button" href="/admin/blogs/create" class="btn btn-primary"
                 onclick="return confirm('Bạn có muốn thêm mới!')">Create</a>
         </div>
         <table class="table">
@@ -44,16 +44,16 @@
                     <tr>
                         <th>{{ $post->title }}</th>
                         <td>
-                            <img src="http://localhost:8000/img/{{ $post->image }}" width="100px" height="100px"
+                            <img src="{{env('APP_URL')}}/img/{{ $post->image }}" width="100px" height="100px"
                                 class="avatar" alt="Avatar" />
                         </td>
                         <td>{{ $post->content }}</td>
                         <td>
-                            <a href="/{{ $post->id }}/edit" role="button" class="btn btn-primary"
+                            <a href="blogs/update/{{ $post->id }}" role="button" class="btn btn-primary"
                                 onclick="return confirm('Bạn có muốn sửa!')">Edit</a>
                         </td>
                         <td>
-                            <a href="/delete/{{ $post->id }}" role="button" class="btn btn-danger mt-2"
+                            <a href="blogs/delete/{{ $post->id }}" role="button" class="btn btn-danger mt-2"
                                 onclick="return confirm('Bạn có muốn xóa!')">Delete</a>
                         </td>
                     </tr>

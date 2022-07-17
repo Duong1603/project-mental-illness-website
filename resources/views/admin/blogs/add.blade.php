@@ -27,7 +27,8 @@
         <div>
             <a href="/">Quay lại</a>
         </div>
-        <form action={{ $action == 'create' ? '/store' : '/update/' . $post->id }} method="POST" enctype="multipart/form-data">
+        <form action={{ $action == 'create' ? '/admin/blogs/create' : '/admin/blogs/update/' . $post->id }}
+            method="POST" enctype="multipart/form-data">
             @csrf
             <!-- @method('put') -->
             <div class="row">

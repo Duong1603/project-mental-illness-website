@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -14,11 +16,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
-        $posts = Post::get();
-
-        // dd($posts);
-        return view('showPost', ['posts' => $posts]);
+        $posts = Post::paginate(15);
+        return view('admin.blogs.index', ['posts' => $posts]);
     }
 
     /**
@@ -28,9 +27,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
-        $posts = Post::all();
-        return view('formADD', ['action' => 'create'], compact('posts'));
+        return view('admin.blogs.add', ['action' => 'create']);
     }
 
     /**
@@ -43,20 +40,16 @@ class PostController extends Controller
     {
         //
         $name = '';
-
         if ($request->hasfile('image')) {
-
             $this->validate($request, [
                 'image' => 'mimes:jpeg,jpg,png,gif|max:4000|required',
             ], [
                 'image.mimes' => 'chi chap nhan file hinh anh',
                 'image.max' => 'chi chap nhan file hinh anh duoi 2MB',
             ]);
-            // dd($request->all());
             $file = $request->file('image');
             $name = time() . '_' . $file->getClientOriginalName();
             $destinationPath = public_path('img');
-
             $file->move($destinationPath, $name);
         }
         $this->validate($request, [
@@ -81,11 +74,11 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
 
         $post = Post::find($id);
-        return view('showPost', compact('post'));
+        return view('admin.blogs.index', compact('post'));
     }
 
     /**
@@ -94,21 +87,19 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post, $id)
+    public function edit($id)
     {
-        //
-        $posts = Post::all();
-        return view("formADD", ["post" => Post::find($id), "action" => "update"], compact('posts'));
+        $post = Post::findOrFail($id);
+        return view('admin.blogs.add', ['action' => 'update'], compact(['post']));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post, $id)
+    public function update(Request $request, $id)
     {
         $name = '';
         if ($request->hasfile('image')) {
@@ -137,16 +128,14 @@ class PostController extends Controller
         $post->content = $request->content;
         $post->save();
         return redirect()->route('posts.index')->with('thành công', 'bạn đã cập nhật thành công');
-
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post, $id)
+    public function delete($id)
     {
         $post = Post::find($id);
         $imgLink = public_path('img\\') . $post->image;

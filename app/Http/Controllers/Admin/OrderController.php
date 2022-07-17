@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\WebUser;
+use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
-class WebUserController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class WebUserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\WebUser  $webUser
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(WebUser $webUser)
+    public function show(Order $order)
     {
         //
     }
@@ -52,10 +53,10 @@ class WebUserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\WebUser  $webUser
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(WebUser $webUser)
+    public function edit(Order $order)
     {
         //
     }
@@ -64,10 +65,10 @@ class WebUserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\WebUser  $webUser
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, WebUser $webUser)
+    public function update(Request $request, Order $order)
     {
         //
     }
@@ -75,10 +76,10 @@ class WebUserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\WebUser  $webUser
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(WebUser $webUser)
+    public function destroy(Order $order)
     {
         //
     }

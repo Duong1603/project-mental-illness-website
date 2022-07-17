@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Comment;
+use App\Http\Controllers\Controller;
+use App\Models\WebUser;
 use Illuminate\Http\Request;
 
-class CommentController extends Controller
+class WebUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class CommentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Comment  $comment
+     * @param  \App\Models\WebUser  $webUser
      * @return \Illuminate\Http\Response
      */
-    public function show(Comment $comment)
+    public function show(WebUser $webUser)
     {
         //
     }
@@ -52,10 +53,10 @@ class CommentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Comment  $comment
+     * @param  \App\Models\WebUser  $webUser
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comment $comment)
+    public function edit(WebUser $webUser)
     {
         //
     }
@@ -64,10 +65,10 @@ class CommentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Comment  $comment
+     * @param  \App\Models\WebUser  $webUser
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, WebUser $webUser)
     {
         //
     }
@@ -75,10 +76,10 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Comment  $comment
+     * @param  \App\Models\WebUser  $webUser
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comment)
+    public function destroy(WebUser $webUser)
     {
         //
     }

@@ -1,7 +1,21 @@
 <?php
 
-use App\Http\Controllers\adminController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\PostController;
 use Illuminate\Support\Facades\Route;
+
+Route::group([
+    'namespace' => 'Admin',
+    'prefix' => 'admin/blogs',
+    // 'middleware' => ['auth']
+], function() {
+    Route::get('/create', [PostController::class, 'create']);
+    Route::post('/create', [PostController::class, 'store']);
+    Route::get('/update/{id}', [PostController::class, "edit"]);
+    Route::post('/update/{id}', [PostController::class, "update"]);
+    Route::get('/delete/{id}', [PostController::class, "delete"]);
+    Route::get('/', [PostController::class, "index"])->name('posts.index');
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +27,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
 
 // -----------------------ADMIN--------------------------------
 Route::get('/admin', [adminController::class, 'indexAdmin']);

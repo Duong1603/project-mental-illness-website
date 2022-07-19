@@ -17,9 +17,12 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->name(),
-            'image' => '' . rand(1, 5) . '.jpg',
-            'content' => $this->faker->name(),
+            'title' => fake()->name(),
+            'content' => fake()->name(),
+            'image' => rand(1, 3) . ".jpg",
+            'status' => fake()->randomElement(['show', 'hidden']),
+            'emotion' => rand(1, 1000),
+            'category_id' => rand(1, 10)
         ];
     }
 }

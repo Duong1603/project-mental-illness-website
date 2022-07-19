@@ -13,7 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('post_englishes', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
+            
             $table->increments("id");
             $table->string('title');
             $table->text('content');
@@ -27,7 +28,7 @@ return new class extends Migration
             ->onDelete('cascade')
             ->onUpdate('cascade');
             $table->timestamps();
-        });
+            });
     }
 
     /**
@@ -37,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_englishes');
+        Schema::dropIfExists('posts');
     }
 };

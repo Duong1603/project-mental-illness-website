@@ -21,10 +21,8 @@ class WebUserFactory extends Factory
         return [
             //
             'name' => fake()->name(),
-            'gender' => $this->gender[rand(0, 2)],
             'phone' => '0' . fake()->numerify('#########'),
             'mail' => fake()->firstName() . "@gmail.com",
-            'dob' => fake()->date()
         ];
     }
 }

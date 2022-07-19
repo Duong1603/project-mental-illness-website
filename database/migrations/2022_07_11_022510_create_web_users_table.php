@@ -17,10 +17,8 @@ return new class extends Migration
         Schema::create('web_users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->enum('gender',array('male','female','other'));
             $table->string('phone');
             $table->string('mail');
-            $table->date('dob');
             $table->timestamps();
         });
     }

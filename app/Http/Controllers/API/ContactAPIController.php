@@ -13,15 +13,15 @@ class ContactAPIController extends Controller
 {
 
     //rule to show error
-    public function ruleValidates(){
+    public function ruleValidates()
+    {
 
         return [
-            'name'=>'required',
-            'email'=>'required|email',
-            'phone'=>'required|regex:/(0)[0-9]{9}/',
-            'description'=>'required',
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required|regex:/(0)[0-9]{9}/',
+            'description' => 'required',
         ];
-
     }
     /**
      * Display a listing of the resource.
@@ -57,33 +57,32 @@ class ContactAPIController extends Controller
             $request->all(),
             $this->ruleValidates()
         );
-        if ($validation->fails()){
-            $response=array('status'=>'error','errors'=>$validation->errors()->toArray()); 
+        if ($validation->fails()) {
+            $response = array('status' => 'error', 'errors' => $validation->errors()->toArray());
             return response()->json($response);
         }
 
         $user = new WebUser();
-        $user-> name = $request->name;
+        $user->name = $request->name;
         $user->phone = $request->phone;
-        $user->mail= $request->email;
+        $user->mail = $request->email;
 
         $user->save();
-        
+
 
         $contact = new Contact();
 
-        $contact-> user_id = DB::table('web_users')
-        ->where('name','=',$request->name)
-        ->where('phone','=',$request->phone)
-        ->where('mail','=',$request->email)->value('id');
+        $contact->user_id = DB::table('web_users')
+            ->where('name', '=', $request->name)
+            ->where('phone', '=', $request->phone)
+            ->where('mail', '=', $request->email)->value('id');
 
         $contact->save();
 
-        if($user && $contact) {            
-                return response()->json(["status" => 200, "success" => true, "message" => "Thank for your submit we will connect you soon"]);
-            }    
-        else {
-                return response()->json(["status" => "failed", "success" => false, "message" => "Whoops! failed to submit."]);
+        if ($user && $contact) {
+            return response()->json(["status" => 200, "success" => true, "message" => "Thank for your submit we will connect you soon"]);
+        } else {
+            return response()->json(["status" => "failed", "success" => false, "message" => "Whoops! failed to submit."]);
         }
     }
 

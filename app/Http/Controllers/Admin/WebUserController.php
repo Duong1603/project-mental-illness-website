@@ -15,7 +15,8 @@ class WebUserController extends Controller
      */
     public function index()
     {
-        //
+        $managerCustomer = WebUser::paginate(15);
+        return view('admin.managerCustomer.index', ['managerCustomer' => $managerCustomer]);
     }
 
     /**

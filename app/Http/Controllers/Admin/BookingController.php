@@ -15,7 +15,8 @@ class BookingController extends Controller
      */
     public function index()
     {
-        //
+        $bookings = Booking::paginate(15);
+        return view('admin.bookings.index', ['bookings' => $bookings]);
     }
 
     /**

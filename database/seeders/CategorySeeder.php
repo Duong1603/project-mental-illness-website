@@ -18,7 +18,7 @@ class CategorySeeder extends Seeder
         \App\Models\Category::factory(10)->create();
         \App\Models\Post::factory(10)->create();
         \App\Models\WebUser::factory(100)->create();
-        \App\Models\Comment::factory(100)->create();
+        \App\Models\Comment::factory(10)->create();
 
         \App\Models\Contact::factory(100)->create();
 

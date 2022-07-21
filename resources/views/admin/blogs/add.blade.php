@@ -1,66 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $action == 'create' ? 'create' : 'edit | ' . $post['id'] }}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
-    </script>
-</head>
-
-<body>
-    <div class="container mt-5">
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        <div>
-            <a href="/">Quay lại</a>
-        </div>
-        <form action={{ $action == 'create' ? '/admin/blogs/create' : '/admin/blogs/update/' . $post->id }}
-            method="POST" enctype="multipart/form-data">
-            @csrf
-            <!-- @method('put') -->
-            <div class="row">
-                <label class="col-3" for="title">Title :</label>
-                <input type="text" class="col form-control" name="title"
-                    value="{{ isset($post) ? $post->title : '' }}">
-            </div>
-            <div class="row mt-3">
-                <label class="col-3" for="image">Image :</label>
-                <input type="file" onchange="changeImage(event)" class="col form-control" name="image">
-                <img id="preview-img" class="col-6 img-thumbnail" style="width: 10rem" alt=""
-                    src="/img/{{ isset($post) ? $post->image : '' }}">
-                <script>
-                    const changeImage = (e) => {
-                        var preImage = document.getElementById("preview-img")
-                        preImage.src = URL.createObjectURL(e.target.files[0])
-                        preImage.onload = () => {
-                            URL.revokeObjectURL(output.src)
-                        }
-                    }
-                </script>
-            </div>
-            <div class="row mt-3">
-                <label class="col-3" for="content">Content :</label>
-                <input type="text" class="col form-control" name="content"
-                    value="{{ isset($post) ? $post->content : '' }}">
-            </div>
-            <div class="text-center mt-3">
-                <button class="btn btn-primary" type="submit">Save</button>
-            </div>
-        </form>
+@extends('admin.master')
+@section('content')
+<!-- partial -->
+<div class="main-panel">
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
     </div>
-</body>
-
-</html>
+    @endif
+    <div class="content-wrapper">
+        <div class="page-header">
+        <h3 class="page-title">
+                <span class="page-title-icon bg-gradient-primary text-white me-2">
+                    <i class="mdi mdi-blogger"></i>
+                </span> Blogs
+            </h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/admin/blogs">Back To Blogs</a></li>
+                    @if ($action == 'create')
+                    <li class="breadcrumb-item active" aria-current="page">Form Add New</li>
+                    @elseif ($action == 'update')
+                    <li class="breadcrumb-item active" aria-current="page">Form Update</li>
+                    @endif
+                </ol>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        @if ($action == 'create')
+                        <h4 class="card-title">Form Add New</h4>
+                        @elseif ($action == 'update')
+                        <h4 class="card-title">Form Update</h4>
+                        @endif
+                        <form class="forms-sample" action={{ $action == 'create' ? '/admin/blogs/create' : '/admin/blogs/update/' . $post->id }} method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <!-- @method('put') -->
+                            <div class="form-group">
+                                <label for="title">Title</label>
+                                <input type="text" class="form-control" id="exampleInputName1" name="title" placeholder="title" value="{{ isset($post) ? $post->title : '' }}">
+                            </div>
+                            <div class="form-group">
+                                <label>File upload</label>
+                                <input type="file" name="image" class="file-upload-default">
+                                <div class="input-group col-xs-12">
+                                    <input type="file" class="form-control file-upload-info" placeholder="Upload Image" onchange="changeImage(event)">
+                                    <!-- <span class="input-group-append">
+                                        <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                                    </span> -->
+                                    <img id="preview-img" class="col-6 img-thumbnail" style="width: 15rem" alt="" src="/img/{{ isset($post) ? $post->image : '' }}">
+                                    <script>
+                                        const changeImage = (e) => {
+                                            var preImage = document.getElementById("preview-img")
+                                            preImage.src = URL.createObjectURL(e.target.files[0])
+                                            preImage.onload = () => {
+                                                URL.revokeObjectURL(output.src)
+                                            }
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="content">Content</label>
+                                <input type="text" class="form-control" id="exampleTextarea1" rows="4" name="content" value="{{ isset($post) ? $post->content : '' }}" />
+                            </div>
+                            <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- main-panel ends -->
+    @endsection

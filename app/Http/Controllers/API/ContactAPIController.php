@@ -69,7 +69,6 @@ class ContactAPIController extends Controller
 
         $user->save();
 
-
         $contact = new Contact();
 
         $contact->user_id = DB::table('web_users')

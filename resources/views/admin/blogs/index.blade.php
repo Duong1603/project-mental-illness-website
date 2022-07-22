@@ -1,4 +1,3 @@
-
 @extends('admin.master')
 @section('content')
 <!-- partial -->
@@ -13,16 +12,26 @@
             <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item active" aria-current="page">
-                        <span></span><a type="button" class="btn btn-inverse-dark btn-fw" href="/admin/blogs/create">ADD NEW</a>
+                        <span></span>Blogs <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
                     </li>
                 </ul>
             </nav>
+            <!-- <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">
+                        <span></span><a type="button" class="btn btn-inverse-dark btn-fw" href="/admin/blogs/create">ADD NEW</a>
+                    </li>
+                </ul>
+            </nav> -->
         </div>
         <div class="row">
             <div class="col-12 grid-margin">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Blogs</h4>
+                        <div id="card-title-btn-blogs">
+                            <h4 class="card-title">Blogs</h4>
+                            <a type="button" class="btn btn-inverse-dark btn-fw" href="/admin/blogs/create">ADD NEW</a>
+                        </div>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>

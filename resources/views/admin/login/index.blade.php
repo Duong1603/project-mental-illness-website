@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -19,7 +18,6 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="/../../assets/images/favicon.ico" />
 </head>
-
 <body>
     <div class="container-scroller">
         <div class="container-fluid page-body-wrapper full-page-wrapper">
@@ -52,10 +50,7 @@
                                     </div>
                                     <a href="#" class="auth-link text-black">Forgot password?</a>
                                 </div>
-                                <div class="mb-2">
-                                    <button type="button" class="btn btn-block btn-facebook auth-form-btn">
-                                </div>
-                                <div class="text-center mt-4 font-weight-light"> Don't have an account? <a href="register.html" class="text-primary">Create</a>
+                                <div class="text-center mt-4 font-weight-light"> Don't have an account? <a href="#" class="text-primary">Create</a>
                                 </div>
                             </form>
 

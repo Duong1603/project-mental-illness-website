@@ -65,9 +65,9 @@ Route::group([
 //     return view('users.register');
 // });
 
-Route::get('/login', function () {
-    return view('admin.login.index');
-});
+// Route::get('/login', function () {
+//     return view('admin.login.index');
+// });
 
 
 //------------------------- Login, Logout, Register ---------------------------------//

@@ -64,6 +64,7 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->image = $name;
         $post->content = $request->content;
+        $post->emotion = 0;
         $post->save();
         return redirect()->route('posts.index')->with('thành công', 'bạn đã cập nhật thành công');
     }

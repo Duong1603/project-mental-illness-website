@@ -7,12 +7,12 @@
       <h3 class="page-title">
         <span class="page-title-icon bg-gradient-primary text-white me-2">
           <i class="mdi mdi-contacts"></i>
-        </span> Manager customer
+        </span> Manager Customer
       </h3>
       <nav aria-label="breadcrumb">
         <ul class="breadcrumb">
           <li class="breadcrumb-item active" aria-current="page">
-            <span></span>Manager customer <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+            <span></span>Manager Customer <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
           </li>
         </ul>
       </nav>
@@ -21,7 +21,7 @@
       <div class="col-12 grid-margin">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Manager customer</h4>
+            <h4 class="card-title">Manager Customer</h4>
             <div class="table-responsive">
               <table class="table">
                 <thead>

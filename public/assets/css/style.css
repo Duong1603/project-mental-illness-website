@@ -21430,3 +21430,14 @@ input.switch:checked::after {
 .tag:hover::after {
   border-left-color: crimson;
 }
+/* Blogs */
+#card-title-btn-blogs{
+  display: flex;
+  justify-content: space-between;
+}
+.input-group-append{
+  display: flex;
+  justify-content: center;
+  /* text-align: center; */
+  align-items: center;
+}

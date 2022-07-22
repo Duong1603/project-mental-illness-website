@@ -13,7 +13,7 @@
     @endif
     <div class="content-wrapper">
         <div class="page-header">
-        <h3 class="page-title">
+            <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
                     <i class="mdi mdi-blogger"></i>
                 </span> Blogs
@@ -43,17 +43,19 @@
                             <!-- @method('put') -->
                             <div class="form-group">
                                 <label for="title">Title</label>
-                                <input type="text" class="form-control" id="exampleInputName1" name="title" placeholder="title" value="{{ isset($post) ? $post->title : '' }}">
+                                <input type="text" class="form-control" id="exampleInputName1" name="title" placeholder="Title" value="{{ isset($post) ? $post->title : '' }}">
                             </div>
+                            <!-- File Upload -->
                             <div class="form-group">
                                 <label>File upload</label>
-                                <input type="file" name="image" class="file-upload-default">
+                                
+                                <input type="file" name="image" class="file-upload-default" onchange="changeImage(event)">
                                 <div class="input-group col-xs-12">
-                                    <input type="file" class="form-control file-upload-info" placeholder="Upload Image" onchange="changeImage(event)">
-                                    <!-- <span class="input-group-append">
-                                        <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
-                                    </span> -->
-                                    <img id="preview-img" class="col-6 img-thumbnail" style="width: 15rem" alt="" src="/img/{{ isset($post) ? $post->image : '' }}">
+                                    <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                                    <img id="preview-img" class="col-6 img-thumbnail" style="width: 10rem" alt="" src="/img/{{ isset($post) ? $post->image : '' }}">
+                                    <span class="input-group-append">
+                                    <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                                </span>
                                     <script>
                                         const changeImage = (e) => {
                                             var preImage = document.getElementById("preview-img")
@@ -65,9 +67,10 @@
                                     </script>
                                 </div>
                             </div>
+                            <!-- File Upload -->
                             <div class="form-group">
                                 <label for="content">Content</label>
-                                <input type="text" class="form-control" id="exampleTextarea1" rows="4" name="content" value="{{ isset($post) ? $post->content : '' }}" />
+                                <input type="text" placeholder="Content" class="form-control" id="exampleTextarea1" rows="4" name="content" value="{{ isset($post) ? $post->content : '' }}" />
                             </div>
                             <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
                         </form>

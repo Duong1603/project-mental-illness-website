@@ -2,6 +2,9 @@
 @section('content')
 <!-- partial -->
 <div class="main-panel">
+@if(Session::has('message'))
+<p class="alert alert-info">{{ Session::get('message') }}</p>
+@endif
     <div class="content-wrapper">
         <div class="page-header">
             <h3 class="page-title">
@@ -30,7 +33,7 @@
                     <div class="card-body">
                         <div id="card-title-btn-blogs">
                             <h4 class="card-title">Blogs</h4>
-                            <a type="button" class="btn btn-inverse-dark btn-fw" href="/admin/blogs/create">ADD NEW</a>
+                            <a type="button" class="btn btn-gradient-danger btn-fw" href="/admin/blogs/create">ADD NEW</a>
                         </div>
                         <div class="table-responsive">
                             <table class="table">
@@ -52,14 +55,14 @@
                                         <td>
                                             <img src="{{env('APP_URL')}}/img/{{ $post->image }}" class="me-2" alt="Avatar" />
                                         </td>
-                                        <td>100 <i class="mdi mdi-heart text-danger"></i></td>
+                                        <td>{{ $post->emotion }} <i class="mdi mdi-heart text-danger"></i></td>
                                         <td>{{ $post->content }}</td>
-                                        <td><input class="switch" type="checkbox"></td>
+                                        <td>{{ $post->status }} <input class="switch" type="checkbox"></td>
                                         <td>
-                                            <a href="/admin/blogs/update/{{ $post->id }}" role="button" class="btn btn-inverse-info btn-fw" onclick="return confirm('Bạn có muốn sửa!')">Edit</a>
+                                            <a href="/admin/blogs/update/{{ $post->id }}" onclick="return confirm('Bạn có muốn sửa!')"><i class="mdi mdi-pencil-box"></i></a>
                                         </td>
                                         <td>
-                                            <a href="/admin/blogs/delete/{{ $post->id }}" role="button" class="btn btn-inverse-danger btn-fw" onclick="return confirm('Bạn có muốn xóa!')">Delete</a>
+                                            <a href="/admin/blogs/delete/{{ $post->id }}" onclick="return confirm('Bạn có muốn xóa!')"><i class="mdi mdi-delete"></i></a>
                                         </td>
                                     </tr>
                                 </tbody>

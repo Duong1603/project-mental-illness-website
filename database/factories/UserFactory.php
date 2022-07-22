@@ -20,7 +20,7 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'phone' => '0' . fake()->numerify('#########'),
-            'mail' => fake()->firstName() . "@gmail.com",
+            'email' => fake()->firstName() . "@gmail.com",
         ];
     }
 

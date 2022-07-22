@@ -23,9 +23,10 @@ class BookingFactory extends Factory
             'start_meeting' => fake()->dateTime(),
             'end_meeting' => fake()->dateTime('+2 hours'),
             'problem' => fake()->text(200),
+            'times'=>rand(1,3),
             'status' => $this->status[rand(0, 2)],
             'link_gg_meet' => fake()->text(300),
-            'order_id' => rand(1, 10)
+            'id_order' => rand(1, 10)
         ];
     }
 }

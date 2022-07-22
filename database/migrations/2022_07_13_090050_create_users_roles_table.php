@@ -14,12 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users_roles', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned();
-            $table->integer('role_id')->unsigned();
+            $table->integer('id_user')->unsigned();
+            $table->integer('id_role')->unsigned();
 
-            $table->foreign('user_id')
+            $table->foreign('id_user')
             ->references('id')
-            ->on('web_users')
+            ->on('users')
             ->onDelete('cascade')
             ->onUpdate('cascade');
 
@@ -29,7 +29,7 @@ return new class extends Migration
             // ->onDelete('cascade')
             // ->onUpdate('cascade');
 
-            $table->foreign('role_id')
+            $table->foreign('id_role')
             ->references('id')
             ->on('roles')
             ->onDelete('cascade')

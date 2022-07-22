@@ -14,13 +14,14 @@ class OrderFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    private $status = array('will do', 'doing', 'done');
     public function definition()
     {
         return [
             //
-            'package_id' => rand(1, 2),
-            'user_id' => rand(1, 10),
-            'doctor_id' => rand(1, 2),
+            'id_package' => rand(1, 2),
+            'id_user' => rand(1, 10),
+            'id_doctor' => rand(1, 2),
         ];
     }
 }

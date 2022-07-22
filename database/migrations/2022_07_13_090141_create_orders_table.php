@@ -16,24 +16,24 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             
             $table->increments('id');
-            $table->integer('package_id')->unsigned();
-            $table->integer('user_id')->unsigned();
-            $table->integer('doctor_id')->unsigned();
+            $table->integer('id_package')->unsigned();
+            $table->integer('id_user')->unsigned();
+            $table->integer('id_doctor')->unsigned();
     
 
-            $table->foreign('package_id')
+            $table->foreign('id_package')
             ->references('id')
             ->on('packages')
             ->onDelete('cascade')
             ->onUpdate('cascade');
 
-            $table->foreign('user_id')
+            $table->foreign('id_user')
             ->references('id')
-            ->on('web_users')
+            ->on('users')
             ->onDelete('cascade')
             ->onUpdate('cascade');
 
-            $table->foreign('doctor_id')
+            $table->foreign('id_doctor')
             ->references('id')
             ->on('doctors')
             ->onDelete('cascade')

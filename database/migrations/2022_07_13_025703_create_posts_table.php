@@ -19,10 +19,11 @@ return new class extends Migration
             $table->string('title');
             $table->text('content');
             $table->string('image');
+            $table->string('tag');
             $table->enum('status',array('show','hidden'));
             $table->integer('emotion');
-            $table->integer('category_id')->unsigned();
-            $table->foreign('category_id')
+            $table->integer('id_category')->unsigned();
+            $table->foreign('id_category')
             ->references('id')
             ->on('categories')
             ->onDelete('cascade')

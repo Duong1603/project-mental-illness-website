@@ -21441,3 +21441,8 @@ input.switch:checked::after {
   /* text-align: center; */
   align-items: center;
 }
+/* Edit and Delete */
+.mdi-pencil-box, .mdi-delete{
+  font-size: 2rem;
+  color: var(--bs-blue);
+}

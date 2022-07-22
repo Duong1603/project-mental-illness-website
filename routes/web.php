@@ -4,8 +4,9 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\OverviewController;
+use App\Http\Controllers\Admin\SendEmailController;
 use App\Http\Controllers\Admin\WebUserController;
-use App\Http\Controllers\EmailController;
+
 use Illuminate\Support\Facades\Route;
 
 // OverView
@@ -87,5 +88,7 @@ Route::get('/login', function () {
 
 // -----------------------ADMIN--------------------------------
 // Auth::routes();
-Route::get('/contact',[EmailController::class,'index']);
-Route::post('/send',[EmailController::class,'send'])->name('email.send');
+
+
+    Route::get('/contact',[SendEmailController::class,'index']);
+    Route::post('/send',[SendEmailController::class,'send'])->name('email.send');

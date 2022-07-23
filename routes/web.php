@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\OverviewController;
 use App\Http\Controllers\Admin\WebUserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 // OverView

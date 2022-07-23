@@ -16,10 +16,9 @@ return new class extends Migration
         Schema::create('doctors', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->date('dob');
             $table->text('description');
-            $table->integer('package_id')->unsigned();
-            $table->foreign('package_id')
+            $table->integer('id_package')->unsigned();
+            $table->foreign('id_package')
             ->references('id')
             ->on('packages')
             ->onDelete('cascade')

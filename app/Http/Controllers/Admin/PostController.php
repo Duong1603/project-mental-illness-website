@@ -64,8 +64,12 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->image = $name;
         $post->content = $request->content;
+        $post->emotion = 0;
+        $post->status = "show";
+        $post->tag = "pnv staff check";
+        $post->id_category = 1;
         $post->save();
-        return redirect()->route('posts.index')->with('thành công', 'bạn đã cập nhật thành công');
+        return redirect()->route('posts.index')->with('message', 'bạn đã thêm thành công');
     }
 
     /**
@@ -127,7 +131,7 @@ class PostController extends Controller
         $post->image = $name;
         $post->content = $request->content;
         $post->save();
-        return redirect()->route('posts.index')->with('thành công', 'bạn đã cập nhật thành công');
+        return redirect()->route('posts.index')->with('message', 'bạn đã cập nhật thành công');
     }
 
     /**

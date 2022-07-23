@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('contacts', function (Blueprint $table) {
        
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')
+            $table->integer('id_user')->unsigned();
+            $table->foreign('id_user')
             ->references('id')
-            ->on('web_users')
+            ->on('users')
             ->onDelete('cascade')
             ->onUpdate('cascade');
             $table->timestamps();

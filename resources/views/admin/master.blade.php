@@ -44,6 +44,7 @@
     <script src="/assets/js/dashboard.js"></script>
     <script src="/assets/js/todolist.js"></script>
     <!-- End custom js for this page -->
-	<!-- Overview -->
+	<!-- Upload file -->
+  <script src="/../../assets/js/file-upload.js"></script>
   </body>
 </html>

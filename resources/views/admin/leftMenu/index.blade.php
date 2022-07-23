@@ -43,7 +43,7 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/admin/managerCustomer">
-                <span class="menu-title">ManagerCustomer</span>
+                <span class="menu-title">Manager Customer</span>
                 <i class="mdi mdi-contacts menu-icon"></i>
             </a>
         </li>

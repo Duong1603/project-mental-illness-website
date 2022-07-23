@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\OrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ContactAPIController;
+use App\Http\Controllers\API\SearchAPIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,5 +29,5 @@ Route::group([
 });
 Route::get('orders',[OrderController::class,'index']);
 
-Route::get('search/{id}',[CategoryController::class,'searchCategory']);
-Route::get('/search',[CategoryController::class,'searchName']);
+Route::get('search/{id}',[SearchAPIController::class,'searchCategory']);
+Route::get('/search',[SearchAPIController::class,'searchName']);

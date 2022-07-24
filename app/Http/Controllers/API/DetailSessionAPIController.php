@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Package;
-
+use Illuminate\Http\Request;
 
 class DetailSessionAPIController extends Controller
 {
@@ -16,29 +15,13 @@ class DetailSessionAPIController extends Controller
      */
     public function index()
     {
-        //
-        // dd(111);
-        // return response()->json(["hi"=>1]);
         $package = Package::all();
-
-        if($package) {            
+        if ($package) {
             return response()->json(["status" => "200", "success" => true, "message" => "car record created successfully", "data" => $package]);
-        }    
-    else {
+        } else {
             return response()->json(["status" => "failed", "success" => false, "message" => "Whoops! failed to create."]);
-    }
-       
-        // if (count($packages) > 0) {
-        //     return response()->json(["status" => "200", "success" => true, "count" => count($packages), "data" => $packages]);
-        // } else {
-        //     return response()->json(["status" => "failed", "success" => false, "message" => "Whoops! no record found"]);
-        // }
+        }
 
-        // if ($user && $contact) {
-        //     return response()->json(["status" => 200, "success" => true, "message" => "Thank for your submit we will connect you soon"]);
-        // } else {
-        //     return response()->json(["status" => "failed", "success" => false, "message" => "Whoops! failed to submit."]);
-        // }
     }
 
     /**

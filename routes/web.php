@@ -6,8 +6,8 @@ use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\OverviewController;
 use App\Http\Controllers\Admin\SendEmailController;
 use App\Http\Controllers\Admin\WebUserController;
-
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 // OverView
 Route::group([

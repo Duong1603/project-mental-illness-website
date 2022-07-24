@@ -4,7 +4,7 @@ use App\Http\Controllers\Admin\OrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ContactAPIController;
-use App\Http\Controllers\API\DetailSessionAPIController;
+use App\Http\Controllers\API\ApiPackageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +15,13 @@ use App\Http\Controllers\API\DetailSessionAPIController;
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API!
 |
-*/
+*/// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+// -------------------------Package/ Session--------------------------------
+Route::get('/package', [ApiPackageController::class, 'all']);
+Route::get('/package/{id}', [ApiPackageController::class, 'get']);     
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -26,12 +32,4 @@ Route::group([
 ], function () {
     Route::post('/', [ContactAPIController::class, 'store']);
 });
-Route::get('packages',[DetailSessionAPIController::class,'index']);
 Route::get('orders',[OrderController::class,'index']);
-
-// Route::group([
-//     'namespace' => 'API',
-//     'prefix' => 'detailSession'
-// ], function () {
-//     Route::get('/', [DetailSessionAPIController::class, 'index']);
-// });

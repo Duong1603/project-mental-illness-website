@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\OrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ContactAPIController;
+use App\Http\Controllers\API\DetailSessionAPIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,12 @@ Route::group([
 ], function () {
     Route::post('/', [ContactAPIController::class, 'store']);
 });
+Route::get('packages',[DetailSessionAPIController::class,'index']);
 Route::get('orders',[OrderController::class,'index']);
+
+// Route::group([
+//     'namespace' => 'API',
+//     'prefix' => 'detailSession'
+// ], function () {
+//     Route::get('/', [DetailSessionAPIController::class, 'index']);
+// });

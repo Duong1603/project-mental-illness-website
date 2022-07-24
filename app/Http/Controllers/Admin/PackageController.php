@@ -13,9 +13,9 @@ class PackageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function indexPackage()
     {
-        //
+        return Package::select('name', 'image', 'price', 'description', 'comment') -> get();
     }
 
     /**

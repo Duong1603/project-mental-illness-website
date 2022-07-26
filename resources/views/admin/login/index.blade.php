@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>
+    <title>Admin Psychothetary</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="/../../assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="/../../assets/vendors/css/vendor.bundle.base.css">
@@ -18,6 +19,7 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="/../../assets/images/favicon.ico" />
 </head>
+
 <body>
     <div class="container-scroller">
         <div class="container-fluid page-body-wrapper full-page-wrapper">
@@ -34,14 +36,18 @@
                             <form class="pt-3" action="login" method="post">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="email" name="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email">
+                                    <input type="email" name="email" class="form-control form-control-lg"
+                                        id="exampleInputEmail1" placeholder="Email">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" name="pw" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                                    <input type="password" name="pw" class="form-control form-control-lg"
+                                        id="exampleInputPassword1" placeholder="Password">
                                 </div>
                                 <div class="mt-3">
                                     <!-- <a type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" href="/../../index.html">SIGN IN</a> -->
-                                    <button type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
+                                    <button type="submit"
+                                        class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn">SIGN
+                                        IN</button>
                                 </div>
                                 <div class="my-2 d-flex justify-content-between align-items-center">
                                     <div class="form-check">
@@ -50,7 +56,8 @@
                                     </div>
                                     <a href="#" class="auth-link text-black">Forgot password?</a>
                                 </div>
-                                <div class="text-center mt-4 font-weight-light"> Don't have an account? <a href="#" class="text-primary">Create</a>
+                                <div class="text-center mt-4 font-weight-light"> Don't have an account? <a
+                                        href="#" class="text-primary">Create</a>
                                 </div>
                             </form>
 

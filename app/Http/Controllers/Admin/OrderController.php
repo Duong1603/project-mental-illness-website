@@ -18,7 +18,7 @@ class OrderController extends Controller
     {
         //
         $orders = DB::table('orders')
-        ->join('bookings','orders.id','=','bookings.id_order')
+        ->join('bookings','orders.id','=','bookings.order_id')
         ->select('orders.*','bookings.*')
         ->get();
         return response()->json(['data'=>$orders,'code'=>200]);

@@ -71,7 +71,7 @@ class ContactAPIController extends Controller
 
         $contact = new Contact();
 
-        $contact->user_id = DB::table('web_users')
+        $contact->user_id = DB::table('users')
             ->where('name', '=', $request->name)
             ->where('phone', '=', $request->phone)
             ->where('mail', '=', $request->email)->value('id');

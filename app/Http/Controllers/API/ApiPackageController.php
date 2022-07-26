@@ -10,11 +10,18 @@ use Illuminate\Http\Request;
 
 class ApiPackageController extends Controller
 {
-    public function all() {
+    public function all()
+    {
         return new PackageCollection(Package::get());
     }
 
-    public function get($id) {
-        return new PackageResource(Package::find($id));
+    public function get($id)
+    {
+        $result = Package::find($id);
+        if ($result) {
+            return new PackageResource($result);
+        } else {
+            return response()->json(['code' => 404, 'message' => "something is wrong"]);
+        }
     }
 }

@@ -20,7 +20,7 @@ class DoctorFactory extends Factory
             //
             'name' => fake()->name(),
             'description' => fake()->text(500),
-            'id_package' => rand(1, 2)
+            'package_id' => rand(1, 2)
         ];
     }
 }

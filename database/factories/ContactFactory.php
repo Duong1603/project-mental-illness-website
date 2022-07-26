@@ -18,7 +18,7 @@ class ContactFactory extends Factory
     {
         return [
             //
-            'id_user' => rand(1, 10)
+            'user_id' => rand(1, 10)
         ];
     }
 }

@@ -26,7 +26,7 @@ class BookingFactory extends Factory
             'times'=>rand(1,3),
             'status' => $this->status[rand(0, 2)],
             'link_gg_meet' => fake()->text(300),
-            'id_order' => rand(1, 10)
+            'order_id' => rand(1, 10)
         ];
     }
 }

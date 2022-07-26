@@ -24,8 +24,8 @@ return new class extends Migration
 
             $table->integer('times');
 
-            $table->integer('id_order')->unsigned();
-            $table->foreign('id_order')
+            $table->integer('order_id')->unsigned();
+            $table->foreign('order_id')
             ->references('id')
             ->on('orders')
             ->onDelete('cascade')

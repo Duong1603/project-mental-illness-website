@@ -17,8 +17,8 @@ return new class extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('description');
-            $table->integer('id_package')->unsigned();
-            $table->foreign('id_package')
+            $table->integer('package_id')->unsigned();
+            $table->foreign('package_id')
             ->references('id')
             ->on('packages')
             ->onDelete('cascade')

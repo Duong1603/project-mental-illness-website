@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('tag');
             $table->enum('status',array('show','hidden'));
             $table->integer('emotion');
-            $table->integer('id_category')->unsigned();
-            $table->foreign('id_category')
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')
             ->references('id')
             ->on('categories')
             ->onDelete('cascade')

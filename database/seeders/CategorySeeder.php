@@ -31,5 +31,8 @@ class CategorySeeder extends Seeder
 
         \App\Models\Role::factory(2)->create();
         \App\Models\UsersRole::factory(10)->create();
+
+        \App\Models\Admin::factory(2)->create();
+
     }
 }

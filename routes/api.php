@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ContactAPIController;
 use App\Http\Controllers\API\ApiPackageController;
+use App\Http\Controllers\API\BookingAPIController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +22,11 @@ use App\Http\Controllers\API\ApiPackageController;
 // });
 
 // -------------------------Package/ Session--------------------------------
-
+Route::get('/package', [ApiPackageController::class, 'all']);
+Route::get('/package/{id}', [ApiPackageController::class, 'get']);    
+Route::get('/booking', [BookingAPIController::class, 'getBooking']);
+Route::post('/add-booking',[BookingAPIController::class,'addBooking']);
+Route::delete('/delete-booking/{id}',[BookingAPIController::class,'deleteBooking']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

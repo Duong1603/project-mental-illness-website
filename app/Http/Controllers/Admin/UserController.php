@@ -25,7 +25,7 @@ class UserController extends Controller
     public function Login(Request $request)
     {
         $login = [
-            'email' => $request->input('email'),
+            'account' => $request->input('email'),
             'password' => $request->input('pw')
         ];
         if (Auth::attempt($login)) {
@@ -42,20 +42,20 @@ class UserController extends Controller
         Session::forget('login');
         return redirect('/admin/login');
     }
-    public function Register(Request $request)
-    {
-        $input = $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|email|unique:users',
-            'password' => 'required',
-            'c_password' => 'required|same:password'
-        ]);
+    // public function Register(Request $request)
+    // {
+    //     $input = $request->validate([
+    //         'name' => 'required|string',
+    //         'email' => 'required|email|unique:users',
+    //         'password' => 'required',
+    //         'c_password' => 'required|same:password'
+    //     ]);
 
-        $input['password'] = bcrypt($input['password']);
-        User::create($input);
+    //     $input['password'] = bcrypt($input['password']);
+    //     User::create($input);
 
-        echo '<script>alert("Đăng ký thành công. Vui lòng đăng nhập.");window.location.assign("login");</script>';
-    }
+    //     echo '<script>alert("Đăng ký thành công. Vui lòng đăng nhập.");window.location.assign("login");</script>';
+    // }
 
     /**
      * Show the form for creating a new resource.

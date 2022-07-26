@@ -16,6 +16,10 @@ class DetailSessionAPIController extends Controller
     public function index()
     {
         $package = Package::all();
+        foreach ($package as $key => $value) {
+            # code...
+            $package[$key]->image = env('APP_URL').$value;
+        }
         if ($package) {
             return response()->json(["status" => "200", "success" => true, "message" => "car record created successfully", "data" => $package]);
         } else {

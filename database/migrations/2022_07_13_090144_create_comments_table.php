@@ -15,18 +15,18 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_post')->unsigned();
-            $table->integer('id_user')->unsigned();
+            $table->integer('post_id')->unsigned();
+            $table->integer('user_id')->unsigned();
 
             $table->text('content');
 
-            $table->foreign('id_user')
+            $table->foreign('user_id')
             ->references('id')
             ->on('users')
             ->onDelete('cascade')
             ->onUpdate('cascade');
 
-            $table->foreign('id_post')
+            $table->foreign('post_id')
             ->references('id')
             ->on('posts')
             ->onDelete('cascade')

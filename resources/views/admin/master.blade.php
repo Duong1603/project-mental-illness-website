@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>
+    <title>Admin Psychothetary</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css">
@@ -17,15 +18,16 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="/assets/images/favicon.ico" />
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="container-scroller">
-		@include('admin.headerMenu.index')
-      <div class="container-fluid page-body-wrapper">
-		@include('admin.leftMenu.index')
-		@yield('content')
-      </div>
-      <!-- page-body-wrapper ends -->
+        @include('admin.headerMenu.index')
+        <div class="container-fluid page-body-wrapper">
+            @include('admin.leftMenu.index')
+            @yield('content')
+        </div>
+        <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
@@ -44,7 +46,8 @@
     <script src="/assets/js/dashboard.js"></script>
     <script src="/assets/js/todolist.js"></script>
     <!-- End custom js for this page -->
-	<!-- Upload file -->
-  <script src="/../../assets/js/file-upload.js"></script>
-  </body>
+    <!-- Upload file -->
+    <script src="/../../assets/js/file-upload.js"></script>
+</body>
+
 </html>

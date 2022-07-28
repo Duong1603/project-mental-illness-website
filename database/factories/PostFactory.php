@@ -22,7 +22,7 @@ class PostFactory extends Factory
             'image' => rand(1, 3) . ".jpg",
             'status' => fake()->randomElement(['show', 'hidden']),
             'emotion' => rand(1, 1000),
-            'id_category' => rand(1, 10),
+            'category_id' => rand(1, 10),
             'tag'=> 'pnv staff check'
         ];
     }

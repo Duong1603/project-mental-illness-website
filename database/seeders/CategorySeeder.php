@@ -22,7 +22,7 @@ class CategorySeeder extends Seeder
 
         \App\Models\Contact::factory(100)->create();
 
-        \App\Models\Package::factory(2)->create();
+        \App\Models\Package::factory(3)->create();
         \App\Models\Doctor::factory(2)->create();
 
 

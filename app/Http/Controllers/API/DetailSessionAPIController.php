@@ -1,31 +1,27 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Package;
 use Illuminate\Http\Request;
 
-class PackageController extends Controller
+class DetailSessionAPIController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexPackage()
+    public function index()
     {
-        return Package::select('name', 'image', 'price', 'description', 'comment') -> get();
-    }
+        $package = Package::all();
+        if ($package) {
+            return response()->json(["status" => "200", "success" => true, "message" => "car record created successfully", "data" => $package]);
+        } else {
+            return response()->json(["status" => "failed", "success" => false, "message" => "Whoops! failed to create."]);
+        }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -42,21 +38,10 @@ class PackageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Package  $package
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Package $package)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Package  $package
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Package $package)
+    public function show($id)
     {
         //
     }
@@ -65,10 +50,10 @@ class PackageController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Package  $package
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Package $package)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -76,10 +61,10 @@ class PackageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Package  $package
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Package $package)
+    public function destroy($id)
     {
         //
     }

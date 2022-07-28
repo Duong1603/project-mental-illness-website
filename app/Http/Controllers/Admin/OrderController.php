@@ -21,8 +21,7 @@ class OrderController extends Controller
         ->join('bookings','orders.id','=','bookings.order_id')
         ->select('orders.*','bookings.*')
         ->get();
-
-        return response()->json(['response'=>$orders,'status'=>200]);
+        return response()->json(['data'=>$orders,'code'=>200]);
     }
 
     /**

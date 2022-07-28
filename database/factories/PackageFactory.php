@@ -17,7 +17,6 @@ class PackageFactory extends Factory
     public function definition()
     {
         return [
-            //
             'name' => fake()->name(),
             'price' => rand(1, 10) . "00000",
             'image' => rand(1, 3) . ".jpg",

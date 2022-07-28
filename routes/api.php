@@ -18,7 +18,17 @@ use App\Models\Category;
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API!
 |
-*/
+*/ // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+// -------------------------Package/ Session--------------------------------
+Route::get('/package', [ApiPackageController::class, 'all']);
+Route::get('/package/{id}', [ApiPackageController::class, 'get']);    
+Route::get('/booking', [BookingAPIController::class, 'getBooking']);
+Route::post('/add-booking',[BookingAPIController::class,'addBooking']);
+Route::delete('/delete-booking/{id}',[BookingAPIController::class,'deleteBooking']);
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

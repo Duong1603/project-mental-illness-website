@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\OrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ContactAPIController;
+use App\Http\Controllers\API\CommentAPIController;
+
 use App\Http\Controllers\API\ApiPackageController;
 use App\Http\Controllers\API\BookingAPIController;
 
@@ -47,3 +49,4 @@ Route::group(
         Route::get('/package/{id}', [ApiPackageController::class, 'get']);
     }
 );
+ Route::get('/comment',[CommentAPIController::class,'comment']);

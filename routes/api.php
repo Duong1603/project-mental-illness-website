@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ContactAPIController;
 use App\Http\Controllers\API\ApiPackageController;
 use App\Http\Controllers\API\BookingAPIController;
-
+use App\Http\Controllers\API\PaymentController;
+use Faker\Provider\ar_EG\Payment;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +48,4 @@ Route::group(
         Route::get('/package/{id}', [ApiPackageController::class, 'get']);
     }
 );
+Route::get('/payment',[PaymentController::class,'momoPayment']);

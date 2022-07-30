@@ -21,7 +21,7 @@ class ApiPackageController extends Controller
         if ($result) {
             return new PackageResource($result);
         } else {
-            return response()->json(['code' => 404, 'message' => "something is wrong"]);
+            return response()->json([ 'message' => "something is wrong"],status:404);
         }
     }
 }

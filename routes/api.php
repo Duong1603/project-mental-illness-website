@@ -1,13 +1,13 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\API\BlogAPIController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ContactAPIController;
-use App\Http\Controllers\API\ApiPackageController;
-use App\Http\Controllers\API\BookingAPIController;
-use App\Http\Controllers\API\PaymentController;
-use Faker\Provider\ar_EG\Payment;
+use App\Http\Controllers\API\SearchAPIController;
+use App\Models\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,11 +41,7 @@ Route::group([
 });
 Route::get('orders', [OrderController::class, 'index']);
 
-Route::group(
-    ['namespace' => 'API'],
-    function () {
-        Route::get('/package', [ApiPackageController::class, 'all']);
-        Route::get('/package/{id}', [ApiPackageController::class, 'get']);
-    }
-);
-Route::get('/payment',[PaymentController::class,'momoPayment']);
+Route::get('search/{id}', [SearchAPIController::class, 'searchCategory']);
+Route::get('/posts/search', [SearchAPIController::class, 'search']);
+Route::get('/categories', [SearchAPIController::class, 'statistical']);
+

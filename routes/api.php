@@ -6,6 +6,9 @@ use App\Http\Controllers\API\BlogAPIController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ContactAPIController;
+use App\Http\Controllers\API\ApiPackageController;
+use App\Http\Controllers\API\BookingAPIController;
+use App\Http\Controllers\API\PaymentController;
 use App\Http\Controllers\API\SearchAPIController;
 use App\Models\Category;
 
@@ -40,7 +43,7 @@ Route::group([
     Route::post('/', [ContactAPIController::class, 'store']);
 });
 Route::get('orders', [OrderController::class, 'index']);
-
+Route::get('/payment',[PaymentController::class,'momoPayment']);
 Route::get('search/{id}', [SearchAPIController::class, 'searchCategory']);
 Route::get('/posts/search', [SearchAPIController::class, 'search']);
 Route::get('/categories', [SearchAPIController::class, 'statistical']);

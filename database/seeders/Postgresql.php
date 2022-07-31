@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class CategorySeeder extends Seeder
+class Postgresql extends Seeder
 {
     /**
      * Run the database seeds.
@@ -27,11 +27,9 @@ class CategorySeeder extends Seeder
 
 
         \App\Models\Order::factory(10)->create();
-        
         \App\Models\Booking::factory(10)->create();
 
         \App\Models\Role::factory(2)->create();
-        \App\Models\UsersRole::factory(10)->create();
 
         \App\Models\Admin::factory(2)->create();
 

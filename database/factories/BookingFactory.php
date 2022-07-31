@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use DateTime;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,10 +19,11 @@ class BookingFactory extends Factory
 
     public function definition()
     {
+        $rand = rand(2,100);
         return [
             //
-            'start_meeting' => fake()->dateTime(),
-            'end_meeting' => fake()->dateTime('+2 hours'),
+            'start_meeting' => date('Y-m-d H:i:s', strtotime( ' + '.$rand.' hours')),
+            'end_meeting' => date('Y-m-d H:i:s', strtotime(' + '.($rand+2).' hours')),
             'problem' => fake()->text(200),
             'times'=>rand(1,3),
             'status' => $this->status[rand(0, 2)],

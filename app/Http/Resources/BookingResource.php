@@ -17,10 +17,10 @@ class BookingResource extends JsonResource
        
          return [
             'id' => $this->id,
-            'start_meeting' => $this->start_meeting,
-            'end_meeting' => $this->end_meeting,
-            'link_gg_meet' => $this->link_gg_meet,
-
+            'start' => $this->start_meeting,
+            'end' => $this->end_meeting,
+            // 'link_gg_meet' => $this->link_gg_meet,
+            'title'=> 'unavailable'
         ];
     }
 }

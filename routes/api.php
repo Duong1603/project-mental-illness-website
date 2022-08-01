@@ -43,6 +43,7 @@ Route::group([
     Route::post('/', [ContactAPIController::class, 'store']);
 });
 Route::get('orders', [OrderController::class, 'index']);
+Route::get('/payment-qr',[PaymentController::class,'momoQrPayment']);
 Route::get('/payment',[PaymentController::class,'momoPayment']);
 Route::get('search/{id}', [SearchAPIController::class, 'searchCategory']);
 Route::get('/posts/search', [SearchAPIController::class, 'search']);

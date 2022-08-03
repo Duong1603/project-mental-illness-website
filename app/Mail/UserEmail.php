@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
@@ -28,7 +27,7 @@ class UserEmail extends Mailable
      */
     public function build()
     {
-        return $this->subject ("Email thông báo gửi thành công")
-        ->view('emails.userEmail');
+        return $this->subject("Thank you for your contact to ".env("APP_NAME"))
+            ->view('emails.userEmail');
     }
 }

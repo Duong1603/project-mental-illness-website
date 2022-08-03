@@ -23,6 +23,7 @@ class BookingAPIController extends Controller
     }
     public function addBooking(Request $request)
     {
+        
         $booking = new Booking();
         $booking->start_meeting = $request->start_meeting;
         $booking->end_meeting = $request->end_meeting;

@@ -9,13 +9,11 @@ use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
-  
     public function index()
     {
         $posts = Post::paginate(15);
         return view('admin.blogs.index', ['posts' => $posts]);
     }
-
 
     public function create()
     {
@@ -24,7 +22,6 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        //
         $name = '';
         if ($request->hasfile('image')) {
             $this->validate($request, [
@@ -64,7 +61,6 @@ class PostController extends Controller
         $post = Post::find($id);
         return view('admin.blogs.index', compact('post'));
     }
-
 
     public function edit($id)
     {

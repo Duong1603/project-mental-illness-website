@@ -37,7 +37,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::group([
-    'namespace' => 'API',
+    'namespace' => 'Api',
     'prefix' => 'contact'
 ], function () {
     Route::post('/', [ContactAPIController::class, 'store']);

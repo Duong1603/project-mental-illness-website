@@ -2,14 +2,14 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\OrderController;
-use App\Http\Controllers\API\BlogAPIController;
+use App\Http\Controllers\Api\BlogAPIController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\ContactAPIController;
-use App\Http\Controllers\API\ApiPackageController;
-use App\Http\Controllers\API\BookingAPIController;
-use App\Http\Controllers\API\PaymentController;
-use App\Http\Controllers\API\SearchAPIController;
+use App\Http\Controllers\Api\ContactAPIController;
+use App\Http\Controllers\Api\ApiPackageController;
+use App\Http\Controllers\Api\BookingAPIController;
+use App\Http\Controllers\Api\PaymentController;
+use App\Http\Controllers\Api\SearchAPIController;
 use App\Models\Category;
 
 /*

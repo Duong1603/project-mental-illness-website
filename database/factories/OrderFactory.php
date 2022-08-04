@@ -9,19 +9,19 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class OrderFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    private $status = array('will do', 'doing', 'done');
+    private $status = array('waiting confirm', 'accepted', 'done');
     public function definition()
     {
+        $rand = rand(2,100);
         return [
-            //
             'package_id' => rand(1, 2),
+            'start_meeting' => date('Y-m-d H:i:s', strtotime( ' + '.$rand.' hours')),
+            'end_meeting' => date('Y-m-d H:i:s', strtotime(' + '.($rand+2).' hours')),
+            'problem' => fake()->text(200),
             'user_id' => rand(1, 10),
             'doctor_id' => rand(1, 2),
+            'status'=> $this->status[rand(0,2)],
+            'google_meet_id' => fake()->url(),
         ];
     }
 }

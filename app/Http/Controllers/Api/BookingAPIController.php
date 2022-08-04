@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\BookingCollection;
 use App\Http\Resources\BookingResource;
-// use App\Http\Resources\Booking as BookingResource;
-use App\Models\Booking;
+use App\Models\Order;
 use DateTime;
 use Illuminate\Http\Request;
 
@@ -14,7 +12,7 @@ class BookingAPIController extends Controller
 {
     public function getBooking()
     {
-        $bookings =  Booking::where('start_meeting', '>', date("Y-m-d H:i:s"))->get();
+        $bookings =  Order::where('start_meeting', '>', date("Y-m-d H:i:s"))->get();
         return [
             'status' => 200,
             'count' => $bookings->count(),
@@ -23,7 +21,9 @@ class BookingAPIController extends Controller
     }
     public function addBooking(Request $request)
     {
-        $booking = new Booking();
+        
+        $booking = new Order();
+        
         $booking->start_meeting = $request->start_meeting;
         $booking->end_meeting = $request->end_meeting;
         $booking->link_gg_meet = $request->link_gg_meet;
@@ -33,7 +33,7 @@ class BookingAPIController extends Controller
     }
     public function deleteBooking($id)
     {
-        $booking =  Booking::find($id);
+        $booking =  Order::find($id);
         $booking->delete();
         return ['status' => 'ok', 'msg' => 'Delete successed'];
     }

@@ -9,36 +9,19 @@ use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $posts = Post::paginate(15);
         return view('admin.blogs.index', ['posts' => $posts]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('admin.blogs.add', ['action' => 'create']);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
         $name = '';
         if ($request->hasfile('image')) {
             $this->validate($request, [
@@ -72,12 +55,6 @@ class PostController extends Controller
         return redirect()->route('posts.index')->with('message', 'bạn đã thêm thành công');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
 
@@ -85,24 +62,12 @@ class PostController extends Controller
         return view('admin.blogs.index', compact('post'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $post = Post::findOrFail($id);
         return view('admin.blogs.add', ['action' => 'update'], compact(['post']));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $name = '';
@@ -134,11 +99,6 @@ class PostController extends Controller
         return redirect()->route('posts.index')->with('message', 'bạn đã cập nhật thành công');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function delete($id)
     {
         $post = Post::find($id);

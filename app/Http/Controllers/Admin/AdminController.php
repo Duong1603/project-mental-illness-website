@@ -37,7 +37,7 @@ class AdminController extends Controller
     {
         // Session::forget('user');
         Session::forget('login');
-        return redirect('/admin/login');
+        return redirect('/');
     }
     // public function Register(Request $request)
     // {

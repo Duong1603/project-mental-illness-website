@@ -36,44 +36,28 @@
                     <th> Link google meeting </th>
                   </tr>
                 </thead>
+                @foreach ($bookings as $booking)
                 <tbody>
                   <tr>
-                    <td> 01 </td>
-                    <td> 6:30 PM </td>
-                    <td> 6:30 PM </td>
-                    <td> Dec 13, 2022 </td>
-                    <td> Lorem ipsum dolor sit. </td>
-                    <td> 25 minutes </td>
+                    <td>{{ $booking -> id_order}}</td>
+                    <td>{{ $booking -> start_meeting}}</td>
+                    <td>{{ $booking -> end_meeting}}</td>
+                    <td>{{ $booking -> created_at}}</td>
+                    <td>{{ $booking -> problem}}</td>
+                    <td>{{ $booking -> times}} minutes</td>
                     <td>
-                      <label class="badge badge-gradient-danger">WILL</label>
+                      @if ($booking -> status == 'will do')
+                        <label class="badge badge-gradient-danger">WILL</label>
+                      @elseif ($booking -> status == 'doing')
+                        <label class="badge badge-gradient-info">DOING</label>
+                      @elseif ($booking -> status == 'done')
+                        <label class="badge badge-gradient-warning">DONE</label>
+                      @endif
                     </td>
-                    <td> <a class="tag" href="https://meet.google.com/nkg-smha-jdi?authuser=0">Link</a> </td>
-                  </tr>
-                  <tr>
-                    <td> 02 </td>
-                    <td> 6:30 PM </td>
-                    <td> 6:30 PM </td>
-                    <td> Dec 13, 2022 </td>
-                    <td> Lorem ipsum dolor sit. </td>
-                    <td> 25 minutes </td>
-                    <td>
-                      <label class="badge badge-gradient-info">DOING</label>
-                    </td>
-                    <td> <a class="tag" href="https://meet.google.com/nkg-smha-jdi?authuser=0">Link</a> </td>
-                  </tr>
-                  <tr>
-                    <td> 03 </td>
-                    <td> 6:30 PM </td>
-                    <td> 6:30 PM </td>
-                    <td> Dec 13, 2022 </td>
-                    <td> Lorem ipsum dolor sit. </td>
-                    <td> 25 minutes </td>
-                    <td>
-                      <label class="badge badge-gradient-warning">DID</label>
-                    </td>
-                    <td> <a class="tag" href="https://meet.google.com/nkg-smha-jdi?authuser=0">Link</a> </td>
+                    <td><a class="tag" href="{{$booking -> link_gg_meet}}">Link</a></td>
                   </tr>
                 </tbody>
+                @endforeach
               </table>
             </div>
           </div>

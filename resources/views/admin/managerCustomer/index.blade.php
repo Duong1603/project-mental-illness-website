@@ -32,44 +32,16 @@
                     <th> Email </th>
                   </tr>
                 </thead>
+                @foreach($managerCustomer as $managerCus)
                 <tbody>
                   <tr>
-                    <td> 01 </td>
-                    <td> Nguyễn Thanh Tú </td>
-                    <td> 0392328539 </td>
-                    <td> tu.nguyen23@student.passerellesnumeriques.org </td>
-                  </tr>
-                  <tr>
-                    <td> 02 </td>
-                    <td> Nguyễn Thanh Tú </td>
-                    <td> 0392328539 </td>
-                    <td> tu.nguyen23@student.passerellesnumeriques.org </td>
-                  </tr>
-                  <tr>
-                    <td> 03 </td>
-                    <td> Nguyễn Thanh Tú </td>
-                    <td> 0392328539 </td>
-                    <td> tu.nguyen23@student.passerellesnumeriques.org </td>
-                  </tr>
-                  <tr>
-                    <td> 04 </td>
-                    <td> Nguyễn Thanh Tú </td>
-                    <td> 0392328539 </td>
-                    <td> tu.nguyen23@student.passerellesnumeriques.org </td>
-                  </tr>
-                  <tr>
-                    <td> 05 </td>
-                    <td> Nguyễn Thanh Tú </td>
-                    <td> 0392328539 </td>
-                    <td> tu.nguyen23@student.passerellesnumeriques.org </td>
-                  </tr>
-                  <tr>
-                    <td> 06 </td>
-                    <td> Nguyễn Thanh Tú </td>
-                    <td> 0392328539 </td>
-                    <td> tu.nguyen23@student.passerellesnumeriques.org </td>
+                    <td>{{ $managerCus -> id}}</td>
+                    <td>{{ $managerCus -> name}}</td>
+                    <td>{{ $managerCus -> phone}}</td>
+                    <td>{{ $managerCus -> email}}</td>
                   </tr>
                 </tbody>
+                @endforeach
               </table>
             </div>
           </div>

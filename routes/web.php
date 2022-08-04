@@ -51,9 +51,14 @@ Route::group([
 });
 
 // login
-Route::get('/logout', [AdminController::class, 'Logout']);
-Route::post('/login', [AdminController::class, 'Login']);
-Route::get('/', [AdminController::class, "index"])->name('login.index');
 
-Route::get('/contact',[SendEmailController::class,'index']);
-Route::post('/send',[SendEmailController::class,'send'])->name('email.send');
+    Route::get('/logout', [AdminController::class, 'Logout']);
+    Route::post('/login', [AdminController::class, 'Login']);
+    // Route::post('/register', [UserController::class, 'Register']);
+    Route::get('/', [AdminController::class, "index"])->name('login.index');
+
+
+
+
+    Route::get('/contact',[SendEmailController::class,'index']);
+    Route::post('/send',[SendEmailController::class,'send'])->name('email.send');

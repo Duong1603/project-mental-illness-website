@@ -7,8 +7,10 @@
 <!-- partial:partials/_navbar.html -->
 <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="/admin/overview"><img src="/assets/images/logo.svg" alt="logo" /></a>
-        <a class="navbar-brand brand-logo-mini" href="/admin/overview"><img src="/assets/images/logo-mini.svg" alt="logo" /></a>
+        <a class="navbar-brand brand-logo" href="/admin/overview"><img src="/assets/images/logo.svg"
+                alt="logo" /></a>
+        <a class="navbar-brand brand-logo-mini" href="/admin/overview"><img src="/assets/images/logo-mini.svg"
+                alt="logo" /></a>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-stretch">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -26,9 +28,11 @@
         </div>
         <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item nav-profile dropdown">
-                <a class="nav-link dropdown-toggle" id="profileDropdown" href="/admin/overview" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" id="profileDropdown" href="/admin/overview"
+                    data-bs-toggle="dropdown" aria-expanded="false">
                     <div class="nav-profile-img">
-                        <img src="https://thumbs.dreamstime.com/b/user-icon-trendy-flat-style-isolated-grey-background-user-symbol-user-icon-trendy-flat-style-isolated-grey-background-123663211.jpg" alt="image">
+                        <img src="https://thumbs.dreamstime.com/b/user-icon-trendy-flat-style-isolated-grey-background-user-symbol-user-icon-trendy-flat-style-isolated-grey-background-123663211.jpg"
+                            alt="image">
                         <span class="availability-status online"></span>
                     </div>
                     <div class="nav-profile-text">
@@ -49,7 +53,7 @@
                 </a>
             </li>
             <li class="nav-item nav-logout d-none d-lg-block">
-                <a class="nav-link" href="/admin/logout">
+                <a class="nav-link" href="/logout">
                     <i class="mdi mdi-power"></i>
                 </a>
             </li>

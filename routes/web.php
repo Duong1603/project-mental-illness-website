@@ -43,6 +43,11 @@ use Illuminate\Support\Facades\Auth;
 //     Route::get('/login', [UserController::class, "index"])->name('login.index');
 // });
 
+Route::get('/logout', [AdminController::class, 'Logout']);
+Route::post('/login', [AdminController::class, 'Login']);
+// Route::post('/register', [UserController::class, 'Register']);
+Route::get('/', [AdminController::class, "index"])->name('login.index');
+
 
 
 
@@ -86,3 +91,5 @@ Route::group([
         Route::get('/', [BookingController::class, "index"])->name('bookings.index');
     });
 });
+Route::get('/contact', [SendEmailController::class, 'index']);
+Route::post('/send', [SendEmailController::class, 'send'])->name('email.send');

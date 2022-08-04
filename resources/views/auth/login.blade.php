@@ -8,7 +8,7 @@
                 <div class="card-header-login">{{ __('LOGIN') }}</div>
                 <p class="text-white-50 mb-5">Please enter your login and password!</p>
                 <div class="card-body-login">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('admin.postLogin') }}">
                         @csrf
 
                         <div class="row mb-3">

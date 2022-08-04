@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\WebUser;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class WebUserController extends Controller
@@ -15,7 +15,7 @@ class WebUserController extends Controller
      */
     public function index()
     {
-        $managerCustomer = WebUser::paginate(15);
+        $managerCustomer = User::paginate(15);
         return view('admin.managerCustomer.index', ['managerCustomer' => $managerCustomer]);
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\OverviewController;
@@ -51,43 +51,13 @@ Route::group([
 });
 
 // login
-Route::group([
-    'namespace' => 'Admin',
-    'prefix' => 'admin',
-    // 'middleware' => ['auth']
-], function () {
-    Route::get('/logout', [UserController::class, 'Logout']);
-    Route::post('/login', [UserController::class, 'Login']);
+
+    Route::get('/logout', [AdminController::class, 'Logout']);
+    Route::post('/login', [AdminController::class, 'Login']);
     // Route::post('/register', [UserController::class, 'Register']);
-    Route::get('/login', [UserController::class, "index"])->name('login.index');
-});
-
-//------------------------- Login, Logout, Register ---------------------------------//
-// Route::get('/register', function () {
-//     return view('users.register');
-// });
-
-// Route::get('/login', function () {
-//     return view('admin.login.index');
-// });
+    Route::get('/', [AdminController::class, "index"])->name('login.index');
 
 
-//------------------------- Login, Logout, Register ---------------------------------//
-
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-// -----------------------ADMIN--------------------------------
-// Auth::routes();
 
 
     Route::get('/contact',[SendEmailController::class,'index']);

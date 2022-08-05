@@ -4,12 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Symfony\Component\Console\Input\Input;
-use App\Models\User; 
+use App\Models\User;
 
 
 class AdminController extends Controller
@@ -18,105 +19,40 @@ class AdminController extends Controller
     {
         return view('admin.login.index');
     }
-
-    public function Login(Request $request)
+    public function getLogin()
     {
-        $login = [
-            'account' => $request->input('email'),
-            'password' => $request->input('pw')
-        ];
-        if (Auth::attempt($login)) {
-            $user = Auth::user();
-            Session::put('user', $user);
-            echo '<script>alert("Đăng nhập thành công.");window.location.assign("/admin/overview");</script>';
+        return view('admin.login.index');
+    }
+
+    public function postLogin(Request $request)
+    {
+        # code...
+        $this->validate(
+            $request,
+            [
+                'email' => 'required|email',
+                'pw' => 'required|min:6|max:20'
+            ],
+            [
+                'email.required' => 'Vui lòng nhập email',
+                'email.email' => 'Không đúng định dạng email',
+                'pw.required' => 'Vui lòng nhập mật khẩu',
+                'pw.min' => 'Mật khẩu ít nhất 6 ký tự',
+                'pw.max' => 'Mật khẩu tối đa 20 ký tự'
+            ]
+        );
+        $credentials = ['account' => $request->email, 'password' => $request->pw];
+        if (Auth::attempt($credentials)) {
+            $admin =  Admin::where('account', $request->email)->first();
+            Session::put('admin', $admin);
+            return redirect()->route('overview.index');
         } else {
-            echo '<script>alert("Đăng nhập thất bại.");window.location.assign("login");</script>';
+            return redirect()->back()->with('status', "Đăng nhập khong thành công");
         }
     }
-    public function Logout()
+    public function getLogout()
     {
-        // Session::forget('user');
-        Session::forget('login');
-        return redirect('/');
-    }
-    // public function Register(Request $request)
-    // {
-    //     $input = $request->validate([
-    //         'name' => 'required|string',
-    //         'email' => 'required|email|unique:users',
-    //         'password' => 'required',
-    //         'c_password' => 'required|same:password'
-    //     ]);
-
-    //     $input['password'] = bcrypt($input['password']);
-    //     User::create($input);
-
-    //     echo '<script>alert("Đăng ký thành công. Vui lòng đăng nhập.");window.location.assign("login");</script>';
-    // }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        Session::forget('admin');
+        return redirect()->route('admin.getLogin');
     }
 }

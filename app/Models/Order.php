@@ -8,4 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
+    
+   
+
+    public function type()
+    {
+        return $this->belongsTo(Package::class, 'package_id', 'id');
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function link()
+    {
+        return $this->belongsTo(LinkGoogleMeet::class, 'link_google_meet_id', 'id');
+    }
 }

@@ -16,12 +16,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
-        $orders = DB::table('orders')
-        ->join('bookings','orders.id','=','bookings.order_id')
-        ->select('orders.*','bookings.*')
-        ->get();
-        return response()->json(['data'=>$orders,'code'=>200]);
+        $orders = Order::with('type','user','link')->paginate(15);
+        return view('admin.bookings.index', ['bookings' => $orders]);
+
     }
 
     /**

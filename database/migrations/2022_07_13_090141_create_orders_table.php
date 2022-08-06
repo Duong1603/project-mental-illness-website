@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('doctor_id')->unsigned();
             $table->string('status');
-            $table->string('google_meet_id', 500);
+            $table->integer('link_google_meet_id')->unsigned();
             $table->text('problem');
 
             $table->foreign('package_id')
@@ -43,6 +43,11 @@ return new class extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
+            $table->foreign('link_google_meet_id')
+                ->references('id')
+                ->on('link_google_meets')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }

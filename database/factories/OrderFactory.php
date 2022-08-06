@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class OrderFactory extends Factory
 {
-    private $status = array('waiting confirm', 'accepted', 'done');
+    private $status = array('waiting for approve', 'approved', 'rejected');
     public function definition()
     {
         $rand = rand(2,100);
@@ -21,7 +21,7 @@ class OrderFactory extends Factory
             'user_id' => rand(1, 10),
             'doctor_id' => rand(1, 2),
             'status'=> $this->status[rand(0,2)],
-            'google_meet_id' => fake()->url(),
+            'link_google_meet_id' => rand(1,2),
         ];
     }
 }

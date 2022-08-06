@@ -13,4 +13,8 @@ class User extends Model
         'email',
         'phone',
     ];
+    public function order()
+    {
+        return $this->hasOne(Order::class);
+    }
 }

@@ -5,14 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Package extends Model
+class LinkGoogleMeet extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'image', 'price', 'description', 'comment'];
-
     public function order()
     {
-        return $this->hasOne(Order::class);
+       $this->hasOne(Order::class);
     }
-    
 }

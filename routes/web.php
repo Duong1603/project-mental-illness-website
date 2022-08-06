@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\BookingController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\OverviewController;
 use App\Http\Controllers\Admin\SendEmailController;
 use Illuminate\Support\Facades\Route;
@@ -40,8 +41,8 @@ Route::group([
     Route::group([
         'prefix' => '/bookings',
     ], function () {
-        Route::get('/', [BookingController::class, "index"])->name('bookings.index');
+        Route::get('/', [OrderController::class, "index"])->name('bookings.index');
     });
 });
-// Route::get('/contact', [SendEmailController::class, 'index']);
-// Route::post('/send', [SendEmailController::class, 'send'])->name('email.send');
+Route::get('/contact', [SendEmailController::class, 'index']);
+Route::post('/send', [SendEmailController::class, 'send'])->name('email.send');

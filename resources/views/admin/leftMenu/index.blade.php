@@ -59,5 +59,11 @@
                 <i class="mdi mdi-clipboard-check menu-icon"></i>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/packages">
+                <span class="menu-title">Packages</span>
+                <i class="mdi mdi-clipboard-check menu-icon"></i>
+            </a>
+        </li>
     </ul>
 </nav>

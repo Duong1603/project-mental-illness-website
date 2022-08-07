@@ -7,21 +7,13 @@ use App\Http\Resources\PackageCollection;
 use App\Http\Resources\PackageResource;
 use App\Models\Package;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ApiPackageController extends Controller
 {
-    public function all()
+    public function index()
     {
-        return new PackageCollection(Package::get());
-    }
-
-    public function get($id)
-    {
-        $result = Package::find($id);
-        if ($result) {
-            return new PackageResource($result);
-        } else {
-            return response()->json([ 'message' => "something is wrong"],status:404);
-        }
+        $packages = Package::all();
+        return response()->json($packages, Response::HTTP_OK);
     }
 }

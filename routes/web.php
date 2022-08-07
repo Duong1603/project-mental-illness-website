@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\OverviewController;
+use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\SendEmailController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +16,7 @@ Route::get('/logout', [AdminController::class, "getLogout"])->name('admin.getLog
 
 Route::group([
     "namespace" => "Admin",
-    "middleware" => "AuthAdmin",
+    // "middleware" => "AuthAdmin",
     "prefix" => "/admin"
 ], function () {
 
@@ -36,6 +37,17 @@ Route::group([
         Route::post('/update/{id}', [PostController::class, "update"]);
         Route::get('/delete/{id}', [PostController::class, "delete"]);
         Route::get('/', [PostController::class, "index"])->name('posts.index');
+    });
+
+    Route::group([
+        'prefix' => '/packages',
+    ], function () {
+        Route::get('/create', [PackageController::class, 'create']);
+        Route::post('/create', [PackageController::class, 'store']);
+        Route::get('/update/{id}', [PackageController::class, "edit"]);
+        Route::post('/update/{id}', [PackageController::class, "update"]);
+        Route::get('/delete/{id}', [PackageController::class, "delete"]);
+        Route::get('/', [PackageController::class, "index"])->name('packages.index');
     });
 
     Route::group([

@@ -179,3 +179,12 @@ main[role=main] h2 {
         padding-left: 30px;
     }
 }
+
+table {
+    table-layout:fixed;
+}
+table td {
+    width: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

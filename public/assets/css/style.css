@@ -21446,3 +21446,15 @@ input.switch:checked::after {
   font-size: 2rem;
   color: var(--bs-blue);
 }
+
+.package-table {
+  table-layout:fixed;
+}
+.package-table td {
+  width: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.package-table .description{
+  white-space: normal;
+}

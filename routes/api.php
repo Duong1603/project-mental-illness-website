@@ -28,20 +28,19 @@ use App\Models\Category;
 // -------------------------Package/ Session--------------------------------
 Route::get('/package', [ApiPackageController::class, 'all']);
 Route::get('/package/{id}', [ApiPackageController::class, 'get']);    
-Route::get('/booking', [BookingAPIController::class, 'getBooking']);
-Route::post('/add-booking',[BookingAPIController::class,'addBooking']);
+
+Route::get('/booking', [BookingAPIController::class, 'index']);
+Route::post('/add-booking',[BookingAPIController::class,'store']);
+
 Route::delete('/delete-booking/{id}',[BookingAPIController::class,'deleteBooking']);
 
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 Route::group([
     'namespace' => 'Api',
     'prefix' => 'contact'
 ], function () {
     Route::post('/', [ContactAPIController::class, 'store']);
 });
+
 Route::get('orders', [OrderController::class, 'index']);
 Route::get('/payment-qr',[PaymentController::class,'momoQrPayment']);
 Route::get('/payment',[PaymentController::class,'momoPayment']);

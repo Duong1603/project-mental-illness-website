@@ -9,7 +9,7 @@ class Order extends Model
 {
     use HasFactory;
     
-   
+    protected $fillable = ['start_meeting','end_meeting','problem'];
 
     public function type()
     {

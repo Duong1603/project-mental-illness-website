@@ -8,8 +8,9 @@
 </head>
 <body>
     <div>
-        <h1>{{ $data['title'] }}</h1>
-        <h5>{{$data ['body']}}</h5>
+        {{-- success contact --}}
+        {{-- <h1>{{ $data['title'] }}</h1> --}}
+        {{-- <p>{{$data ['body']}}</p> --}}
     </div>
 </body>
 </html>

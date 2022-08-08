@@ -7,9 +7,11 @@ use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\OverviewController;
 use App\Http\Controllers\Admin\SendEmailController;
+use App\Http\Controllers\Admin\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/login', [AdminController::class, "getLogin"])->name('admin.getLogin');
+
+Route::get('/', [AdminController::class, "getLogin"])->name('admin.getLogin');
 Route::post('/login', [AdminController::class, "postLogin"])->name('admin.postLogin');
 Route::get('/logout', [AdminController::class, "getLogout"])->name('admin.getLogout');
 
@@ -46,3 +48,13 @@ Route::group([
 });
 Route::get('/contact', [SendEmailController::class, 'index']);
 Route::post('/send', [SendEmailController::class, 'send'])->name('email.send');
+
+
+// _--------------------RESET PASSWORD--------------------
+// Route::get('/forgot', [ResetPasswordController::class, "forgot"]);
+
+Route::prefix("/forgot")->group(function() {
+    Route::get("", [ResetPasswordController::class, "verifyResetPwdRequest"]);
+    Route::post("", [ResetPasswordController::class, "generateToken"]);
+});
+Route::post("/account/update-password", [ResetPasswordController::class, "updatePassword"])->name("update-password");

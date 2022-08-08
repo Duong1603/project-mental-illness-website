@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\HandleFormRequest;
+use App\Jobs\SendMail;
 use App\Mail\UserEmail;
 use App\Models\Contact;
 use App\Models\User;
@@ -24,12 +25,15 @@ class ContactAPIController extends Controller
 
         $data = [
             'title' => 'Hello mr/ms ' . $request->name,
-            'body' => 'Thank you for your connecting Have a nice day! '
+            'body' => 'Thank you for your connecting Have a nice day! ',
+            'email' => 'CONTACT_EMAIL'
         ];
 
-        Mail::to($request->email)->send(new UserEmail($data));
+        $dataAdmin = [];
+        
+        SendMail::dispatch($request->email, $data, $dataAdmin);
 
-        if ($user && $contact) {
+        if ($user) {
             return response()->json(["status" => 200, "success" => true, "message" => "Thank for your submit we will connect you soon"]);
         } else {
             return response()->json(["status" => 400, "success" => false, "message" => "Whoops! failed to submit."]);

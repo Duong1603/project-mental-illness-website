@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\HandleFormRequest;
 use App\Http\Resources\BookingResource;
+use App\Jobs\SendMail;
 use App\Models\Order;
 use App\Models\User;
+
 
 class BookingAPIController extends Controller
 {
@@ -19,7 +21,7 @@ class BookingAPIController extends Controller
             'data' => BookingResource::collection($bookings)
         ];
     }
-    
+
     public function store(HandleFormRequest $request)
     {
 
@@ -40,13 +42,19 @@ class BookingAPIController extends Controller
                 $order->doctor_id = config('constants.DEFAULT_DOCTOR');
                 $order->status = config('constants.WAITING_APPROVED');
                 $order->save();
-
             }
         } catch (\Illuminate\Database\QueryException $exception) {
 
             return response()->json(["status" => $exception]);
-
         }
+
+        $data = [
+            'user' => $order->user_id,
+            'start_meeting' => $order->start_meeting,
+            'end_meeting' => $order->end_meeting,
+        ];
+        $dataAdmin = ['message' => "There are a user just booked your system"];
+        SendMail::dispatch($user->email, $data, $dataAdmin);
 
         return response()->json(["status" => $order]);
     }
@@ -57,6 +65,5 @@ class BookingAPIController extends Controller
         $booking =  Order::find($id);
         $booking->delete();
         return ['status' => 'ok', 'msg' => 'Delete successed'];
-
     }
 }

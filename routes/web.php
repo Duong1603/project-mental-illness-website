@@ -3,7 +3,6 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PostController;
-use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\OverviewController;
 use App\Http\Controllers\Admin\SendEmailController;
@@ -42,7 +41,9 @@ Route::group([
         'prefix' => '/bookings',
     ], function () {
         Route::get('/', [OrderController::class, "index"])->name('bookings.index');
+        Route::patch('/update/{id}',[OrderController::class,'update'])->name('bookings.update');
     });
+
 });
 Route::get('/contact', [SendEmailController::class, 'index']);
 Route::post('/send', [SendEmailController::class, 'send'])->name('email.send');

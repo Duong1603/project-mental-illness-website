@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendMail;
 use App\Models\Order;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,74 +18,35 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::with('type','user','link')->paginate(15);
+        $orders = Order::with('type', 'user', 'link')->paginate(15);
         return view('admin.bookings.index', ['bookings' => $orders]);
-
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function update(Request $request)
     {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        try {
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Order $order)
-    {
-        //
-    }
+            $order = Order::findOrFail($request->id);
+            $order->status = $request->status;
+            $order->save();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Order $order)
-    {
-        //
-    }
+            $email = $order->user->email;
+            $data = [
+                'email' => "CONFIRM_EMAIL",
+                'link_google_meet', $order->link->link_gg_meet,
+                'start' => $order->start_meeting,
+                'end' => $order->end_meeting,
+                'doctor' => $order->doctor->name
+            ];
+            $dataAdmin = [];
+        } catch (ModelNotFoundException $exception) {
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Order $order)
-    {
-        //
-    }
+            return response()->json(['data' => $exception]);
+        }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Order $order)
-    {
-        //
+        SendMail::dispatch($email, $data, $dataAdmin);
+
+        return response()->json(['data' => '200']);
     }
 }

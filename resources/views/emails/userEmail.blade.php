@@ -9,6 +9,7 @@
 <body>
     <div>
         {{-- success contact --}}
+        just contact email
         {{-- <h1>{{ $data['title'] }}</h1> --}}
         {{-- <p>{{$data ['body']}}</p> --}}
     </div>

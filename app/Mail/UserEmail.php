@@ -27,7 +27,7 @@ class UserEmail extends Mailable
      */
     public function build()
     {
-        return $this->subject("Thank you for your contact to ".env("APP_NAME"))
+        return $this->subject(config('constants.CONTACT_EMAIL'))
             ->view('emails.userEmail');
     }
 }

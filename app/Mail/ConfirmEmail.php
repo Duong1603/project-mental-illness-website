@@ -7,10 +7,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class AdminEmail extends Mailable
+class ConfirmEmail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $data;
+    protected $data;
+
     /**
      * Create a new message instance.
      *
@@ -28,7 +29,6 @@ class AdminEmail extends Mailable
      */
     public function build()
     {
-        return $this->subject("[Phi Phi System] new information")
-        ->view('emails.adminEmail');
+        return $this->subject(config('constants.CONFIRM_EMAIL'))->view('emails.confirmBook');
     }
 }

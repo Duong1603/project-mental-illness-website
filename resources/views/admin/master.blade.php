@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+    @yield('custom_css')
 </head>
 
 <body>
@@ -48,6 +49,7 @@
     <!-- End custom js for this page -->
     <!-- Upload file -->
     <script src="/../../assets/js/file-upload.js"></script>
+    @yield('custom_js')
 </body>
 
 </html>

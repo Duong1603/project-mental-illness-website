@@ -46,23 +46,39 @@
                                                 <td>{{ $booking->type->name }} </td>
                                                 <td>
                                                     @if ($booking->status == config('constants.APPROVED'))
-                                                        <label class="badge badge-gradient-danger">{{$booking->status}}</label>
+                                                        <button onclick="handleChangeState(1)"
+                                                            class="badge badge-gradient-danger">{{ $booking->status }}</button>
                                                     @elseif ($booking->status == config('constants.REJECTED'))
-                                                        <label class="badge badge-gradient-info">{{$booking->status}}</label>
+                                                        <button onclick="handleChangeState"
+                                                            class="badge badge-gradient-info">{{ $booking->status }}</button>
                                                     @elseif ($booking->status == config('constants.WAITING_APPROVED'))
-                                                        <label class="badge badge-gradient-warning">{{$booking->status}}</label>
+                                                        <button onclick="handleChangeState(1)"
+                                                            class="badge badge-gradient-warning">{{ $booking->status }}</button>
                                                     @endif
                                                 </td>
-                                                <td><a class="tag" href="{{ $booking->link->link_gg_meet }}">Link</a></td>
+                                                <td><a class="tag" href="{{ $booking->link->link_gg_meet }}">Link</a>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     @endforeach
                                 </table>
+                                {{ $bookings->links() }}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- main-panel ends -->
+        <button class="btn btn-primary" onclick="">
+            Click me
+        </button>
+        @include('modal.modal')
+    @endsection
+
+    @section('custom_css')
+    @endsection
+
+    @section('custom_js')
+    <script src="/assets/js/modal.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @endsection

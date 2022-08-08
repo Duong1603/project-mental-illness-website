@@ -23,4 +23,8 @@ class Order extends Model
     {
         return $this->belongsTo(LinkGoogleMeet::class, 'link_google_meet_id', 'id');
     }
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class);
+    }
 }

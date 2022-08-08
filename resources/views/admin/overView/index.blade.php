@@ -36,5 +36,4 @@
             </div>
         </div>
     </div>
-    <!-- main-panel ends -->
     @endsection

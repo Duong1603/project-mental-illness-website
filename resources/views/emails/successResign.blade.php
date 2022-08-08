@@ -18,12 +18,12 @@
         <p>We record your chose</p>
         <p>Information about the meeting</p>
         <ul>
-            <li>
+            {{-- <li>
                 start: {{$data['start_meeting']}}
             </li>
             <li>
                 end: {{$data['end_meeting']}}
-            </li>
+            </li> --}}
         </ul>
         <p>
             We will contact you soon to confirm time the meeting with our doctor

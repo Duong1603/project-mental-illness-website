@@ -9,25 +9,51 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
+
+    <style>
+         .container{
+      margin-top:20% ;
+      width: 40%;
+    }
+   .content_resign{
+      margin: auto;
+      text-align: center;
+      padding-left: 50px;
+/* left: 10px; */
+  text-align: justify;
+  line-height: normal;
+   }
+   .content_resign ul{
+    list-style: none;
+   }
+   .title_confirm-book{
+    color: #09474B;
+   }
+    </style>
     <body>
-
-        {{-- booking success --}}
-        <h1>Dear mr/ms {{$data['user']}}</h1>
-
-        <p>This is a system email</p>
+        <div class="container resign">
+        <h3 class="title_confirm-book">Dear mr/ms data'user'</h3>
+<div class="content_resign " >
+<p>This is a system email</p>
         <p>We record your chose</p>
         <p>Information about the meeting</p>
         <ul>
             <li>
-                start: {{$data['start_meeting']}}
+                Start: data'start_meeting'
             </li>
             <li>
-                end: {{$data['end_meeting']}}
+                End: data'end_meeting'
             </li>
         </ul>
         <p>
             We will contact you soon to confirm time the meeting with our doctor
         </p>
+        <div class="card-footer text-info content">Buil website by student at PNV </div>
+  </div>
+</div>
+        </div>
+
+       
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

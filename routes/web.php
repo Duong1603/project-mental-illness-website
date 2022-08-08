@@ -58,7 +58,7 @@ Route::get('/designSendmail2', function () {
     return view('emails.successResign');
 });
 
-Route::get('/designSendmail2', function () {
+Route::get('/designSendmail3', function () {
     return view('emails.userEmail');
 });
 Route::get('/master', function () {

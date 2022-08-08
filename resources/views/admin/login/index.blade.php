@@ -9,12 +9,7 @@
     <!-- plugins:css -->
     <link rel="stylesheet" href="/../../assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="/../../assets/vendors/css/vendor.bundle.base.css">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
-    <!-- Layout styles -->
+    
     <link rel="stylesheet" href="/../../assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="/../../assets/images/favicon.ico" />
@@ -54,7 +49,7 @@
                                         <label class="form-check-label text-muted">
                                             <input type="checkbox" class="form-check-input"> Keep me signed in </label>
                                     </div>
-                                    <a href="#" class="auth-link text-black">Forgot password?</a>
+                                    <a href="/forgot" class="auth-link text-black">Forgot password?</a>
                                 </div>
                                 <div class="text-center mt-4 font-weight-light"> Don't have an account? <a
                                         href="#" class="text-primary">Create</a>

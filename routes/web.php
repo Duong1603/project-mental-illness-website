@@ -46,3 +46,21 @@ Route::group([
 });
 Route::get('/contact', [SendEmailController::class, 'index']);
 Route::post('/send', [SendEmailController::class, 'send'])->name('email.send');
+
+Route::get('/designSendmail', function () {
+    return view('emails.confirmBook');
+});
+Route::get('/designSendmail1', function () {
+    return view('emails.informToAdmin');
+});
+
+Route::get('/designSendmail2', function () {
+    return view('emails.successResign');
+});
+
+Route::get('/designSendmail2', function () {
+    return view('emails.userEmail');
+});
+Route::get('/master', function () {
+    return view('emails.master');
+});

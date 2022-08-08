@@ -1,15 +1,6 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  <body>
+@extends('emails.master')
+@section('emails.content')
+  <!-- <body>
       dear Mr,
       we are going meeting wity yy at: ........
       Tink is link: <a>link google meet</a>
@@ -22,10 +13,63 @@
 
         make by pnv()
       </footer>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
   </body>
-</html>
+</html> -->
+
+<body style="background-color: rgb(136,189,191)">
+        <div class="form">
+            <div>
+                <img class="" alt="logo" src="http://imgur.com/VCdfPKq" width="10%">           
+            </div>
+        
+            <div class="form-small"; style="padding: 0px">
+                <div>
+                    <img class="mail-image" alt="top image" src="http://imgur.com/jc0kp97" width="">
+                </div>
+                <h1 class="h1-font">Email Confirmation<h1>
+                <p class="p-font">Hey @user, you're almost ready to start enjoying <b>Elephantry</b>.  
+                Simply click the BIG yellow button below to verify your email address.</p>
+                <div class="wrapper">
+                    <a class="button" href="#">Verify email address</a>
+                </div>
+
+                <!-- Filter: https://css-tricks.com/gooey-effect/ -->
+                <svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                    <defs>
+                        <filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />    
+                            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                            <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+                        </filter>
+                    </defs>
+                </svg>               
+            </div>
+
+            <div>
+                <h3 class="contact-font">Stay in touch<h3>
+
+                <div class="social-buttons">
+                    <a class="social-button facebook" href="#">
+                        <i class="fa fa-facebook">
+                        </i>
+                    </a>
+                    
+                    <a class="social-button twitter" href="#">
+                        <i class="fa fa-twitter">
+                        </i>
+                    </a>
+                    
+                    <a class="social-button google" href="#">
+                        <i class="fa fa-google">
+                        </i>
+                    </a>
+                </div>
+
+                <p class="p-footer">Email sent by Elephantry.com <br>
+                Copyright © 2017 Elephantry Inc. All rights reserved</p>
+            </div>
+        </div>
+
+       
+    </body>
+@endsection

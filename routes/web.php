@@ -10,7 +10,7 @@ use App\Http\Controllers\Admin\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', [AdminController::class, "getLogin"])->name('admin.getLogin');
+Route::get('/login', [AdminController::class, "getLogin"])->name('admin.getLogin');
 Route::post('/login', [AdminController::class, "postLogin"])->name('admin.postLogin');
 Route::get('/logout', [AdminController::class, "getLogout"])->name('admin.getLogout');
 
@@ -43,7 +43,8 @@ Route::group([
         'prefix' => '/bookings',
     ], function () {
         Route::get('/', [OrderController::class, "index"])->name('bookings.index');
-        Route::patch('/update/{id}',[OrderController::class,'update'])->name('bookings.update');
+        Route::get('/update/{id}',[OrderController::class,'update'])->name('bookings.update');
+    
     });
 
 });
@@ -59,3 +60,7 @@ Route::prefix("/forgot")->group(function() {
     Route::post("", [ResetPasswordController::class, "generateToken"]);
 });
 Route::post("/account/update-password", [ResetPasswordController::class, "updatePassword"])->name("update-password");
+Route::get('time',function(){
+    return view('admin.bookings.updateTime');
+});
+// Route::get('change-time',[OrderController::class,'update'])

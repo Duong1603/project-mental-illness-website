@@ -25,9 +25,14 @@ class OrderController extends Controller
     public function update(Request $request)
     {
 
+
         try {
 
             $order = Order::findOrFail($request->id);
+            if ($request->query('status') === 'change') {
+                return view('admin.bookings.updateTime', compact('order'));
+            }
+
             $order->status = $request->status;
             $order->save();
 
@@ -45,8 +50,9 @@ class OrderController extends Controller
             return response()->json(['data' => $exception]);
         }
 
-        SendMail::dispatch($email, $data, $dataAdmin);
+        // SendMail::dispatch($email, $data, $dataAdmin);
 
-        return response()->json(['data' => '200']);
+        return redirect()->back();
     }
+
 }

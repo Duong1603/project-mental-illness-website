@@ -49,6 +49,7 @@ class BookingAPIController extends Controller
         }
 
         $data = [
+            'email'=> 'RESIGN_EMAIL',
             'user' => $order->user_id,
             'start_meeting' => $order->start_meeting,
             'end_meeting' => $order->end_meeting,
@@ -61,9 +62,8 @@ class BookingAPIController extends Controller
 
     public function delete($id)
     {
-
         $booking =  Order::find($id);
         $booking->delete();
         return ['status' => 'ok', 'msg' => 'Delete successed'];
     }
-}
+}   

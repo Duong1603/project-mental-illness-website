@@ -46,13 +46,13 @@
                                                 <td>{{ $booking->type->name }} </td>
                                                 <td>
                                                     @if ($booking->status == config('constants.APPROVED'))
-                                                        <button onclick="handleChangeState(1)"
+                                                        <button 
                                                             class="badge badge-gradient-danger">{{ $booking->status }}</button>
                                                     @elseif ($booking->status == config('constants.REJECTED'))
-                                                        <button onclick="handleChangeState"
+                                                        <button     
                                                             class="badge badge-gradient-info">{{ $booking->status }}</button>
                                                     @elseif ($booking->status == config('constants.WAITING_APPROVED'))
-                                                        <button onclick="handleChangeState(1)"
+                                                        <button onclick="handleChangeState({{$booking->id}})"
                                                             class="badge badge-gradient-warning">{{ $booking->status }}</button>
                                                     @endif
                                                 </td>
@@ -79,6 +79,6 @@
     @endsection
 
     @section('custom_js')
-    <script src="/assets/js/modal.js"></script>
+        <script src="/assets/js/modal.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @endsection

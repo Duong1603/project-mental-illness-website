@@ -15,7 +15,6 @@ class ContactAPIController extends Controller
 
     public function store(HandleFormRequest $request)
     {
-
         $user = new User($request->all());
         $user->save();
 
@@ -29,8 +28,13 @@ class ContactAPIController extends Controller
             'email' => 'CONTACT_EMAIL'
         ];
 
-        $dataAdmin = [];
-        
+        $dataAdmin = [
+            'type' => 'Customer contact to website',
+            'customer' => $request->name,
+            'problem' => $contact->problem,
+            'time' => $contact->created_at
+        ];
+
         SendMail::dispatch($request->email, $data, $dataAdmin);
 
         if ($user) {

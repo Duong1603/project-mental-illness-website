@@ -24,9 +24,9 @@
 
 <body>
     <div class="container user__email">
-        <h3>Data'title'</h3>
+        <h3> {{$data['title']}} </h3>
         <div class=" useremail">
-            <p>Data 'body'</p>
+            <p> {{$data['body']}} </p>
             <div class="card-footer text-info content">Buil website by student at PNV </div>
         </div>
     </div>

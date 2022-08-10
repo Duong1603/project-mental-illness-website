@@ -1,13 +1,24 @@
-@extends('master')
+@extends('emails.master')
 @section('content')
     <div class="container">
         <div>
             <h2> Hey Phi Phi, </h2>
         </div>
         <div>
-            {{-- <h4> Feedback từ khách hàng  {{ $data['name'] }}</h4>
-            <h4> Message: {{ $data['message'] }}</h4> --}}
-        </div>
+            <h4> There are a new message from system</h4>
+            <p>Type: {{ $data['type'] }}</p>
+            <p>Customer: {{ $data['customer'] }}</p>
+            <p>{{ isset($data['problem']) ? $data['problem'] : '' }}</p>
+            <p>{{ isset($data['time']) ? $data['time'] : '' }}</p>
 
-</div>
+            Time from customer:
+            @isset($data['times'])
+                @foreach ($data['items'] as $item)
+                    start: {{ $item->start_meeting }}
+                    end: {{ $item->end_meeting }}
+                    link: {{ $item->link->link_gg_meet }}
+                @endforeach
+            @endisset
+        </div>
+    </div>
 @endsection

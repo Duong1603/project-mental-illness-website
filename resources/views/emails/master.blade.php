@@ -10,7 +10,7 @@
   
 </head>
 <body>
-@yield('emails.content')
+@yield('content')
 
 @include('emails.script')
 </body>

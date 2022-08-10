@@ -10,25 +10,29 @@ use Illuminate\Queue\SerializesModels;
 class AdminEmail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $data;
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
+    protected $data;
+
+    const MESSAGE_ADMIN = [
+        'type' => '',
+        'customer' => '',
+
+        'feedback' => '',
+
+        'start_time' => '',
+        'end_time' => '',
+        'link' => '',
+
+        'QR_code' => ''
+    ];
+
     public function __construct($data)
     {
         $this->data = $data;
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
     public function build()
     {
         return $this->subject("[Phi Phi System] new information")
-        ->view('emails.adminEmail');
+            ->view('emails.adminEmail');
     }
 }

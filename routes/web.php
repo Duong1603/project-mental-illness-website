@@ -64,3 +64,6 @@ Route::get('time',function(){
     return view('admin.bookings.updateTime');
 });
 // Route::get('change-time',[OrderController::class,'update'])
+Route::get('/index',function(){
+    return view('emails.adminEmail');
+});

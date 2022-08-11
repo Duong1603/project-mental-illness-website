@@ -39,10 +39,11 @@ class OrderController extends Controller
             $email = $order->user->email;
             $data = [
                 'email' => "CONFIRM_EMAIL",
-                'link_google_meet', $order->link->link_gg_meet,
+                'customer' => $order->user->name,
+                'package' => $order->type->name,
                 'start' => $order->start_meeting,
                 'end' => $order->end_meeting,
-                'doctor' => $order->doctor->name
+                'link' => $order->link->link_gg_meet
             ];
             $dataAdmin = [];
         } catch (ModelNotFoundException $exception) {
@@ -50,9 +51,8 @@ class OrderController extends Controller
             return response()->json(['data' => $exception]);
         }
 
-        // SendMail::dispatch($email, $data, $dataAdmin);
+        SendMail::dispatch($email, $data, $dataAdmin);
 
         return redirect()->back();
     }
-
 }

@@ -48,3 +48,4 @@ Route::get('search/{id}', [SearchAPIController::class, 'searchCategory']);
 Route::get('/posts/search', [SearchAPIController::class, 'search']);
 Route::get('/categories', [SearchAPIController::class, 'statistical']);
 
+Route::get('/abc',[ContactAPIController::class, 'store']);

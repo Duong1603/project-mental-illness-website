@@ -5,15 +5,15 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\HandleFormRequest;
 use App\Jobs\SendMail;
-use App\Mail\UserEmail;
 use App\Models\Contact;
 use App\Models\User;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\Request;
 
 class ContactAPIController extends Controller
 {
 
-    public function store(HandleFormRequest $request)
+    // public function store(HandleFormRequest $request)
+    public function store(Request $request)
     {
         $user = new User($request->all());
         $user->save();
@@ -23,16 +23,15 @@ class ContactAPIController extends Controller
         $contact->save();
 
         $data = [
-            'title' => 'Hello mr/ms ' . $request->name,
-            'body' => 'Thank you for your connecting Have a nice day! ',
+            'customer' =>  $request->name,
+            'content' => 'Thank you for your connecting Have a nice day! ',
             'email' => 'CONTACT_EMAIL'
         ];
 
         $dataAdmin = [
-            'type' => 'Customer contact to website',
-            'customer' => $request->name,
-            'problem' => $contact->problem,
-            'time' => $contact->created_at
+            'type' => "Customer contact to website",
+            'customer' =>  $request->name,
+            'problem' => $request->problem,
         ];
 
         SendMail::dispatch($request->email, $data, $dataAdmin);

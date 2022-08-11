@@ -1,35 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <title>Email user</title>
-</head>
-<style>
-    .user__email {
-        margin-top: 10%;
-        width: 40%;
-    }
-
-    .useremail {
-        margin: auto;
-        text-align: center;
-        text-align: justify;
-    }
-</style>
-
-<body>
+@extends('emails.master')
+@section('content')
     <div class="container user__email">
-        <h3> {{$data['title']}} </h3>
+        <h3>Dear Mr/ms {{ $data['customer'] }} </h3>
         <div class=" useremail">
-            <p> {{$data['body']}} </p>
-            <div class="card-footer text-info content">Buil website by student at PNV </div>
+            <p> {{ $data['content'] }} </p>
         </div>
     </div>
-</body>
+    @include('emails.footer')
+@endsection
+@section('custom_css')
+    <style>
+        .user__email {
+            margin-top: 10%;
+            width: 40%;
+        }
 
-</html>
+        .useremail {
+            margin: auto;
+            text-align: center;
+            text-align: justify;
+        }
+    </style>
+@endsection

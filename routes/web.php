@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\OverviewController;
 use App\Http\Controllers\Admin\SendEmailController;
 use App\Http\Controllers\Admin\ResetPasswordController;
+use App\Http\Controllers\Api\DebugController;
 use Illuminate\Support\Facades\Route;
 
 

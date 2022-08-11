@@ -10,25 +10,16 @@ use Illuminate\Queue\SerializesModels;
 class AdminEmail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $details;
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public function __construct($details)
+    public $data;
+
+    public function __construct($data)
     {
-        $this->details = $details;
+        $this->data = $data;
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
     public function build()
     {
-        return $this->subject("Email đánh giá của khách hàng")
-        ->view('emails.adminEmail');
+        return $this->subject("[Phi Phi System] new information")
+            ->view('emails.adminEmail');
     }
 }

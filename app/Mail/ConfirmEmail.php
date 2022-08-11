@@ -3,13 +3,15 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class UserEmail extends Mailable
+class ConfirmEmail extends Mailable
 {
     use Queueable, SerializesModels;
     public $data;
+
     /**
      * Create a new message instance.
      *
@@ -27,7 +29,6 @@ class UserEmail extends Mailable
      */
     public function build()
     {
-        return $this->subject(config('constants.CONTACT_EMAIL'))
-            ->view('emails.userEmail');
+        return $this->subject(config('constants.CONFIRM_EMAIL'))->view('emails.confirmBook');
     }
 }

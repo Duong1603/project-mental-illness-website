@@ -18,7 +18,7 @@ class SendMail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $email, $data, $dataAdmin;
+    public $email, $data, $dataAdmin;
 
     public function __construct($email, $data, $dataAdmin)
     {
@@ -30,12 +30,13 @@ class SendMail implements ShouldQueue
     public function handle()
     {
         $mail =  Mail::to($this->email);
-        if ($this->data['email'] == 'RESIGN_EMAIL') {
+        if ($this->data['email'] === 'RESIGN_EMAIL') {
             $mail->send(new BookingEmail($this->data));
-        } else if ($this->data['email'] == 'CONTACT_EMAIL') {
+        } else if ($this->data['email'] === 'CONTACT_EMAIL') {
             $mail->send(new UserEmail($this->data));
         } else {
             $mail->send(new ConfirmEmail($this->data));
+            return;
         }
         Mail::to(env('ADMIN_EMAIL'))->send(new AdminEmail($this->dataAdmin));
     }

@@ -48,39 +48,29 @@ class BookingAPIController extends Controller
             return response()->json(["status" => $exception]);
         };
 
-        $countTimes = Order::where('user_id', '=', $user->id);
+        $countTimes = Order::where('user_id', '=', $user->id)->get();
 
         $data = [
-            'email' => 'RESIGN_EMAIL',
-            'user' => $order->user_id,
+            'email' => "RESIGN_EMAIL",
+            'customer' => "hieu",
             'times' => $countTimes,
-            'qrCode' => $order->type->qr_code
+            'package' => $countTimes[0]->type->name,
+            'qrCode' => "code1.png",
+            'price' => $countTimes[0]->type->price
         ];
 
         $dataAdmin = [
-            'type' => "Customer booking",
+            'type' => "test",
             'customer' => $user->name,
-            'package' => $countTimes[0]->type->name,
+            'problem' => $countTimes[0]->problem,
             'times' => $countTimes,
+            'package' => $countTimes[0]->type->name,
         ];
 
         SendMail::dispatch($user->email, $data, $dataAdmin);
 
         return response()->json(["status" => $order]);
     }
-    const MESSAGE_ADMIN = [
-        'type' => '',
-        'customer' => '',
-
-        'feedback' => '',
-
-        'start_time' => '',
-        'end_time' => '',
-        'link' => '',
-        'package' => '',
-
-        'qr_code' => ''
-    ];
     public function delete($id)
     {
         $booking =  Order::find($id);

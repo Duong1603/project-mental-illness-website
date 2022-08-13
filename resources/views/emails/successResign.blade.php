@@ -1,7 +1,7 @@
 @extends('emails.master')
 @section('content')
     <div class="container resign">
-        <h3 class="title_confirm-book">Dear mr/ms fffff {{ isset($data['customer']) ? $data['customer'] : 'unknown' }}
+        <h3 class="title_confirm-book">Dear Mr/Ms {{ isset($data['customer']) ? $data['customer'] : 'unknown' }}
         </h3>
         <div class="content_resign ">
             <p>This is a system email</p>
@@ -34,7 +34,6 @@
             @if ($data['price'] != 0)
                 <p>Please scan this qr code to pay for package:</p>
                 <img src="{{ env('APP_URL') . '/img/qr-code/' . $data['qrCode'] }}" />
-                {{-- <img src="{{env('APP_URL')/img/$data['qr-code']}}"/> --}}
             @endif
             <div class="card-footer text-info content">Buil website by student at PNV </div>
         </div>

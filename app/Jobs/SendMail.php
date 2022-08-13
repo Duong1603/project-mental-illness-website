@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Mail\AdminEmail;
 use App\Mail\BookingEmail;
+use App\Mail\ChangeTimeEmail;
 use App\Mail\ConfirmEmail;
 use App\Mail\UserEmail;
 use Illuminate\Bus\Queueable;
@@ -34,6 +35,9 @@ class SendMail implements ShouldQueue
             $mail->send(new BookingEmail($this->data));
         } else if ($this->data['email'] === 'CONTACT_EMAIL') {
             $mail->send(new UserEmail($this->data));
+        } else if ($this->data['email'] === 'CHANGE_TIME_EMAIL') {
+            $mail->send(new ChangeTimeEmail($this->data));
+            return;
         } else {
             $mail->send(new ConfirmEmail($this->data));
             return;

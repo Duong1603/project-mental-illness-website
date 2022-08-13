@@ -3,6 +3,11 @@
     <!-- partial -->
     <div class="main-panel">
         <div class="content-wrapper">
+            @if (Session::has('message'))
+                <div class="alert alert-success" role="alert">
+                    {{ Session::get('message') }}
+                </div>
+            @endif
             <div class="page-header">
                 <h3 class="page-title">
                     <span class="page-title-icon bg-gradient-primary text-white me-2">
@@ -46,13 +51,13 @@
                                                 <td>{{ $booking->type->name }} </td>
                                                 <td>
                                                     @if ($booking->status == config('constants.APPROVED'))
-                                                        <button 
+                                                        <button
                                                             class="badge badge-gradient-danger">{{ $booking->status }}</button>
                                                     @elseif ($booking->status == config('constants.REJECTED'))
-                                                        <button     
+                                                        <button
                                                             class="badge badge-gradient-info">{{ $booking->status }}</button>
                                                     @elseif ($booking->status == config('constants.WAITING_APPROVED'))
-                                                        <button onclick="handleChangeState({{$booking->id}})"
+                                                        <button onclick="handleChangeState({{ $booking->id }})"
                                                             class="badge badge-gradient-warning">{{ $booking->status }}</button>
                                                     @endif
                                                 </td>
@@ -69,9 +74,6 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-primary" onclick="">
-            Click me
-        </button>
         @include('modal.modal')
     @endsection
 

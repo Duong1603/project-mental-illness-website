@@ -44,10 +44,9 @@ Route::group([
         'prefix' => '/bookings',
     ], function () {
         Route::get('/', [OrderController::class, "index"])->name('bookings.index');
-        Route::get('/update/{id}',[OrderController::class,'update'])->name('bookings.update');
-    
+        Route::get('/update/{id}', [OrderController::class, 'update'])->name('bookings.update');    
+        Route::patch('/change-time',[OrderController::class,'changeTime'])->name('changeTime');
     });
-
 });
 Route::get('/contact', [SendEmailController::class, 'index']);
 Route::post('/send', [SendEmailController::class, 'send'])->name('email.send');
@@ -56,12 +55,11 @@ Route::post('/send', [SendEmailController::class, 'send'])->name('email.send');
 // _--------------------RESET PASSWORD--------------------
 // Route::get('/forgot', [ResetPasswordController::class, "forgot"]);
 
-Route::prefix("/forgot")->group(function() {
+Route::prefix("/forgot")->group(function () {
     Route::get("", [ResetPasswordController::class, "verifyResetPwdRequest"]);
     Route::post("", [ResetPasswordController::class, "generateToken"]);
 });
 Route::post("/account/update-password", [ResetPasswordController::class, "updatePassword"])->name("update-password");
-Route::get('time',function(){
-    return view('admin.bookings.updateTime');
-});
-// Route::get('change-time',[OrderController::class,'update'])
+Route::get('error',function(){
+    return view('admin.error');
+})->name('error');

@@ -7,16 +7,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ConfirmEmail extends Mailable
+class ChangeTimeEmail extends Mailable
 {
     use Queueable, SerializesModels;
     public $data;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
     public function __construct($data)
     {
         $this->data = $data;
@@ -24,6 +19,7 @@ class ConfirmEmail extends Mailable
 
     public function build()
     {
-        return $this->subject(config('constants.CONFIRM_EMAIL'))->view('emails.confirmBook');
+        $this->subject(config('constant.CHANGE_TIME_EMAIL'))
+        ->view('emails.changeTime');
     }
 }

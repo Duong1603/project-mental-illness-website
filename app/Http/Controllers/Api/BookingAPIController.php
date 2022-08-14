@@ -18,7 +18,7 @@ class BookingAPIController extends Controller
         return [
             'status' => 200,
             'count' => $bookings->count(),
-            'data' => BookingResource::collection($bookings)
+            'data' => BookingResource::collection($bookings)    
         ];
     }
 

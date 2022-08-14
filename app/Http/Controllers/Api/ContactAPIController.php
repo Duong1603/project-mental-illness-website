@@ -12,8 +12,7 @@ use Illuminate\Http\Request;
 class ContactAPIController extends Controller
 {
 
-    // public function store(HandleFormRequest $request)
-    public function store(Request $request)
+    public function store(HandleFormRequest $request)
     {
         $user = new User($request->all());
         $user->save();

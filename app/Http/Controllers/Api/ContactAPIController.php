@@ -7,7 +7,6 @@ use App\Http\Requests\HandleFormRequest;
 use App\Jobs\SendMail;
 use App\Models\Contact;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class ContactAPIController extends Controller
 {

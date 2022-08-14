@@ -18,41 +18,34 @@ class BookingAPIController extends Controller
         return [
             'status' => 200,
             'count' => $bookings->count(),
-            'data' => BookingResource::collection($bookings)    
+            'data' => BookingResource::collection($bookings)
         ];
     }
 
     public function store(HandleFormRequest $request)
     {
 
-        try {
+        $user = new User($request->all());
+        $user->save();
+        $package = $request->package;
+        $problem = $request->problem;
 
-            $user = new User($request->all());
-            $user->save();
-            $package = $request->package;
-            $problem = $request->problem;
-
-            foreach ($request->session as $session) {
-
-                $order = new Order($session);
-                $order->package_id = $package;
-                $order->user_id = $user->id;
-                $order->link_google_meet_id = 1;
-                $order->problem = $problem;
-                $order->doctor_id = config('constants.DEFAULT_DOCTOR');
-                $order->status = config('constants.WAITING_APPROVED');
-                $order->save();
-            }
-        } catch (\Illuminate\Database\QueryException $exception) {
-
-            return response()->json(["status" => $exception]);
-        };
+        foreach ($request->session as $session) {
+            $order = new Order($session);
+            $order->package_id = $package;
+            $order->user_id = $user->id;
+            $order->link_google_meet_id = 1;
+            $order->problem = $problem;
+            $order->doctor_id = config('constants.DEFAULT_DOCTOR');
+            $order->status = config('constants.WAITING_APPROVED');
+            $order->save();
+        }
 
         $countTimes = Order::where('user_id', '=', $user->id)->get();
 
         $data = [
             'email' => "RESIGN_EMAIL",
-            'customer' => "hieu",
+            'customer' => $user->name,
             'times' => $countTimes,
             'package' => $countTimes[0]->type->name,
             'qrCode' => "code1.png",
@@ -70,11 +63,5 @@ class BookingAPIController extends Controller
         SendMail::dispatch($user->email, $data, $dataAdmin);
 
         return response()->json(["status" => $order]);
-    }
-    public function delete($id)
-    {
-        $booking =  Order::find($id);
-        $booking->delete();
-        return ['status' => 'ok', 'msg' => 'Delete successed'];
     }
 }

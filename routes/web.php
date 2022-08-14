@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\OrderController;
@@ -46,6 +47,10 @@ Route::group([
         Route::get('/', [OrderController::class, "index"])->name('bookings.index');
         Route::get('/update/{id}', [OrderController::class, 'update'])->name('bookings.update');    
         Route::patch('/change-time',[OrderController::class,'changeTime'])->name('changeTime');
+    });
+
+    Route::group(['prefix'=>'contact'],function(){
+        Route::get('/',[ContactController::class,'index'])->name('contact.index');
     });
 });
 Route::get('/contact', [SendEmailController::class, 'index']);

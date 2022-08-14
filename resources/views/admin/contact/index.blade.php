@@ -1,18 +1,22 @@
 @extends('admin.master')
 @section('content')
-    <!-- partial -->
     <div class="main-panel">
         <div class="content-wrapper">
+            @if (Session::has('message'))
+                <div class="alert alert-success" role="alert">
+                    {{ Session::get('message') }}
+                </div>
+            @endif
             <div class="page-header">
                 <h3 class="page-title">
                     <span class="page-title-icon bg-gradient-primary text-white me-2">
-                        <i class="mdi mdi-contacts"></i>
-                    </span> Manager Customer
+                        <i class="mdi mdi-clipboard-check"></i>
+                    </span> Booking
                 </h3>
                 <nav aria-label="breadcrumb">
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item active" aria-current="page">
-                            <span></span>Manager Customer <i
+                            <span></span>Booking <i
                                 class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
                         </li>
                     </ul>
@@ -22,42 +26,39 @@
                 <div class="col-12 grid-margin">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Manager Customer</h4>
+                            <h4 class="card-title">Bookings</h4>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th> No </th>
-                                            <th> Customer name </th>
+                                            <th> Customer </th>
                                             <th> Phone </th>
                                             <th> Email </th>
-                                            <th> Type </th>
 
+                                            <th> Create at</th>
+                                            <th> Problem </th>
                                         </tr>
                                     </thead>
-                                    @foreach ($managerCustomer as $managerCus)
+                                    @foreach ($contacts as $contact)
                                         <tbody>
                                             <tr>
-                                                <td>{{ $managerCus->id }}</td>
-                                                <td>{{ $managerCus->name }}</td>
-                                                <td>{{ $managerCus->phone }}</td>
-                                                <td>{{ $managerCus->email }}</td>
+                                                <td>{{ $contact->user->name }}</td>
+                                                <td>{{ $contact->user->phone }}</td>
+                                                <td>{{ $contact->user->email }}</td>
+                                                <td>{{ $contact->created_at }}</td>
                                                 <td>
-                                                    @if ($managerCus->type === 'booking')
-                                                        <p class="btn btn-success"> booking </p>
-                                                    @else
-                                                        <p class="btn btn-warning">contact</p>
-                                                    @endif
+                                                    <p>{{ $contact->problem }}</p>
                                                 </td>
                                             </tr>
                                         </tbody>
                                     @endforeach
                                 </table>
-                                {{-- {!! $managerCustomer->links() !!} --}}
+                                {{ $contacts->links() }}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection

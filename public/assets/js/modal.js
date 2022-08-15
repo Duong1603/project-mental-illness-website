@@ -9,11 +9,6 @@ const modal = (url)=>{
         confirmButtonText: "Yes",
     }).then((result) => {
         if (result.isConfirmed) {
-            Swal.fire(
-                "Success!",
-                "Email is sending for user|Just waiting to send finish ...",
-                "success"
-            );
             window.location.href = url;
         }
     });

@@ -21,4 +21,8 @@ class User extends Model
     {
         return $this->hasOne(Contact::class);
     }
+    public function scopeNewest($query)
+    {
+        return $query->orderBy('created_at','DESC');
+    }
 }

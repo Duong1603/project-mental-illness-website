@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ContactAPIController;
 use App\Http\Controllers\Api\ApiPackageController;
 use App\Http\Controllers\Api\BookingAPIController;
+use App\Http\Controllers\Api\CommentAPIController;
 use App\Http\Controllers\Api\PaymentController;
 use App\Http\Controllers\Api\SearchAPIController;
 use App\Models\Category;
@@ -33,6 +34,8 @@ Route::get('/booking', [BookingAPIController::class, 'index']);
 Route::post('/add-booking',[BookingAPIController::class,'store']);
 
 Route::delete('/delete-booking/{id}',[BookingAPIController::class,'deleteBooking']);
+Route::get('/comment', [CommentAPIController::class, 'index']);
+
 
 Route::group([
     'namespace' => 'Api',

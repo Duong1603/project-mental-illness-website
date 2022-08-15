@@ -11,12 +11,12 @@
                 <h3 class="page-title">
                     <span class="page-title-icon bg-gradient-primary text-white me-2">
                         <i class="mdi mdi-clipboard-check"></i>
-                    </span> Booking
+                    </span> Contact
                 </h3>
                 <nav aria-label="breadcrumb">
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item active" aria-current="page">
-                            <span></span>Booking <i
+                            <span></span>Contact <i
                                 class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
                         </li>
                     </ul>
@@ -26,7 +26,7 @@
                 <div class="col-12 grid-margin">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Bookings</h4>
+                            <h4 class="card-title">Contact</h4>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>

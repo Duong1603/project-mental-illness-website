@@ -61,7 +61,11 @@
                                                             class="badge badge-gradient-warning">{{ $booking->status }}</button>
                                                     @endif
                                                 </td>
-                                                <td><a class="tag" href="{{ $booking->link->link_gg_meet }}">Link</a>
+                                                <td>
+                                                    @if ($booking->status != config('constants.REJECTED'))
+                                                        <a class="tag" href="{{ $booking->link->link_gg_meet }}"> Link
+                                                        </a>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         </tbody>

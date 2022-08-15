@@ -53,7 +53,7 @@
                                         </tbody>
                                     @endforeach
                                 </table>
-                                {{-- {!! $managerCustomer->links() !!} --}}
+                                {!! $managerCustomer->links() !!}
                             </div>
                         </div>
                     </div>

@@ -7,6 +7,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
+
 class HandleFormRequest extends FormRequest
 {
 
@@ -20,7 +21,7 @@ class HandleFormRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|email',
-            'phone' => 'required|regex:/(0)[0-9]{9}/',
+            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'problem' => 'required',
         ];
     }
@@ -32,10 +33,12 @@ class HandleFormRequest extends FormRequest
             'email.required' => 'Please enter your email',
             'phone.required' => 'Please enter your phone',
             'problem.required' => 'Please enter your problem',
+            'phone.regex:/^([0-9\s\-\+\(\)]*)$/' =>'Please enter only number',
+            'phone.min'=> 'Please enter more than nine numbers'
         ];
     }
 
-    protected function failedValidation(Validator $validator) 
+    protected function failedValidation(Validator $validator)
     {
 
         $errors = (new ValidationException($validator))->errors();
@@ -43,6 +46,8 @@ class HandleFormRequest extends FormRequest
             [
                 'error' => $errors,
                 'code' => 422,
-            ], JsonResponse::HTTP_UNPROCESSABLE_ENTITY));
+            ],
+            JsonResponse::HTTP_UNPROCESSABLE_ENTITY
+        ));
     }
 }

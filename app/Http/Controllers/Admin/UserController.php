@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $customers = User::with('order')->paginate(15);
+        $customers = User::with('order')->newest()->paginate(15);
         foreach ($customers as $customer) {
             if ($customer->order != null) {
                 $customer->type = "booking";

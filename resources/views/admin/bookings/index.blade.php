@@ -61,7 +61,11 @@
                                                             class="badge badge-gradient-warning">{{ $booking->status }}</button>
                                                     @endif
                                                 </td>
-                                                <td><a class="tag" href="{{ $booking->link->link_gg_meet }}">Link</a>
+                                                <td>
+                                                    @if ($booking->status != config('constants.REJECTED'))
+                                                        <a class="tag" href="{{ $booking->link->link_gg_meet }}"> Link
+                                                        </a>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -74,13 +78,14 @@
                 </div>
             </div>
         </div>
-        @include('modal.modal')
-    @endsection
+    </div>
+    @include('modal.modal')
+@endsection
 
-    @section('custom_css')
-    @endsection
+@section('custom_css')
+@endsection
 
-    @section('custom_js')
-        <script src="/assets/js/modal.js"></script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    @endsection
+@section('custom_js')
+    <script src="/assets/js/modal.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@endsection

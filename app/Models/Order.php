@@ -27,6 +27,10 @@ class Order extends Model
     {
         return $this->belongsTo(Doctor::class);
     }
+    public function scopeNewest($query)
+    {
+        return $query->orderBy('created_at','DESC');
+    }
     
     // public function checkBookBeforeSave($start,$end)
     // {

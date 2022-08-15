@@ -12,7 +12,7 @@ class OrderController extends Controller
 
     public function index()
     {
-        $orders = Order::with('type', 'user', 'link')->paginate(10);
+        $orders = Order::with('type', 'user', 'link')->newest()->paginate(10);
         return view('admin.bookings.index', ['bookings' => $orders]);
     }
 

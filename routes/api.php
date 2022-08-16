@@ -26,8 +26,8 @@ use App\Models\Category;
 // });
 
 // -------------------------Package/ Session--------------------------------
-Route::get('/package', [ApiPackageController::class, 'all']);
-Route::get('/package/{id}', [ApiPackageController::class, 'get']);    
+Route::get('/package', [ApiPackageController::class, 'index']);
+Route::get('/package/{id}', [ApiPackageController::class, 'show']);    
 
 Route::get('/booking', [BookingAPIController::class, 'index']);
 Route::post('/add-booking',[BookingAPIController::class,'store']);

@@ -10,12 +10,12 @@ use Illuminate\Http\Request;
 
 class ApiPackageController extends Controller
 {
-    public function all()
+    public function index()
     {
         return new PackageCollection(Package::get());
     }
 
-    public function get($id)
+    public function show($id)
     {
         $result = Package::find($id);
         if ($result) {

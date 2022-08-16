@@ -16,6 +16,10 @@ Route::get('/login', [AdminController::class, "getLogin"])->name('admin.getLogin
 Route::post('/login', [AdminController::class, "postLogin"])->name('admin.postLogin');
 Route::get('/logout', [AdminController::class, "getLogout"])->name('admin.getLogout');
 
+Route::get('/', function () {
+    return redirect()->route('overview.index');
+});
+
 Route::group([
     "namespace" => "Admin",
     "middleware" => "AuthAdmin",
@@ -45,12 +49,12 @@ Route::group([
         'prefix' => '/bookings',
     ], function () {
         Route::get('/', [OrderController::class, "index"])->name('bookings.index');
-        Route::get('/update/{id}', [OrderController::class, 'update'])->name('bookings.update');    
-        Route::patch('/change-time',[OrderController::class,'changeTime'])->name('changeTime');
+        Route::get('/update/{id}', [OrderController::class, 'update'])->name('bookings.update');
+        Route::patch('/change-time', [OrderController::class, 'changeTime'])->name('changeTime');
     });
 
-    Route::group(['prefix'=>'contact'],function(){
-        Route::get('/',[ContactController::class,'index'])->name('contact.index');
+    Route::group(['prefix' => 'contact'], function () {
+        Route::get('/', [ContactController::class, 'index'])->name('contact.index');
     });
 });
 Route::get('/contact', [SendEmailController::class, 'index']);
@@ -65,6 +69,6 @@ Route::prefix("/forgot")->group(function () {
     Route::post("", [ResetPasswordController::class, "generateToken"]);
 });
 Route::post("/account/update-password", [ResetPasswordController::class, "updatePassword"])->name("update-password");
-Route::get('error',function(){
+Route::get('error', function () {
     return view('admin.error');
 })->name('error');

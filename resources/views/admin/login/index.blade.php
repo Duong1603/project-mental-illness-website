@@ -9,7 +9,7 @@
     <!-- plugins:css -->
     <link rel="stylesheet" href="/../../assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="/../../assets/vendors/css/vendor.bundle.base.css">
-    
+
     <link rel="stylesheet" href="/../../assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="/../../assets/images/favicon.ico" />
@@ -21,6 +21,20 @@
             <div class="content-wrapper d-flex align-items-center auth">
                 <div class="row flex-grow">
                     <div class="col-lg-4 mx-auto">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        @if (Session::has('message'))
+                        <div class="alert alert-danger">
+                            {{Session::get('message')}}
+                        </div>
+                        @endif
                         <div class="auth-form-light text-left p-5">
                             <div class="brand-logo">
                                 <img src="/../../assets/images/logo.svg">
@@ -31,7 +45,7 @@
                             <form class="pt-3" action="login" method="post">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="email" name="email" class="form-control form-control-lg"
+                                    <input type="text" name="email" class="form-control form-control-lg"
                                         id="exampleInputEmail1" placeholder="Email">
                                 </div>
                                 <div class="form-group">
@@ -45,15 +59,15 @@
                                         IN</button>
                                 </div>
                                 <div class="my-2 d-flex justify-content-between align-items-center">
-                                    <div class="form-check">
+                                    {{-- <div class="form-check">
                                         <label class="form-check-label text-muted">
                                             <input type="checkbox" class="form-check-input"> Keep me signed in </label>
-                                    </div>
+                                    </div> --}}
                                     <a href="/forgot" class="auth-link text-black">Forgot password?</a>
                                 </div>
-                                <div class="text-center mt-4 font-weight-light"> Don't have an account? <a
+                                {{-- <div class="text-center mt-4 font-weight-light"> Don't have an account? <a
                                         href="#" class="text-primary">Create</a>
-                                </div>
+                                </div> --}}
                             </form>
 
                         </div>

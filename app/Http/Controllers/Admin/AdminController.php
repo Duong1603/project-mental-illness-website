@@ -7,9 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
-use Symfony\Component\Console\Input\Input;
 use App\Models\User;
 
 
@@ -45,8 +42,9 @@ class AdminController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect()->route('overview.index');
         }
-        return redirect()->back()->with('status', "Đăng nhập khong thành công");
+        return redirect()->back()->with('message', "Đăng nhập khong thành công");
     }
+    
     public function getLogout()
     {
         Auth::logout();

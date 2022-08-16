@@ -53,7 +53,7 @@ class BookingAPIController extends Controller
         ];
 
         $dataAdmin = [
-            'type' => "test",
+            'type' => "Customer booking",
             'customer' => $user->name,
             'problem' => $countTimes[0]->problem,
             'times' => $countTimes,

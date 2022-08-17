@@ -10,32 +10,25 @@ use Illuminate\Http\Response;
 class PostAPIController extends Controller
 {
     public function updateStatus($id)
-    {}
+    {
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $post = Post::join('categories', 'categories.id', 'posts.category_id')
-            ->Where('posts.status', '=', 'show')
-            ->select('categories.name as nameCategory', 'posts.*')
-            ->get();
-        return response()->json($post, Response::HTTP_OK);
-
-        // $post = Post::find($id);
-        // if( $post->status === 'hidden' ){
-        //     $post->status = 'show';
-        // }
-        // else{
-        //     $post->status = 'hidden';
-        // }
-        // $post->save();
-        // return redirect()->route('posts.index')->with('message', 'bạn đã cập nhật thành công');
-    
+        $search = $request->input('search');
+        if ($search) {
+            $posts = Post::Where('posts.title', 'like', '%' . $search . '%')->get();
+        } else {
+            $posts = Post::Where('posts.status', '=', 'show')
+                ->get();
+        }
+        return response()->json($posts, Response::HTTP_OK);
     }
-    
+
     /**
      * Display a listing of the resource.
      *

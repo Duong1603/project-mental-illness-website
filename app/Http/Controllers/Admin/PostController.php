@@ -60,7 +60,7 @@ class PostController extends Controller
         $post->emotion = 0;
         $post->status = "show";
         $post->tag = "pnv staff check";
-        $post->id_category = 1;
+        $post->category_id = 1;
         $post->save();
         return redirect()->route('posts.index')->with('message', 'bạn đã thêm thành công');
     }

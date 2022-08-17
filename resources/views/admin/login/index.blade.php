@@ -36,8 +36,8 @@
                         </div>
                         @endif
                         <div class="auth-form-light text-left p-5">
-                            <div class="brand-logo">
-                                <img src="/../../assets/images/logo.svg">
+                            <div class="brand-logo" style="display: flex;justify-content: start;align-items: flex-end;text-align: end;">
+                            <img style="width:100px;height:auto;z-index:1;" src="/../../assets/images/logoPhiPhi.png"><span class="contentt" style="font-size: 50px;">&nbsp;Phi Phi</span>
                             </div>
                             <h4>Hello! let's get started</h4>
                             <h6 class="font-weight-light">Sign in to continue.</h6>
@@ -59,15 +59,15 @@
                                         IN</button>
                                 </div>
                                 <div class="my-2 d-flex justify-content-between align-items-center">
-                                    {{-- <div class="form-check">
+                                    <!-- <div class="form-check">
                                         <label class="form-check-label text-muted">
                                             <input type="checkbox" class="form-check-input"> Keep me signed in </label>
-                                    </div> --}}
+                                    </div> -->
                                     <a href="/forgot" class="auth-link text-black">Forgot password?</a>
                                 </div>
-                                {{-- <div class="text-center mt-4 font-weight-light"> Don't have an account? <a
+                                <!-- <div class="text-center mt-4 font-weight-light"> Don't have an account? <a
                                         href="#" class="text-primary">Create</a>
-                                </div> --}}
+                                </div> -->
                             </form>
 
                         </div>

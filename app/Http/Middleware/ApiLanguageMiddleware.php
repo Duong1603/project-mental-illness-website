@@ -23,4 +23,12 @@ class ApiLanguageMiddleware
         //Continue request
         return $next($request);
     }
+
+    // if (!Session::has('locale')) {
+    //     Session::put('locale', config('app.locale'));
+    // }
+
+    // Lang::setLocale(Session::get('locale'));
+
+    // return $next($request);
 }

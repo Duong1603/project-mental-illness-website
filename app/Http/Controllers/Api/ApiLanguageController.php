@@ -15,4 +15,9 @@ class ApiLanguageController extends Controller
 
         return response()->json($data, 200);
     }
+    // public function postLang(Request $request)
+    //   {
+    //       Session::set('locale', $request->locale);
+    //       return redirect()->back();
+    //   }
 }

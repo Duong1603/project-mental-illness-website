@@ -9,8 +9,18 @@ use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->query('sort_by')) {
+            $sort_by =$request->query('sort_by');
+            if ($sort_by == 'kytu_za_by_name') {
+                $posts = Post::orderBy('title', 'DESC')->get();
+                return view('admin.blogs.index', ['posts' => $posts]);
+            } elseif ($sort_by == 'kytu_az_by_name') {
+                $posts = Post::orderBy('title', 'ASC')->get();
+                return view('admin.blogs.index', ['posts' => $posts]);
+            }
+        }
         $posts = Post::paginate(15);
         return view('admin.blogs.index', ['posts' => $posts]);
     }
@@ -60,6 +70,21 @@ class PostController extends Controller
 
         $post = Post::find($id);
         return view('admin.blogs.index', compact('post'));
+    }
+
+    public function updateStatus($id)
+    {
+
+        $post = Post::find($id);
+        if( $post->status === 'hidden' ){
+            $post->status = 'show';
+        }
+        else{
+            $post->status = 'hidden';
+        }
+        $post->save();
+        return redirect()->route('posts.index')->with('message', 'bạn đã cập nhật thành công');
+    
     }
 
     public function edit($id)

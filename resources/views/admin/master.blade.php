@@ -19,6 +19,9 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="/assets/images/favicon.ico" />
     @yield('custom_css')
+    <!-- chart -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /> -->
 </head>
 
 <body>

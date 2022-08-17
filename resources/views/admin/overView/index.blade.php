@@ -17,23 +17,67 @@
                 </ul>
             </nav>
         </div>
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" data-group="month" class="btn btn-sm btn-danger">Month</button>
+            <button type="button" data-group="year" class="btn btn-sm btn-primary">Year</button>
+        </div>
         <div class="row">
-            <div class="col-lg-6 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Pie chart</h4>
-                        <canvas id="pieChart" style="height:250px"></canvas>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Scatter chart</h4>
-                        <canvas id="scatterChart" style="height:250px"></canvas>
-                    </div>
-                </div>
+            <div class="container col-lg-10 grid-margin stretch-card" style="background-color: white;">
+                <canvas id="myChart"></canvas>
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script>
+        let myChart = document.getElementById("myChart").getContext("2d");
+        // Global Options
+        Chart.defaults.global.defaultFontFamily = "Lato";
+        Chart.defaults.global.defaultFontSize = 18;
+        Chart.defaults.global.defaultFontColor = "#777";
+
+        let massPopChart = new Chart(myChart, {
+            type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+            options: {
+                title: {
+                    display: true,
+                    text: "Booking statistics",
+                    fontSize: 25,
+                },
+                legend: {
+                    display: true,
+                    position: "right",
+                    labels: {
+                        fontColor: "#000",
+                    },
+                },
+                layout: {
+                    padding: {
+                        left: 50,
+                        right: 0,
+                        bottom: 0,
+                        top: 0,
+                    },
+                },
+                tooltips: {
+                    enabled: true,
+                },
+            },
+        });
+
+        function displayChart(group = 'month') {
+            fetch("{{ route('charts.orders') }}?group=" + group)
+                .then(response => response.json())
+                .then(json => {
+                    massPopChart.data.labels = json.labels;
+                    massPopChart.data.datasets = json.datasets;
+                    massPopChart.update();
+                });
+        }
+        $('.btn-group .btn').on('click', function(e) {
+            e.preventDefault();
+            displayChart($(this).data('group'));
+        });
+        displayChart();
+    </script>
+    <!-- main-panel ends -->
     @endsection

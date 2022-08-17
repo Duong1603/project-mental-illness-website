@@ -28,6 +28,7 @@ Route::group([
 
     Route::group(["prefix" => "overview"], function () {
         Route::get('/', [OverviewController::class, "index"])->name('overview.index');
+        Route::get('/charts/orders', [OverviewController::class, "ordersChart"])->name('charts.orders');
     });
 
     Route::group(["prefix" => "managerCustomer"], function () {
@@ -42,6 +43,7 @@ Route::group([
         Route::get('/update/{id}', [PostController::class, "edit"]);
         Route::post('/update/{id}', [PostController::class, "update"]);
         Route::get('/delete/{id}', [PostController::class, "delete"]);
+        Route::get('/update-status/{id}', [PostController::class, "updateStatus"])->name('posts.updateStatus');
         Route::get('/', [PostController::class, "index"])->name('posts.index');
     });
 

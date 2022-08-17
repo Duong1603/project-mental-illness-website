@@ -30,7 +30,7 @@
                     </tbody>
                 </table>
             @endisset
-            <p>Total price: {{ $data['price'] }}</p>
+            <p>Total price: {{ $data['price'] }} vnD</p>
             @if ($data['price'] != 0)
                 <p>Please scan this qr code to pay for package:</p>
                 <img src="{{ env('APP_URL') . '/img/qr-code/' . $data['qrCode'] }}" />

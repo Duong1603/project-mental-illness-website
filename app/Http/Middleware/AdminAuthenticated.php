@@ -19,14 +19,13 @@ class AdminAuthenticated
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Session::has("admin")) {
-
-            if(Auth::user()->account == Session::get("admin")->account){
+        if (Auth::check()) {
+            if (Auth::user()) {
                 return $next($request);
             }
-            else redirect('/login');
+            Auth::logout();
+            return redirect('/login');
         }
         return redirect('/login');
     }
-
 }

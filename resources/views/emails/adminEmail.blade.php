@@ -4,9 +4,9 @@
         <div>
             <h2> Hey Phi Phi, </h2>
         </div>
-        <div>   
+        <div>
             <div class="content__toAdmin">
-                <p>There is a new message from system, please check <strong><a href="{{ route('overview.index') }}">admin
+                <p>There is a new message from system, please check <strong><a href="{{ route('bookings.index') }}">admin
                             page</a></strong></p>
             </div>
             <p>Type: {{ $data['type'] }}</p>

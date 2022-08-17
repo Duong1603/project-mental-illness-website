@@ -12,7 +12,7 @@ use App\Http\Controllers\Api\DebugController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/login', [AdminController::class, "getLogin"])->name('admin.getLogin');
+Route::get('/', [AdminController::class, "getLogin"])->name('admin.getLogin');
 Route::post('/login', [AdminController::class, "postLogin"])->name('admin.postLogin');
 Route::get('/logout', [AdminController::class, "getLogout"])->name('admin.getLogout');
 

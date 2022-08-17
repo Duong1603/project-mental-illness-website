@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\ApiPackageController;
 use App\Http\Controllers\Api\BookingAPIController;
 use App\Http\Controllers\Api\PaymentController;
 use App\Http\Controllers\Api\SearchAPIController;
+use App\Http\Controllers\Api\ApiLanguageController;
 use App\Models\Category;
 
 /*
@@ -48,3 +49,8 @@ Route::get('search/{id}', [SearchAPIController::class, 'searchCategory']);
 Route::get('/posts/search', [SearchAPIController::class, 'search']);
 Route::get('/categories', [SearchAPIController::class, 'statistical']);
 
+//change language
+Route::get('language',[ApiLanguageController::class, 'index'])->middleware('language');
+// Route::get('lang',function(){
+//     return "ffffffffff";
+// });

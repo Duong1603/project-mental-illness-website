@@ -18,7 +18,7 @@ class OverviewController extends Controller
      */
     public function index()
     {
-        return view('admin.overview.index');
+        return view('admin.overView.index');
     }
 
     public function ordersChart(Request $request)

@@ -13,4 +13,7 @@ class Comment extends Model
     public function postEnglish() {
         return $this->belongsTo(PostEnglish::class, 'post_id', 'id'); 
     }
+    public function user() {
+        return $this->belongsTo(User::class, "user_id", "id");
+    }
 }

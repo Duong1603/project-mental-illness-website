@@ -25,4 +25,7 @@ class User extends Model
     {
         return $query->orderBy('created_at','DESC');
     }
+    public function comments() {
+        return $this->hasMany(Comment::class, "user_id", "id");
+    }
 }

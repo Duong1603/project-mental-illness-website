@@ -6,12 +6,13 @@ use App\Http\Controllers\Api\BlogAPIController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ContactAPIController;
-use App\Http\Controllers\Api\ApiPackageController;
+use App\Http\Controllers\Api\PackageAPIController;
 use App\Http\Controllers\Api\BookingAPIController;
 use App\Http\Controllers\Api\PaymentController;
 use App\Http\Controllers\Api\PostAPIController;
 use App\Http\Controllers\Api\SearchAPIController;
-use App\Http\Controllers\Api\ApiLanguageController;
+use App\Http\Controllers\Api\LanguageAPIController;
+use App\Http\Controllers\Api\CommentAPIController;
 use App\Models\Category;
 
 /*
@@ -28,13 +29,15 @@ use App\Models\Category;
 // });
 
 // -------------------------Package/ Session--------------------------------
-Route::get('/package', [ApiPackageController::class, 'index']);
-Route::get('/package/{id}', [ApiPackageController::class, 'show']);    
+Route::get('/package', [PackageAPIController::class, 'index']);
+Route::get('/package/{id}', [PackageAPIController::class, 'show']);
 
 Route::get('/booking', [BookingAPIController::class, 'index']);
-Route::post('/add-booking',[BookingAPIController::class,'store']);
+Route::post('/add-booking', [BookingAPIController::class, 'store']);
 
-Route::delete('/delete-booking/{id}',[BookingAPIController::class,'deleteBooking']);
+Route::delete('/delete-booking/{id}', [BookingAPIController::class, 'deleteBooking']);
+
+Route::get('/comment', [CommentAPIController::class, 'index']);
 
 Route::group([
     'namespace' => 'Api',
@@ -44,15 +47,15 @@ Route::group([
 });
 
 Route::get('orders', [OrderController::class, 'index']);
-Route::get('/payment-qr',[PaymentController::class,'momoQrPayment']);
-Route::get('/payment',[PaymentController::class,'momoPayment']);
+Route::get('/payment-qr', [PaymentController::class, 'momoQrPayment']);
+Route::get('/payment', [PaymentController::class, 'momoPayment']);
 Route::get('search/{id}', [SearchAPIController::class, 'searchCategory']);
 Route::get('/posts/search', [SearchAPIController::class, 'search']);
 Route::get('/categories', [SearchAPIController::class, 'statistical']);
 Route::get('/posts', [PostAPIController::class, 'index']);
 
 //change language
-Route::get('language',[ApiLanguageController::class, 'index'])->middleware('language');
+Route::get('language', [LanguageAPIController::class, 'index'])->middleware('language');
 // Route::get('lang',function(){
 //     return "ffffffffff";
 // });

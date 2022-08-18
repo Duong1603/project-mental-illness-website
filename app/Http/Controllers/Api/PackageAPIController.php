@@ -9,7 +9,7 @@ use App\Models\Package;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class ApiPackageController extends Controller
+class PackageAPIController extends Controller
 {
     public function index()
     {

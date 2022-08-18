@@ -29,6 +29,7 @@ Route::group([
     Route::group(["prefix" => "overview"], function () {
         Route::get('/', [OverviewController::class, "index"])->name('overview.index');
         Route::get('/charts/orders', [OverviewController::class, "ordersChart"])->name('charts.orders');
+        Route::get('/charts/users', [OverviewController::class, "usersChart"])->name('charts.users');
     });
 
     Route::group(["prefix" => "managerCustomer"], function () {

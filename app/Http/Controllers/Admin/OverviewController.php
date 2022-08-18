@@ -35,7 +35,7 @@ class OverviewController extends Controller
             case 'year':
                 $query->addSelect(DB::raw('YEAR(start_meeting) as label'));
                 $query->whereYear('start_meeting', '>=', Carbon::now()->subYears(5)->year);
-                $query->whereYear('start_meeting', '<=', Carbon::now()->subYears(4)->year);
+                $query->whereYear('start_meeting', '<=', Carbon::now()->addYears(4)->year);
                 break;
             case 'month':
                 $query->addSelect(DB::raw('MONTH(start_meeting) as label'));
@@ -67,8 +67,50 @@ class OverviewController extends Controller
         ];
     }
 
-    public function getMonth($month, $year)
+    public function usersChart(Request $request)
     {
+        $group = $request->query('group', 'monthUser');
+
+        $query = User::select([
+            DB::raw('COUNT(*) as count'),
+        ])->groupBy([
+            'label'
+        ])->orderBy('label');
+
+        switch ($group) {
+            case 'yearUser':
+                $query->addSelect(DB::raw('YEAR(created_at) as label'));
+                $query->whereYear('created_at', '>=', Carbon::now()->subYears(5)->year);
+                $query->whereYear('created_at', '<=', Carbon::now()->addYears(4)->year);
+                break;
+            case 'monthUser':
+                $query->addSelect(DB::raw('MONTH(created_at) as label'));
+                $query->whereDate('created_at', '>=', Carbon::now()->startOfYear());
+                $query->whereDate('created_at', '<=', Carbon::now()->endOfYear());
+            default:
+        }
+
+        $entries = $query->get();
+        $labels = $total = $count = [];
+
+        foreach ($entries as $entry) {
+            $labels[] = $entry->label;
+            $total[$entry->label] = $entry->total;
+            $total[$entry->label] = $entry->count;
+        }
+
+        return [
+            'group' => $group,
+            'labels' => array_values($labels),
+            'datasets' => [
+                [
+                    'label' => 'Total User',
+                    'borderColor' => 'rgba(75, 192, 192, 0.6)',
+                    'backgroundColor' => 'rgba(75, 192, 192, 0.6)',
+                    'data' => array_values($total),
+                ]
+            ],
+        ];
     }
     // public function statistical()
     // {

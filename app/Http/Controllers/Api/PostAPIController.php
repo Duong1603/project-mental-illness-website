@@ -1,31 +1,48 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Package;
+use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
-class DetailSessionAPIController extends Controller
+class PostAPIController extends Controller
 {
+    public function updateStatus($id)
+    {
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $package = Package::all();
-        foreach ($package as $key => $value) {
-            # code...
-            $package[$key]->image = env('APP_URL').$value;
-        }
-        if ($package) {
-            return response()->json(["status" => "200", "success" => true, "message" => "car record created successfully", "data" => $package]);
+        $search = $request->input('search');
+        if ($search) {
+            $posts = Post::Where('posts.title', 'like', '%' . $search . '%')->get();
         } else {
-            return response()->json(["status" => "failed", "success" => false, "message" => "Whoops! failed to create."]);
+            $posts = Post::Where('posts.status', '=', 'show')
+                ->get();
         }
+        return response()->json($posts, Response::HTTP_OK);
+    }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -46,6 +63,17 @@ class DetailSessionAPIController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
         //
     }

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('price');
             $table->text('description');
             $table->text('image');
+            $table->string('qr_code',500)->nullable();
             $table->timestamps();
         });
     }

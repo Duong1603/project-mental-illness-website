@@ -9,7 +9,7 @@ class Order extends Model
 {
     use HasFactory;
     
-   
+    protected $fillable = ['start_meeting','end_meeting','problem'];
 
     public function type()
     {
@@ -23,4 +23,17 @@ class Order extends Model
     {
         return $this->belongsTo(LinkGoogleMeet::class, 'link_google_meet_id', 'id');
     }
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class);
+    }
+    public function scopeNewest($query)
+    {
+        return $query->orderBy('created_at','DESC');
+    }
+    
+    // public function checkBookBeforeSave($start,$end)
+    // {
+        
+    // }
 }

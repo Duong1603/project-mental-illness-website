@@ -1,15 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Email user</title>
-</head>
-<body>
-    <div>
-        <h1>{{ $data['title'] }}</h1>
-        <h5>{{$data ['body']}}</h5>
+@extends('emails.master')
+@section('content')
+    <div class="container user__email">
+        <h3>Dear Mr/ms {{ $data['customer'] }} </h3>
+        <div class=" useremail">
+            <p> {{ $data['content'] }} </p>
+        </div>
     </div>
-</body>
-</html>
+    @include('emails.footer')
+@endsection
+@section('custom_css')
+    <style>
+        .user__email {
+            margin-top: 10%;
+            width: 40%;
+        }
+
+        .useremail {
+            margin: auto;
+            text-align: center;
+            text-align: justify;
+        }
+    </style>
+@endsection

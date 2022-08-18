@@ -3,20 +3,44 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-use Symfony\Component\Console\Input\Input;
-use App\Models\User;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $managerCustomer = User::paginate(15);
-        return view('admin.managerCustomer.index', ['managerCustomer' => $managerCustomer]);
+        $customers = User::with('order')->newest()->paginate(15);
+        foreach ($customers as $customer) {
+            if ($customer->order != null) {
+                $customer->type = "booking";
+                continue;
+            }
+            $customer->type = "contact";
+            if ($request->query('sort_by')) {
+                $sort_by = $request->query('sort_by');
+                if ($sort_by == 'kytu_za_by_name') {
+                    $managerCustomer = User::orderBy('name', 'DESC')->get();
+                    return view('admin.managerCustomer.index', ['managerCustomer' => $managerCustomer]);
+                } elseif ($sort_by == 'kytu_az_by_name') {
+                    $managerCustomer = User::orderBy('name', 'ASC')->get();
+                    return view('admin.managerCustomer.index', ['managerCustomer' => $managerCustomer]);
+                } elseif ($sort_by == 'kytu_za_by_email') {
+                    $managerCustomer = User::orderBy('email', 'DESC')->get();
+                    return view('admin.managerCustomer.index', ['managerCustomer' => $managerCustomer]);
+                } elseif ($sort_by == 'kytu_az_by_email') {
+                    $managerCustomer = User::orderBy('email', 'ASC')->get();
+                    return view('admin.managerCustomer.index', ['managerCustomer' => $managerCustomer]);
+                }
+            }
+            $managerCustomer = User::paginate(15);
+            return view('admin.managerCustomer.index', ['managerCustomer' => $managerCustomer]);
+        }
     }
+
 
     public function Login(Request $request)
     {
@@ -31,60 +55,6 @@ class UserController extends Controller
         } else {
             echo '<script>alert("Đăng nhập thất bại.");window.location.assign("login");</script>';
         }
-    }
-    public function Logout()
-    {
-        // Session::forget('user');
-        Session::forget('login');
-        return redirect('/admin/login');
-    }
-    // public function Register(Request $request)
-    // {
-    //     $input = $request->validate([
-    //         'name' => 'required|string',
-    //         'email' => 'required|email|unique:users',
-    //         'password' => 'required',
-    //         'c_password' => 'required|same:password'
-    //     ]);
-
-    //     $input['password'] = bcrypt($input['password']);
-    //     User::create($input);
-
-    //     echo '<script>alert("Đăng ký thành công. Vui lòng đăng nhập.");window.location.assign("login");</script>';
-    // }
-
-
-    public function create()
-    {
-        //
-    }
-
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-
-    public function show($id)
-    {
-        //
-    }
-
-
-    public function edit($id)
-    {
-        //
-    }
-
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    public function destroy($id)
-    {
-        //
+        return view('admin.managerCustomer.index', ['managerCustomer' => $customers]);
     }
 }

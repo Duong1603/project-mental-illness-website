@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+    @yield('custom_css')
+    <!-- chart -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /> -->
 </head>
 
 <body>
@@ -48,6 +52,7 @@
     <!-- End custom js for this page -->
     <!-- Upload file -->
     <script src="/../../assets/js/file-upload.js"></script>
+    @yield('custom_js')
 </body>
 
 </html>

@@ -44,7 +44,7 @@
         <li class="nav-item">
             <a class="nav-link" href="/admin/managerCustomer">
                 <span class="menu-title">Manager Customer</span>
-                <i class="mdi mdi-contacts menu-icon"></i>
+                <i class="mdi mdi-account menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
@@ -63,6 +63,12 @@
             <a class="nav-link" href="/admin/packages">
                 <span class="menu-title">Packages</span>
                 <i class="mdi mdi-clipboard-check menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/contact">
+                <span class="menu-title">Contact</span>
+                <i class="mdi mdi-contacts menu-icon"></i>
             </a>
         </li>
     </ul>

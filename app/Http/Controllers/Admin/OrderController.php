@@ -3,87 +3,72 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendMail;
 use App\Models\Order;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        $orders = Order::with('type','user','link')->paginate(15);
+        $orders = Order::with('type', 'user', 'link')->newest()->paginate(10);
         return view('admin.bookings.index', ['bookings' => $orders]);
-
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function update(Request $request)
     {
-        //
-    }
+        $order = Order::find($request->id);
+        if ($order) {
+            if ($request->query('status') === 'change') {
+                return view('admin.bookings.updateTime', compact('order'));
+            }
+            $order->status = $request->status;
+            $order->save();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+            $email = $order->user->email;
+            $data = [
+                'email' => "CONFIRM_EMAIL",
+                'customer' => $order->user->name,
+                'package' => $order->type->name,
+                'start' => $order->start_meeting,
+                'end' => $order->end_meeting,
+                'link' => $order->link->link_gg_meet
+            ];
+            $dataAdmin = [];
+        } else {
+            return redirect()->route('error');
+        }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Order $order)
-    {
-        //
-    }
+        SendMail::dispatch($email, $data, $dataAdmin);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Order $order)
-    {
-        //
+        return redirect()->back();
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Order $order)
+    public function changeTime(Request $request)
     {
-        //
-    }
+        $order = Order::find($request->id);
+        if ($order) {
+            $order->start_meeting = $request->start_meeting;
+            $order->end_meeting = $request->end_meeting;
+            $order->status = config('constants.APPROVED');
+            $order->save();
+        } else {
+            return redirect()->route('error');
+        }
+        $email = $order->user->email;
+        $data = [
+            'email' => "CHANGE_TIME_EMAIL",
+            'customer' => $order->user->name,
+            'package' => $order->type->name,
+            'start' => $order->start_meeting,
+            'end' => $order->end_meeting,
+            'link' => $order->link->link_gg_meet
+        ];
+        $dataAdmin = [];
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Order $order)
-    {
-        //
+        SendMail::dispatch($email,$data,$dataAdmin);
+
+        return redirect()->route('bookings.index')
+        ->with(['message' => 'Change time success, we send notification for customer soon']);
     }
 }

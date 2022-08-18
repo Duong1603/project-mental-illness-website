@@ -19535,7 +19535,7 @@ code {
   border-left: 0;
   border-bottom: 0;
   font: normal normal normal 24px/1 "Material Design Icons";
-  content: "\f140";
+  /* content: "\f140"; */
   width: auto;
   height: auto;
   vertical-align: baseline;
@@ -20052,7 +20052,7 @@ dl li {
   vertical-align: middle;
   font-size: 0.875rem;
   line-height: 1;
-  white-space: nowrap;
+  /* white-space: nowrap; */
   padding: 0.9375rem;
 }
 
@@ -21445,6 +21445,136 @@ input.switch:checked::after {
 .mdi-pencil-box, .mdi-delete{
   font-size: 2rem;
   color: var(--bs-blue);
+}
+
+/* sort */
+#sort {
+  display: flex;
+  justify-content: space-between;
+}
+/* table */
+#content{
+  /* width: 40%;
+  height: 150px;
+  display: flex;
+  color: red; */
+  /* width: 200px;
+color: red; */
+white-space: none;
+}
+
+.selectdiv {
+  position: relative;
+  /*Don't really need this just for demo styling*/
+  
+  float: left;
+  min-width: 200px;
+  margin: 50px 33%;
+}
+
+.selectdiv:after {
+    content: '\f078';
+    font: normal normal normal 17px/1 FontAwesome;
+    color: #0ebeff;
+    right: 11px;
+    top: 6px;
+    height: 34px;
+    padding: 15px 0px 0px 8px;
+    border-left: 1px solid #0ebeff;
+    position: absolute;
+    pointer-events: none;
+}
+
+/* IE11 hide native button (thanks Matt!) */
+select::-ms-expand {
+display: none;
+}
+
+.selectdiv select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Add some styling */
+  
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: 50px;
+  float: right;
+  margin: 5px 0px;
+  padding: 0px 24px;
+  font-size: 16px;
+  line-height: 1.75;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #0ebeff;
+  -ms-word-break: normal;
+  word-break: normal;
+}
+/* Thiết kẻ thẻ select */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background-image: none;
+  background: linear-gradient(to right, #ffbf96, #fe7096);
+  color:white !important;
+}
+
+.select {
+  position: relative;
+  display: flex;
+  /* width: 10em; */
+  height: 3em;
+  line-height: 3;
+  background: #fff;
+  overflow: hidden;
+  border-radius: .25em;
+  color: white;
+}
+select {
+  flex: 1;
+  padding: 0 .5em;
+  cursor: pointer;
+}
+/* thiết kế dấu mũi tên */
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+}
+/* Transition */
+.select:hover::after {
+  /* color: Gainsboro; */
+}
+
+.contentt{
+  font-weight: 900;
+  animation: marquee 5s linear infinite;
+  /* z-index: -1; */
+}
+
+/* .track {
+  position: absolute;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 3s linear infinite;
+} */
+
+@keyframes marquee {
+  from { transform: translateY(30%); }
+  to { transform: translateY(-100%); }
 }
 
 .package-table {

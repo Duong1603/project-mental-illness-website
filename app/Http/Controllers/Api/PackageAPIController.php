@@ -8,7 +8,7 @@ use App\Http\Resources\PackageResource;
 use App\Models\Package;
 use Illuminate\Http\Request;
 
-class ApiPackageController extends Controller
+class PackageAPIController extends Controller
 {
     public function index()
     {
@@ -21,7 +21,7 @@ class ApiPackageController extends Controller
         if ($result) {
             return new PackageResource($result);
         } else {
-            return response()->json([ 'message' => "something is wrong"],status:404);
+            return response()->json(['message' => "something is wrong"], status: 404);
         }
     }
 }

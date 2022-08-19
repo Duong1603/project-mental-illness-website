@@ -48,7 +48,8 @@ class BookingAPIController extends Controller
             'customer' => $user->name,
             'times' => $countTimes,
             'package' => $countTimes[0]->type->name,
-            'qrCode' => "code1.png",
+            // 'qrCode' => config('constants.APP_URL') . '/img/qr-code/' ."code1.png",
+            'qrCode' =>"fffffffffffffffffff",
             'price' => $countTimes[0]->type->price
         ];
 

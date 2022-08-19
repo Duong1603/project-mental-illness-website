@@ -33,12 +33,12 @@
             <p>Total price: {{ $data['price'] }} vnD</p>
             @if ($data['price'] != 0)
                 <p>Please scan this qr code to pay for package:</p>
-                <img src="{{ config('constants.APP_URL') . '/img/qr-code/' . $data['qrCode'] }}" />
+                <img src="{{ env('APP_URL') . '/img/qr-code/' . $data['qrCode'] }}" />
             @endif
             <div class="card-footer text-info content">Buil website by student at PNV </div>
         </div>
-        @include('emails.footer')
-    </div>  
+    @include('emails.footer')
+    </div>
 @endsection
 @section('custom_css')
     <style>

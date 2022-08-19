@@ -1,0 +1,8 @@
+table {
+    table-layout:fixed;
+}
+table td {
+    width: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

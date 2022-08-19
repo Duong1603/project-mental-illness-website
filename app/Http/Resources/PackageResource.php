@@ -19,7 +19,7 @@ class PackageResource extends JsonResource
             'name' => $this->name,
             'image' => env('APP_URL')."/img/". $this->image,
             'price' => $this->price,
-            'discription' => $this->description,
+            'description' => $this->description,
             'code'=>200
         ];
     }

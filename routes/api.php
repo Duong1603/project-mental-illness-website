@@ -50,7 +50,8 @@ Route::get('search/{id}', [SearchAPIController::class, 'searchCategory']);
 Route::get('/posts/search', [SearchAPIController::class, 'search']);
 Route::get('/categories', [SearchAPIController::class, 'statistical']);
 Route::get('/posts', [PostAPIController::class, 'index']);
-Route::get('packages', [PackageController::class, 'index']);
+Route::get('/package', [PackageAPIController::class, 'index']);
+Route::get('/package/{id}', [PackageAPIController::class, 'show']);
 
 //change language
 Route::get('language', [LanguageAPIController::class, 'index'])->middleware('language');

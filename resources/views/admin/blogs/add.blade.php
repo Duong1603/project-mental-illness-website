@@ -70,7 +70,7 @@
                             <!-- File Upload -->
                             <div class="form-group">
                                 <label for="content">Content</label>
-                                <input type="text" placeholder="Content" class="form-control" id="exampleTextarea1" rows="4" name="content" value="{{ isset($post) ? $post->content : '' }}" />
+                                <textarea type="text" placeholder="Content" class="form-control" id="exampleTextarea1" rows="4" name="content" value="{{ isset($post) ? $post->content : '' }}" ></textarea>
                             </div>
                             <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
                         </form>

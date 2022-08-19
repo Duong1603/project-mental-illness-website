@@ -28,6 +28,6 @@ class BookingEmail extends Mailable
      */
     public function build()
     {
-        return $this->subject(config('constant.RESIGN_EMAIL'))-> view('emails.successResign');
+        return $this->subject(config('constants.RESIGN_EMAIL'))-> view('emails.successResign');
     }
 }

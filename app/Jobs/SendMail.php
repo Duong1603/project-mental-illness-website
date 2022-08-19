@@ -42,6 +42,7 @@ class SendMail implements ShouldQueue
             $mail->send(new ConfirmEmail($this->data));
             return;
         }
-        Mail::to(env('ADMIN_EMAIL'))->send(new AdminEmail($this->dataAdmin));
+        
+        Mail::to(config('constants.ADMIN_EMAIL'))->send(new AdminEmail($this->dataAdmin));
     }
 }

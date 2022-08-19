@@ -17,7 +17,7 @@ class PackageResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'image' => env('APP_URL')."/img/". $this->image,
+            'image' => config('constants.APP_URL')."/img/". $this->image,
             'price' => $this->price,
             'description' => $this->description,
             'code'=>200

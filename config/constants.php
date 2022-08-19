@@ -10,6 +10,8 @@ return [
     'RESIGN_EMAIL'=> '[Phi Phi] Successful scheduling',
     'CHANGE_TIME_EMAIL'=> '[Phi Phi] Change meeting time',
     'QR_CODE_PACKAGE_2_HOURS' => 'qr-code/code1.png',
-    'QR_CODE_PACKAGE_6_HOURS' => 'qr-code/code2.jng'
+    'QR_CODE_PACKAGE_6_HOURS' => 'qr-code/code2.jng',
+    'ADMIN_EMAIL'=>env('ADMIN_EMAIL','hieu.tran23@student.passerellesnumeriques.org'),
+    'APP_URL'=>env('APP_URL')
     ]
 ?>

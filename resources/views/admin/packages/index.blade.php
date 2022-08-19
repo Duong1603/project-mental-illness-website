@@ -56,7 +56,7 @@
                                         <td>{{ $package->price }} <i class="mdi text-danger"></i></td>
                                         <td class="description">{{ $package->description }}</td>
                                         <td>
-                                            <img src="{{env('APP_URL')}}/img/{{ $package->image }}" class="me-2" alt="Avatar" />
+                                            <img src="{{ config('constants.APP_URL') }}/img/{{ $package->image }}" class="me-2" alt="Avatar" />
                                         </td>
                                         <td>{{ $package->created_at }}</td>
                                         <td>

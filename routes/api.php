@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Api\BlogAPIController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,10 +29,6 @@ use App\Models\Category;
 //     return $request->user();
 // });
 
-// -------------------------Package/ Session--------------------------------
-Route::get('/package', [PackageAPIController::class, 'index']);
-Route::get('/package/{id}', [PackageAPIController::class, 'show']);
-
 Route::get('/booking', [BookingAPIController::class, 'index']);
 Route::post('/add-booking', [BookingAPIController::class, 'store']);
 
@@ -53,6 +50,8 @@ Route::get('search/{id}', [SearchAPIController::class, 'searchCategory']);
 Route::get('/posts/search', [SearchAPIController::class, 'search']);
 Route::get('/categories', [SearchAPIController::class, 'statistical']);
 Route::get('/posts', [PostAPIController::class, 'index']);
+Route::get('/package', [PackageAPIController::class, 'index']);
+Route::get('/package/{id}', [PackageAPIController::class, 'show']);
 
 //change language
 Route::get('language', [LanguageAPIController::class, 'index'])->middleware('language');

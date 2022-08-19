@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\OverviewController;
+use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\SendEmailController;
 use App\Http\Controllers\Admin\ResetPasswordController;
 use App\Http\Controllers\Api\ContactAPIController;
@@ -47,6 +48,17 @@ Route::group([
         Route::get('/delete/{id}', [PostController::class, "delete"]);
         Route::get('/update-status/{id}', [PostController::class, "updateStatus"])->name('posts.updateStatus');
         Route::get('/', [PostController::class, "index"])->name('posts.index');
+    });
+
+    Route::group([
+        'prefix' => '/packages',
+    ], function () {
+        Route::get('/create', [PackageController::class, 'create']);
+        Route::post('/create', [PackageController::class, 'store']);
+        Route::get('/update/{id}', [PackageController::class, "edit"]);
+        Route::post('/update/{id}', [PackageController::class, "update"]);
+        Route::get('/delete/{id}', [PackageController::class, "delete"]);
+        Route::get('/', [PackageController::class, "index"])->name('packages.index');
     });
 
     Route::group([

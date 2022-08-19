@@ -20052,7 +20052,6 @@ dl li {
   vertical-align: middle;
   font-size: 0.875rem;
   line-height: 1;
-  /* white-space: nowrap; */
   padding: 0.9375rem;
 }
 
@@ -21454,12 +21453,6 @@ input.switch:checked::after {
 }
 /* table */
 #content{
-  /* width: 40%;
-  height: 150px;
-  display: flex;
-  color: red; */
-  /* width: 200px;
-color: red; */
 white-space: none;
 }
 
@@ -21575,4 +21568,16 @@ select {
 @keyframes marquee {
   from { transform: translateY(30%); }
   to { transform: translateY(-100%); }
+}
+
+.package-table {
+  table-layout:fixed;
+}
+.package-table td {
+  width: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.package-table .description{
+  white-space: normal;
 }

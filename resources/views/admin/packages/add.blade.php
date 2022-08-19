@@ -16,11 +16,11 @@
             <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
                     <i class="mdi mdi-blogger"></i>
-                </span> Blogs
+                </span> Packages
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/admin/blogs">Back To Blogs</a></li>
+                    <li class="breadcrumb-item"><a href="/admin/packages">Back To packages</a></li>
                     @if ($action == 'create')
                     <li class="breadcrumb-item active" aria-current="page">Form Add New</li>
                     @elseif ($action == 'update')
@@ -38,12 +38,22 @@
                         @elseif ($action == 'update')
                         <h4 class="card-title">Form Update</h4>
                         @endif
-                        <form class="forms-sample" action={{ $action == 'create' ? '/admin/blogs/create' : '/admin/blogs/update/' . $post->id }} method="POST" enctype="multipart/form-data">
+                        <form class="forms-sample" action={{ $action == 'create' ? '/admin/packages/create' : '/admin/packages/update/' . $package->id }} method="POST" enctype="multipart/form-data">
                             @csrf
                             <!-- @method('put') -->
                             <div class="form-group">
-                                <label for="title">Title</label>
-                                <input type="text" class="form-control" id="exampleInputName1" name="title" placeholder="Title" value="{{ isset($post) ? $post->title : '' }}">
+                                <label for="title">Name</label>
+                                <input type="text" class="form-control" id="exampleInputName1" name="name" placeholder="Name" value="{{ isset($package) ? $package->name : '' }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="title">Price</label>
+                                <input type="text" class="form-control" id="exampleInputName1" name="price" placeholder="Price" value="{{ isset($package) ? $package->price : '' }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="title">Description</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" placeholder="Description">
+                                    {{ isset($package) ? $package->description : '' }}
+                                </textarea>
                             </div>
                             <!-- File Upload -->
                             <div class="form-group">
@@ -52,7 +62,7 @@
                                 <input type="file" name="image" class="file-upload-default" onchange="changeImage(event)">
                                 <div class="input-group col-xs-12">
                                     <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                                    <img id="preview-img" class="col-6 img-thumbnail" style="width: 10rem" alt="" src="/img/{{ isset($post) ? $post->image : '' }}">
+                                    <img id="preview-img" class="col-6 img-thumbnail" style="width: 10rem" alt="" src="/img/{{ isset($package) ? $package->image : '' }}">
                                     <span class="input-group-append">
                                     <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
                                 </span>
@@ -68,10 +78,6 @@
                                 </div>
                             </div>
                             <!-- File Upload -->
-                            <div class="form-group">
-                                <label for="content">Content</label>
-                                <textarea type="text" placeholder="Content" class="form-control" id="exampleTextarea1" rows="4" name="content" value="{{ isset($post) ? $post->content : '' }}" ></textarea>
-                            </div>
                             <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
                         </form>
                     </div>

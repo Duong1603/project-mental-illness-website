@@ -4,7 +4,6 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Api\BlogAPIController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ContactAPIController;
 use App\Http\Controllers\Api\PackageAPIController;
@@ -13,8 +12,7 @@ use App\Http\Controllers\Api\PaymentController;
 use App\Http\Controllers\Api\PostAPIController;
 use App\Http\Controllers\Api\SearchAPIController;
 use App\Http\Controllers\Api\LanguageAPIController;
-use App\Http\Controllers\Api\CommentAPIController;
-use App\Models\Category;
+use App\Http\Controllers\Api\CommentApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +32,7 @@ Route::post('/add-booking', [BookingAPIController::class, 'store']);
 
 Route::delete('/delete-booking/{id}', [BookingAPIController::class, 'deleteBooking']);
 
-Route::get('/comment', [CommentAPIController::class, 'index']);
+Route::get('/comment', [CommentApiController::class, 'index']);
 
 Route::group([
     'namespace' => 'Api',

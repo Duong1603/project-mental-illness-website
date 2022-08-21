@@ -1,19 +1,27 @@
-# psychotherapy app
+# Psychotherapy app
 
-## account
+## Admin
+### Account
 ```
 admin@gmail.com
 ```
-## password
+### Password
 ```
 123456789
 ```
-## more in .env
-
+## .env
+> Please add this to run 
+```
 ADMIN_EMAIL=youremail@gmail.com
 QUEUE_DRIVER=database
 QUEUE_CONNECTION=database
 FRONT_END=https://yourfrontend.com 
+```
 
 ## Database
-[link](./Procfile)
+[database](/psychotherapy.sql)
+## Queue
+> run to start queue send mail
+```
+php artisan queue:work
+```

@@ -24,8 +24,25 @@ return [
 'Send Email' => 'Gửi Email', 
 
 // about us
-'Welcome to Your Health Center' => 'Chào mừng đến với Trung tâm sức khỏe của bạn',
-'Lorem ipsum dolor sit amet consectetur adipisicing elit' => 'Bản thân công ty là một công ty rất thành công',
+'Welcome to Your Health Center' => 'Welcome to Your Health Center', 
+'Who am I' => 'Tôi là ai', 
+'Like everyone else under the sky, I bear lots of issues, both physical and psychological' => 'Giống như những người khác dưới bầu trời, tôi chịu rất nhiều vấn đề, cả về thể chất và tâm lý', 
+'I’d been on this quest to search for the answers, for why I was the way I was for years on end' => 'Tôi đã thực hiện nhiệm vụ này để tìm kiếm câu trả lời, vì lý do tại sao tôi lại như tôi trong nhiều năm qua', 
+'Then in December 2020, RTT found me. Lucky' => 'Sau đó vào tháng 12 năm 2020, RTT tìm thấy tôi. May mắn', 
+'Ever since I went under for the first time, I’ve never looked back' => 'Kể từ khi tôi trải qua lần đầu tiên, tôi đã không bao giờ nhìn lại', 
+'Things buried deep bubbled up to the surface. I ran. I hid. I fought. Then I won' => 'Những thứ bị chôn sâu sủi bọt lên bề mặt. Tôi đã chạy. Tôi giấu. Tôi đã chiến đấu. Sau đó tôi đã thắng', 
+'The sense of connection, with my true self, with everyone else, and for most, with the world is ever present in me' => 'Cảm giác kết nối, với con người thật của tôi, với mọi người khác và trên hết, với thế giới luôn hiện hữu trong tôi', 
+'I’m grounded, deeply rooted' => 'Tôi có căn cứ, có nguồn gốc sâu xa', 
+'Calm. Peace. Relax' => 'Trấn tĩnh. Hòa bình. Thư giãn', 
+'Every step I walk. Every breath I take' => 'Mỗi bước tôi đi. Mỗi hơi thở tôi hít thở', 
+'I experience a full ray of emotions. In touch. In tune. No matter how you put it' => 'Tôi trải qua nhiều cung bậc cảm xúc. Liên lạc. Trong giai điệu. Không có vấn đề bạn đặt nó như thế nào', 
+'It’s blissful' => 'Thật hạnh phúc', 
+'I’m just a normal person. A mom. A teacher. A healer' => 'Tôi chỉ là một người bình thường. Một người mẹ. Một giáo viên. Một người chữa bệnh', 
+'I’m the melting pot of emotions, characters, and personas' => 'Tôi là nơi hòa quyện của cảm xúc, nhân vật và tính cách', 
+'I’m the master of my own palette of colors' => 'Tôi là bậc thầy về bảng màu của riêng mình', 
+'Does it sound like a chameleon? Isn’t it full of life' => 'Nghe có giống tắc kè hoa không? Có phải nó tràn đầy sức sống không', 
+'So, Who am I' => 'Vậy tôi là ai', 
+'This blissful soul is looking for like-minded spirits to accompany each other’s healing journeys. Are you one? Send me a message' => 'Tâm hồn hạnh phúc này đang tìm kiếm những linh hồn có cùng chí hướng để đồng hành trong hành trình chữa bệnh của nhau. Bạn có một? Gửi tin nhắn cho tôi', 
 // session
 'About Rapid Transformational Therapy' => 'Giới thiệu về Liệu pháp Chuyển đổi Nhanh chóng', 
 'RTT is a hybrid therapy developed by Marisa Peer from London' => 'RTT là một liệu pháp kết hợp được phát triển bởi Marisa Peer từ London', 
@@ -67,7 +84,7 @@ return [
 
 // blogs
 'All' => 'Tất cả', 
-'Search' => 'Tìm kiếm', 
+'Search' => 'Tìm kiz    ếm', 
 'Categories' => 'Thể loại',
 'Recent Blog' => 'Blog gần đây', 
 // contact

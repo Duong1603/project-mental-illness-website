@@ -24,7 +24,7 @@ return [
 'Send Email' => 'Send Email', 
 // about us
 'Welcome to Your Health Center' => 'Welcome to Your Health Center', 
-'Lorem ipsum dolor sit amet consectetur adipisicing elit' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit', 
+'Who am I' => 'Who am I', 
 'Like everyone else under the sky, I bear lots of issues, both physical and psychological' => 'Like everyone else under the sky, I bear lots of issues, both physical and psychological', 
 'I’d been on this quest to search for the answers, for why I was the way I was for years on end' => 'I’d been on this quest to search for the answers, for why I was the way I was for years on end', 
 'Then in December 2020, RTT found me. Lucky' => 'Then in December 2020, RTT found me. Lucky', 

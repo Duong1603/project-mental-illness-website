@@ -20,6 +20,7 @@ class AdminFactory extends Factory
             //
             'password'=> '$2y$10$gUayCGNiF9STPHC16MhUBOusbUfN8fbpACXngCkh77lyVog1KyWAG',
             'account'=> 'admin@gmail.com',
+            'reset_password_token' => ' ',
         ];
     }
 }

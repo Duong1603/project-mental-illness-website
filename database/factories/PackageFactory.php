@@ -19,7 +19,7 @@ class PackageFactory extends Factory
         return [
             'name' => fake()->name(),
             'price' => rand(1, 10) . "00000",
-            'image' => rand(1, 3) . ".jpg",
+            'image' => rand(20,24) . ".jpg",
             'description' => fake()->text(900)
         ];
     }

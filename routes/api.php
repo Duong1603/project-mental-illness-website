@@ -50,6 +50,7 @@ Route::get('search/{id}', [SearchAPIController::class, 'searchCategory']);
 Route::get('/posts/search', [SearchAPIController::class, 'search']);
 Route::get('/categories', [SearchAPIController::class, 'statistical']);
 Route::get('/posts', [PostAPIController::class, 'index']);
+Route::get('/posts/{id}', [PostAPIController::class, 'show']);
 Route::get('/package', [PackageAPIController::class, 'index']);
 Route::get('/package/{id}', [PackageAPIController::class, 'show']);
 

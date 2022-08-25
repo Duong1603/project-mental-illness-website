@@ -28,8 +28,6 @@ class Postgresql extends Seeder
         \App\Models\Doctor::factory(2)->create();
         \App\Models\Order::factory(10)->create();
 
-        \App\Models\Role::factory(2)->create();
-        \App\Models\UsersRole::factory(10)->create();
 
         \App\Models\Admin::factory(1)->create();
     }

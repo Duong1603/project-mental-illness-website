@@ -17,6 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('account');
             $table->string('password');
+            $table->string('reset_password_token');
             $table->timestamps();
         });
     }

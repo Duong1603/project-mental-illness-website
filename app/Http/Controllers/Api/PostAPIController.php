@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Http\Resources\PostResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -64,7 +65,12 @@ class PostAPIController extends Controller
      */
     public function show($id)
     {
-        //
+        $result = Post::find($id);
+        if ($result) {
+            return new PostResource($result);
+        } else {
+            return response()->json([ 'message' => "something is wrong"],status:404);
+        }
     }
 
     /**

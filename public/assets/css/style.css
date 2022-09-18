@@ -20057,9 +20057,8 @@ dl li {
 
 .table th img,
 .table td img {
-  width: 36px;
-  height: 36px;
-  border-radius: 100%;
+  width: 100px;
+  height: 100px;
 }
 
 .table th .badge,

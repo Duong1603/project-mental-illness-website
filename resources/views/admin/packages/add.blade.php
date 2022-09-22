@@ -57,12 +57,12 @@
                             </div>
                             <!-- File Upload -->
                             <div class="form-group">
-                                <label>File upload</label>
+                                <label>Image</label>
                                 
                                 <input type="file" name="image" class="file-upload-default" onchange="changeImage(event)">
                                 <div class="input-group col-xs-12">
                                     <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                                    <img id="preview-img" class="col-6 img-thumbnail" style="width: 10rem" alt="" src="/img/{{ isset($package) ? $package->image : '' }}">
+                                    <img id="preview-img" class="col-6 img-thumbnail" style="width: 10rem" alt="" src="{{ isset($package) ? $package->img : '' }}">
                                     <span class="input-group-append">
                                     <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
                                 </span>
@@ -71,6 +71,30 @@
                                             var preImage = document.getElementById("preview-img")
                                             preImage.src = URL.createObjectURL(e.target.files[0])
                                             preImage.onload = () => {
+                                                URL.revokeObjectURL(output.src)
+                                            }
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+                            <!-- File Upload -->
+
+                             <!-- File Upload -->
+                             <div class="form-group">
+                                <label>Qr code</label>
+                                
+                                <input type="file" name="image-qr" class="file-upload-default" onchange="changeQrCode(event)">
+                                <div class="input-group col-xs-12">
+                                    <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                                    <img id="preview-qr" class="col-6 img-thumbnail" style="width: 10rem" alt="" src="{{ isset($package) ? $package->qrCode : '' }}">
+                                    <span class="input-group-append">
+                                    <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                                </span>
+                                    <script>
+                                        const changeQrCode = (e) => {
+                                            var preQr = document.getElementById("preview-qr")
+                                            preQr.src = URL.createObjectURL(e.target.files[0])
+                                            preQr.onload = () => {
                                                 URL.revokeObjectURL(output.src)
                                             }
                                         }

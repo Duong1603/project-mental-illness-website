@@ -16,6 +16,7 @@
         "phpmailer/phpmailer": "^6.6"
     },
     "require-dev": {
+        "getsolaris/laravel-make-service": "^1.1",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",

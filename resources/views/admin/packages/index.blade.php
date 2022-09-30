@@ -21,12 +21,12 @@
                     </ul>
                 </nav>
                 <!-- <nav aria-label="breadcrumb">
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item active" aria-current="page">
-                                <span></span><a type="button" class="btn btn-inverse-dark btn-fw" href="/admin/blogs/create">ADD NEW</a>
-                            </li>
-                        </ul>
-                    </nav> -->
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        <span></span><a type="button" class="btn btn-inverse-dark btn-fw" href="/admin/blogs/create">ADD NEW</a>
+                                    </li>
+                                </ul>
+                            </nav> -->
             </div>
             <div class="row">
                 <div class="col-12 grid-margin">
@@ -46,34 +46,38 @@
                                             <th style="width: 30%">Description</th>
                                             <th>Image</th>
                                             <th>Create time</th>
+                                            <th>QR code</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
                                     </thead>
-                                    @foreach ($packages as $package)
-                                        <tbody>
-                                            <tr>
-                                                <th>{{ $package->name }}</th>
+                                    @isset($packages)
+                                        @foreach ($packages as $package)
+                                            <tbody>
+                                                <tr>
+                                                    <th>{{ $package->name }}</th>
 
-                                                <td>{{ $package->price }} <i class="mdi text-danger"></i></td>
-                                                <td class="description">{{ $package->description }}</td>
-                                                <td>
-                                                    <img src="{{ config('APP_URL') }}/img/{{ $package->image }}"
-                                                        class="me-2" alt="Avatar" />
-                                                </td>
-                                                <td>{{ $package->created_at }}</td>
-                                                <td>
-                                                    <a href="/admin/packages/update/{{ $package->id }}"><i
-                                                            class="mdi mdi-pencil-box"></i></a>
-                                                </td>
-                                                <td>
-                                                    <a href="/admin/packages/delete/{{ $package->id }}"
-                                                        onclick="return confirm('Bạn có muốn xóa!')"><i
-                                                            class="mdi mdi-delete"></i></a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    @endforeach
+                                                    <td>{{ $package->price }} <i class="mdi text-danger"></i></td>
+                                                    <td class="description">{{ $package->description }}</td>
+                                                    <td>
+                                                        <img src="{{ $package->img }}" class="me-2" alt="Avatar" />
+                                                    </td>
+                                                    <td>{{ $package->created_at }}</td>
+                                                    <td><img src="{{ $package->qrCode }}" />
+                                                    </td>
+                                                    <td>
+                                                        <a href="/admin/packages/update/{{ $package->id }}"><i
+                                                                class="mdi mdi-pencil-box"></i></a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="/admin/packages/delete/{{ $package->id }}"
+                                                            onclick="return confirm('Bạn có muốn xóa!')"><i
+                                                                class="mdi mdi-delete"></i></a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        @endforeach
+                                    @endisset
                                 </table>
                             </div>
                         </div>
